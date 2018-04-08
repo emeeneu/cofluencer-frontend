@@ -18,20 +18,8 @@
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
 }
 
-.bgImage1 {
-  background-image: url('./../../../assets/img/home/section1.jpg');
-  background-position: center;
-  background-size: cover;
-}
-
-.bgImage2 {
-  background-image: url('./../../../assets/img/home/section2.jpg');
-  background-position: center;
-  background-size: cover;
-}
-
-.socialFooter span {
-  font-size: 2rem;
+.gradient {
+  background-image: linear-gradient(137deg, rgba(40, 175, 176, .4), rgba(68, 53, 91, .4));
 }
 
 .iconMenu {
@@ -52,7 +40,17 @@
 
 .iconMenu .bar1 {
   width: 80%;
+  transition: width 0.3s;
   margin-bottom: 5px;
+}
+
+.iconMenu:hover .bar1 {
+  width: 100%;
+  transition: width 0.3s;
+}
+
+.socialFooter span {
+  font-size: 2rem;
 }
 
 .navbar-nav .nav-item:not(:last-child) {
@@ -94,6 +92,61 @@
   opacity: .1;
   background-color: #a6a4a8;
 }
+
+.page-header .container > .content-center {
+  background-color: rebeccapurple;
+  top: 90%;
+}
+
+#searchButton {
+  position: absolute;
+  left: 0%;
+  bottom: -50px;
+  background-color: rgba(255, 255, 255, .7);
+  color: #1f271b;
+}
+
+#searchButton:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+#moreButton {
+  position: absolute;
+  right: 0%;
+  bottom: -50px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: transparent;
+  font-weight: bolder;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#moreButton:hover {
+  background-color: #fff;
+  color: #1f271b;
+}
+
+#moreButton:hover div[class^=circle] {
+  background-color: #1f271b;
+}
+
+div[class^=circle] {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+#stats h2 {
+  margin-bottom: 0;
+}
+
+
 
 #signupButton {
   border-color: white;

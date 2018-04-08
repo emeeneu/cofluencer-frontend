@@ -48,17 +48,43 @@
   </nav>
 
   <div class="wrapper">
-    <div class="page-header bg-darkJungleGreen op-8">
-      <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/header.png');">
+    <div class="page-header gradient">
+      <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/company/profileImage.png');">
       </div>
       <div class="container">
-        <div class="content-center brand">
-          <img class="n-logo" src="./assets/img/now-logo.png" alt="">
-          <h1 class="h1-seo h1">Let your influence work.</h1>
-          <h3>Connect with thousands of brands and find your perfect campaign.</h3>
-          <button class="btn btn-lg btn-primary btn-round h4" (click)="modalControl('signup')">Sign up</button>
+        <div class="content-center brand" id="buttons">
+          <button class="btn btn-lg btn-primary btn-round h4" id="searchButton">Search campaigns</button>
+          <button class="h4" id="moreButton">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+          </button>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<main>
+  <section class="flex sp-around p-50" id="stats">
+    <div class="flex flex-column flex-center">
+      <h2 class="colorGrey introductionText textCenter">Followers</h2>
+      <p class="quoteText textCenter">13K</p>
+    </div>
+    <div class="flex flex-column flex-center">
+      <h2 class="colorGrey introductionText textCenter">Cofluencity</h2>
+      <p class="quoteText textCenter">90%</p>
+    </div>
+    <div class="flex flex-column flex-center">
+      <h2 class="colorGrey introductionText textCenter">Total posts</h2>
+      <p class="quoteText textCenter">254</p>
+    </div>
+  </section>
+  <section id="info">
+    <div class="container">
+      <h2 class="h3">About</h2>
+      <p class="bodyText">Every former smoker can tell you just how hard it is to stop smoking cigarettes. However, there are a range of stop smoking
+      commodities that can assist you on your transition to a smoke-free lifestyle.</p>
+    </div>
+  </section>
+</main>
