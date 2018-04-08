@@ -7,8 +7,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class MobileMenuComponent implements OnInit {
 
-  @Input() isNavHide: boolean;
-  @Input() isMenuHide: boolean;
   @Output() close = new EventEmitter<any>();
 
   constructor() { }

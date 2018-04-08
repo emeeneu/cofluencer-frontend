@@ -1,3 +1,64 @@
-<p>
-  company-profile works!
-</p>
+<app-mobile-menu [hidden]="!toggleMenu" (close)="menuControl()"></app-mobile-menu>
+
+<header>
+  <nav [hidden]="toggleMenu" class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent" color-on-scroll="400">
+    <div class="container">
+      <div class="navbar-translate" id="navLogo">
+        <a class="navbar-brand w-115" href="/company" rel="tooltip" data-placement="bottom">
+          <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
+        </a>
+        <div class="iconMenu" (click)="menuControl()">
+          <span class="bar1"></span>
+          <span class="bar2"></span>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
+        <ul class="navbar-nav flex flex-middle">
+          <li class="nav-item">
+            <a class="nav-link" href="" onclick="scrollToDownload()">
+              <p class="bodyTextBold capitalize colorGrey">Influencers</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <p class="bodyTextBold capitalize colorGrey">Brands</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <p class="bodyTextBold capitalize colorGrey">About us</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <div class="verticalSeparator"></div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" rel="tooltip" (click)="modalControl('login')">
+              <p class="bodyTextBold capitalize colorGrey">Login</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary btn-simple btn-round" id="signupButton" rel="tooltip" (click)="logout()">
+              <p class="bodyTextBold capitalize">Logout</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrapper">
+    <div class="page-header bg-darkJungleGreen op-8">
+      <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/header.png');">
+      </div>
+      <div class="container">
+        <div class="content-center brand">
+          <img class="n-logo" src="./assets/img/now-logo.png" alt="">
+          <h1 class="h1-seo h1">Let your influence work.</h1>
+          <h3>Connect with thousands of brands and find your perfect campaign.</h3>
+          <button class="btn btn-lg btn-primary btn-round h4" (click)="modalControl('signup')">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

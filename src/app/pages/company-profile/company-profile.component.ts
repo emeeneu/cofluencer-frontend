@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-company-profile',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyProfileComponent implements OnInit {
 
-  constructor() { }
+  toggleMenu: boolean;
+
+  constructor(
+    private session: AuthService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.session.logout();
+    this.router.navigate(['/']);
+  }
+
+  menuControl() {
+    this.toggleMenu = !this.toggleMenu;
   }
 
 }
