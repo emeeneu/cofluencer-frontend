@@ -1,0 +1,141 @@
+.signupModal {
+  width: 100%;
+  z-index: 9999;
+  background-color: rgba(248, 250, 253, .95);
+}
+
+.signUpForm {
+  width: 500px;
+  min-height: 650px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.loginButton {
+  width: 100%;
+}
+
+.socialIconsLogin {
+  width: 45%;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.facebook {
+  background-color: #3e5b98;
+}
+
+.youtube {
+  background-color: #e02a20;
+}
+
+.twitter {
+  background-color: #4da7de;
+}
+
+.separatorLine {
+  position: relative;
+}
+
+.separatorLine::after,
+.separatorLine::before {
+  content: "";
+  width: 42%;
+  height: 1px;
+  background-color: #a6a4a8;
+  position: absolute;
+  top: 40%;
+  box-sizing: border-box;
+}
+
+.separatorLine::after {
+  left: 10px;
+}
+
+.separatorLine::before {
+  right: 10px;
+}
+
+.navbar-nav .nav-item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.navbar-nav .nav-item:last-child p {
+  color: #fff;
+}
+
+.navbar-nav .nav-item .nav-link p:hover {
+  color: #fff;
+}
+
+.navbar-nav .nav-item .nav-link p {
+  position: relative;
+  color: transparent;
+}
+
+.navbar-nav .nav-item:not(:last-child) .nav-link p:hover::after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 1.5px;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+}
+
+.navbar .nav-item .nav-link:hover {
+  background-color: transparent;
+}
+
+.verticalSeparator {
+  display: inline-block;
+  vertical-align: sub;
+  width: 2px;
+  height: 30px;
+  opacity: .1;
+  background-color: transparent;
+}
+
+#signupButton {
+  border-color: transparent;
+}
+
+#signupButton:hover {
+  background-color: #28afb0;
+  border-color: #28afb0;
+}
+
+#navigation {
+  z-index: -10;
+}
+
+@media (max-width: 980px) {
+  #navLogo {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 450px) {
+  .title {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .socialLogin {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .socialIconsLogin {
+    width: 100%;
+  }
+}
+
+

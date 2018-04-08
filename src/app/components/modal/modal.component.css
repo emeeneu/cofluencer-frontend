@@ -1,0 +1,30 @@
+.navbar {
+  background-color: rgba(248, 250, 253, .95);
+  box-shadow: none;
+  padding: 20px 0;
+  margin-bottom: 0;
+}
+
+.iconMenu {
+  width: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+  display: block;
+}
+
+.iconMenu [class^=bar] {
+  background-color: #1f271b;
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.iconMenu .bar1 {
+  transform: rotate(45deg);
+  transform-origin: 45% 50%;
+}
+
+.iconMenu .bar2 {
+  transform: rotate(-45deg);
+  transform-origin: 40% 50%;
+}

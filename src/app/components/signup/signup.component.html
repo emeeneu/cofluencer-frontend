@@ -1,0 +1,63 @@
+<div class="signupModal">
+
+  <div class="flex flex-center flex-middle flexModal modalBg">
+    <div class="signUpForm mb-100">
+      <div class="container p-50">
+        <div class="title flex sp-between flex-baseline">
+          <p class="h1">Sign up</p>
+          <p class="bodyText">Are you a brand? <a href="">Sign up here</a></p>
+        </div>
+        <div class="row mt-40">
+          <div class="col-12 flex flex-middle sp-between socialLogin">
+            <p class="bodyText colorGrey">Use your social account:</p>
+            <div class="flex socialIconsLogin sp-between">
+              <div class="icon facebook flex flex-middle flex-center">
+                <span class="socicon-facebook"></span>
+              </div>
+              <div class="icon youtube flex flex-middle flex-center">
+                <span class="socicon-youtube"></span>
+              </div>
+              <div class="icon twitter flex flex-middle flex-center">
+                <span class="socicon-twitter"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 separatorLine mt-20">
+            <p class="textCenter or bodyText colorGrey">or</p>
+          </div>
+        </div>
+        <form class="row mt-40">
+          <div class="col-12">
+            <div class="form-group">
+              <input type="text" [(ngModel)]="formInfo.username" name="username" value="" placeholder="Your name" class="form-control">
+            </div>
+          </div>
+          <!-- <div class="col-12">
+            <div class="form-group">
+              <input type="email" value="" placeholder="Your email" class="form-control">
+            </div>
+          </div> -->
+          <div class="col-12">
+            <div class="form-group">
+              <input [(ngModel)]="formInfo.password" name="password" type="password" value="" placeholder="Your password" class="form-control">
+            </div>
+          </div>
+          <!-- <div class="col-12">
+            <div class="form-group">
+              <input type="password" value="" placeholder="Confirm your password" class="form-control">
+            </div>
+          </div> -->
+          <div class="col-12">
+            <div class="form-group">
+              <button (click)="signup()" class="btn btn-round btn-primary loginButton h4">Sign up</button>
+            </div>
+            <p class="bodyText">Already have an account?
+              <a (click)="changeModal('login')">Log in</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

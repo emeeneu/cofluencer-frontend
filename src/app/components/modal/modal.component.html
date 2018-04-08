@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg" color-on-scroll="400">
+  <div class="container">
+    <div class="navbar-translate flex sp-between w-100 flex-middle">
+      <a class="navbar-brand w-115" href="/" rel="tooltip" data-placement="bottom">
+        <img src="../../../assets/img/brand/logo-dark.png" alt="logo-cofluencer">
+      </a>
+      <div class="iconMenu" (click)="onCloseModal()">
+        <span class="bar1"></span>
+        <span class="bar2"></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<app-signup *ngIf="optionLoginSignup === 'signup'" (change)="changeModal($event)"></app-signup>
+<app-login *ngIf="optionLoginSignup === 'login'" (change)="changeModal($event)"></app-login>

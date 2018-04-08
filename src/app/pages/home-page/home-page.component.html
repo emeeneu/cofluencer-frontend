@@ -1,0 +1,158 @@
+<app-modal [hidden]="!toggleModal" [optionLoginSignup]="optionLoginSignup" (closeModal)="onCloseModal()"></app-modal>
+<app-mobile-menu [hidden]="!isMenuHide"></app-mobile-menu>
+
+<header [hidden]="toggleModal">
+  <nav [hidden]="isMenuHide" class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent" color-on-scroll="400">
+    <div class="container">
+      <div class="navbar-translate" id="navLogo">
+        <a class="navbar-brand w-115" href="/" rel="tooltip" data-placement="bottom">
+          <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
+        </a>
+        <div class="iconMenu" (click)="menuControl()">
+          <span class="bar1"></span>
+          <span class="bar2"></span>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
+        <ul class="navbar-nav flex flex-middle">
+          <li class="nav-item">
+            <a class="nav-link" href="" onclick="scrollToDownload()">
+              <p class="bodyTextBold capitalize colorGrey">Influencers</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <p class="bodyTextBold capitalize colorGrey">Brands</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <p class="bodyTextBold capitalize colorGrey">About us</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <div class="verticalSeparator"></div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" rel="tooltip" (click)="modalControl('login')">
+              <p class="bodyTextBold capitalize colorGrey">Login</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary btn-simple btn-round" id="signupButton" rel="tooltip" (click)="modalControl('signup')">
+            <p class="bodyTextBold capitalize">Signup</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrapper">
+    <div class="page-header bg-darkJungleGreen op-8">
+      <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/header.png');">
+      </div>
+      <div class="container">
+        <div class="content-center brand">
+          <img class="n-logo" src="./assets/img/now-logo.png" alt="">
+          <h1 class="h1-seo h1">Let your influence work.</h1>
+          <h3>Connect with thousands of brands and find your perfect campaign.</h3>
+          <button class="btn btn-lg btn-primary btn-round h4" (click)="modalControl('signup')">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main [hidden]="toggleModal" class="">
+  <section class="pt-100 pb-100" id="influencers">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 pt-50 sectionText">
+          <p class="bodyTextBold mayus colorGrey bold">For influencers, no doubt.</p>
+          <h2 class="h2">No limits for your influence</h2>
+          <p class="bodyText">Connect with the people behind the Brands you love and pitch them the right story. Across borders, beyond standards and across
+          platforms, Cofluencer is an all-in-one backoffice shaped for Influencers.</p>
+          <p>
+            <a href="#" class="bodyTextBold">Join to the community</a>
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-6 bgImage1 h-400 w-100 br shadow sectionImage">
+        </div>
+      </div>
+    </div>
+  </section>
+    
+  <section class="pt-100 pb-100 bg-greyLight" id="brands">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 pt-50 sectionText">
+          <p class="bodyTextBold mayus colorGrey bold">For brands, no doubt too.</p>
+          <h2 class="h2">No limits for your reach</h2>
+          <p class="bodyText">Connect with the people behind the Brands you love and pitch them the right story. Across borders, beyond standards and
+            across platforms, Cofluencer is an all-in-one backoffice shaped for Influencers.</p>
+          <p>
+            <a href="#" class="bodyTextBold">Find your perfect influencer</a>
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-6 bgImage2 h-400 w-100 br shadow sectionImage">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="pt-100 pb-100" id="aboutus">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 pt-50 sectionText">
+          <p class="bodyTextBold mayus colorGrey bold">How it works.</p>
+          <h2 class="h2">A huge marketplace</h2>
+          <p class="bodyText">If you are a brand, you can create and publish campaigns, wait until the influencers checkin into your campaign, select between the different profiles, and contact them to manage the details of the activity.</p>
+          <p>
+            <a href="#" class="bodyTextBold">Sign up for free</a>
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-6 bgImage2 h-400 w-100 br shadow sectionImage">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer [hidden]="toggleModal" class="bg-darkJungleGreen">
+  <div class="container">
+    <div class="content-center textCenter pt-50 pb-50">
+        <h3 class="h1 colorWhite textCenter mb-0">Your influence, your brand.</h3>
+        <h3 class="h1 colorStil textCenter">cofluencer.</h3>
+        <button class="btn btn-lg btn-primary h4">Sign up</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <ul class="colorWhite flex sp-between w-100 b-top pt-10 pb-10">
+      <li>
+        <a href="" class="colorGrey bodyTextBold hoverWhite">Influencers</a>
+      </li>
+      <li>
+        <a href="" class="colorGrey bodyTextBold hoverWhite">Brands</a>
+      </li>
+      <li>
+        <a href="" class="colorGrey bodyTextBold hoverWhite">About us</a>
+      </li>
+      <li>
+        <a href="" class="colorGrey bodyTextBold hoverWhite">Sign up</a>
+      </li>
+      <li>
+        <a href="" class="colorGrey bodyTextBold hoverWhite">Log in</a>
+      </li>
+    </ul>
+    <div class="flex flex-center socialFooter pt-50">
+      <span class="icon-social-facebook colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-twitter colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-instagram colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-youtube colorGrey pr-10 pl-10"></span>
+    </div>
+  </div>
+  <div class="bg-darkJungleGreen pt-50 pb-10 flex flex-center flex-middle">
+    <p class="bodyText colorGrey textCenter">©2018 cofluencer</p>
+  </div>
+</footer>
