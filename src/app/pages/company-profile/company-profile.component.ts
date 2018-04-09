@@ -9,7 +9,9 @@ import { AuthService } from '../../services/auth.service';
 })
 export class CompanyProfileComponent implements OnInit {
 
+  user: any;
   toggleMenu: boolean;
+  toggleMoreButton: boolean;
 
   constructor(
     private session: AuthService,
@@ -17,6 +19,7 @@ export class CompanyProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.user = this.session.getUser();
   }
 
   logout() {
@@ -26,6 +29,11 @@ export class CompanyProfileComponent implements OnInit {
 
   menuControl() {
     this.toggleMenu = !this.toggleMenu;
+  }
+
+  moreButtonControl() {
+    this.toggleMoreButton = !this.toggleMoreButton;
+    console.log(this.toggleMoreButton);
   }
 
 }

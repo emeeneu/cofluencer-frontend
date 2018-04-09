@@ -1,5 +1,3 @@
-<app-mobile-menu [hidden]="!toggleMenu" (close)="menuControl()"></app-mobile-menu>
-
 <header>
   <nav [hidden]="toggleMenu" class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent" color-on-scroll="400">
     <div class="container">
@@ -16,30 +14,17 @@
         <ul class="navbar-nav flex flex-middle">
           <li class="nav-item">
             <a class="nav-link" href="" onclick="scrollToDownload()">
-              <p class="bodyTextBold capitalize colorGrey">Influencers</p>
+              <p class="bodyTextBold capitalize colorGrey">My campaigns</p>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="">
-              <p class="bodyTextBold capitalize colorGrey">Brands</p>
+              <p class="bodyTextBold capitalize colorGrey">My stats</p>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="">
-              <p class="bodyTextBold capitalize colorGrey">About us</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <div class="verticalSeparator"></div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" (click)="modalControl('login')">
-              <p class="bodyTextBold capitalize colorGrey">Login</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn btn-primary btn-simple btn-round" id="signupButton" rel="tooltip" (click)="logout()">
-              <p class="bodyTextBold capitalize">Logout</p>
+              <p class="bodyTextBold capitalize colorGrey">Create Campaign</p>
             </a>
           </li>
         </ul>
@@ -47,28 +32,69 @@
     </div>
   </nav>
 
-  <div class="wrapper">
-    <div class="page-header gradient">
-      <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/company/profileImage.png');">
-      </div>
+  <!-- Mobile Menu -->
+  <div [hidden]="!toggleMenu" id="mobileMenu">
+    <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent">
       <div class="container">
-        <div class="content-center brand" id="buttons">
-          <button class="btn btn-lg btn-primary btn-round h4" id="searchButton">Search campaigns</button>
-          <button class="h4" id="moreButton">
-            <div class="circle1"></div>
-            <div class="circle2"></div>
-            <div class="circle3"></div>
-          </button>
+        <div class="navbar-translate flex sp-between w-100 flex-middle">
+          <a class="navbar-brand w-115" href="/" rel="tooltip" data-placement="bottom">
+            <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
+          </a>
+          <div class="iconMenu" (click)="menuControl()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+          </div>
         </div>
       </div>
+    </nav>
+  
+    <ul class="menu container flex flex-column flex-middle mt-100">
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a (click)="menuControl()" href="#mycampaigns" class="bodyTextBold capitalize colorGrey">My campaigns</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a (click)="menuControl()" href="#mystats" class="bodyTextBold capitalize colorGrey">My stats</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a (click)="menuControl()" href="#" class="bodyTextBold capitalize colorGrey">Create campaign</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a class="bodyTextBold capitalize colorGrey" href="#">Edit profile</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a class="bodyTextBold capitalize colorGrey" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <!-- End Mobile Menu -->
+
+  <div class="wrapper">
+    <div class="page-header gradient">
+      <!-- <div class="page-header-image" data-parallax="true" style="background-image: url('https://cdn.planetared.com/wp-content/uploads/2018/02/Adidas-regala-5000-pares-de-zapatos-gratis-1.jpg');">
+      </div> -->
+      <div class="page-header-image" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
+      </div>
+    </div>
+    <div class="container flex sp-between" id="buttons">
+      <button class="btn btn-lg btn-primary btn-round h4" id="searchButton">CREATE CAMPAIGN</button>
+      <button class="h4 flex sp-between w-100" id="moreButton" (click)="moreButtonControl()">
+        <i [hidden]="toggleMoreButton" class="icon-arrow-up"></i>
+        <i [hidden]=!toggleMoreButton class="icon-arrow-down"></i>
+      </button>
+    </div>
+    <div [hidden]="!toggleMoreButton" id="insideMoreButton" class="flex flex-column">
+      <button class="btn btn-primary btn-round">top influencers</button>
+      <button class="btn btn-primary btn-round">my stats</button>
+      <button class="btn btn-primary btn-round">edit profile</button>
     </div>
   </div>
+  
 </header>
 
 <main>
-  <section class="flex sp-around p-50" id="stats">
+  <section class="container flex sp-between" id="stats">
     <div class="flex flex-column flex-center">
-      <h2 class="colorGrey introductionText textCenter">Followers</h2>
+      <h2 class="colorGrey introductionText textCenter">Campaigns</h2>
       <p class="quoteText textCenter">13K</p>
     </div>
     <div class="flex flex-column flex-center">
@@ -76,15 +102,26 @@
       <p class="quoteText textCenter">90%</p>
     </div>
     <div class="flex flex-column flex-center">
-      <h2 class="colorGrey introductionText textCenter">Total posts</h2>
+      <h2 class="colorGrey introductionText textCenter">Total reach</h2>
       <p class="quoteText textCenter">254</p>
     </div>
   </section>
   <section id="info">
     <div class="container">
-      <h2 class="h3">About</h2>
-      <p class="bodyText">Every former smoker can tell you just how hard it is to stop smoking cigarettes. However, there are a range of stop smoking
-      commodities that can assist you on your transition to a smoke-free lifestyle.</p>
+      <h2 class="h3 capitalize">{{ user.username }}</h2>
+      <p class="bodyText">{{ user.bio }}</p>
+    </div>
+  </section>
+  <section id="campaigns">
+    <div class="container">
+      <h2 class="h3">Campaigns</h2>
+
+    </div>
+  </section>
+  <section id="stats">
+    <div class="container">
+      <h2 class="h3">Stats</h2>
+      <p>{{ user.profileImage }}</p>
     </div>
   </section>
 </main>
