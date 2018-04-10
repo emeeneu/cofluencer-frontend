@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   user: any;
   error: string;
 
+  toggleUser: boolean;
+
   constructor(
     private session: AuthService,
     private router: Router,
@@ -47,6 +49,11 @@ export class LoginComponent implements OnInit {
 
   changeModal(event) {
     this.change.emit(event);
+  }
+
+  controlUser() {
+    this.toggleUser = !this.toggleUser;
+    console.log(this.toggleUser);
   }
 
 }

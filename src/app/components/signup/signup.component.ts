@@ -12,6 +12,8 @@ export class SignupComponent implements OnInit {
   @Output() close = new EventEmitter<any>();
   @Output() change = new EventEmitter<any>();
 
+  toggleSignup: boolean;
+
   formInfo = {
     username: '',
     password: ''
@@ -29,9 +31,18 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  signup() {
+  signupBrand() {
     this.session
-      .signup(this.formInfo)
+      .signupBrand(this.formInfo)
+      .then(user => {
+        this.user = user;
+        this.router.navigate(['company']);
+      })
+      .catch(err => (this.error = err));
+  }
+
+  signupInfluencer() {
+    this.session.signupInfluencer(this.formInfo)
       .then(user => {
         this.user = user;
         this.router.navigate(['app']);
@@ -45,6 +56,10 @@ export class SignupComponent implements OnInit {
 
   changeModal(event) {
     this.change.emit(event);
+  }
+
+  controlUser() {
+    this.toggleSignup = !this.toggleSignup;
   }
 
 }

@@ -5,7 +5,8 @@
       <div class="container p-50">
         <div class="title flex sp-between flex-baseline">
           <p class="h1">Sign up</p>
-          <p class="bodyText">Are you a brand? <a href="">Sign up here</a></p>
+          <p><span (click)="controlUser()" class="bodyText">Brand</span> / <span (click)="controlUser()" class="bodyText">Influencer</span> </p>
+          <!-- <p class="bodyText">Are you a brand? <a href="">Sign up here</a></p> -->
         </div>
         <div class="row mt-40">
           <div class="col-12 flex flex-middle sp-between socialLogin">
@@ -49,7 +50,8 @@
           </div> -->
           <div class="col-12">
             <div class="form-group">
-              <button (click)="signup()" class="btn btn-round btn-primary loginButton h4">Sign up</button>
+              <button [hidden]="toggleSignup" (click)="signupBrand()" class="btn btn-round btn-primary loginButton h4">Sign up like brand</button>
+              <button [hidden]="!toggleSignup" (click)="signupInfluencer()" class="btn btn-round btn-primary loginButton h4">Sign up like influencer</button>
             </div>
             <p class="bodyText">Already have an account?
               <a (click)="changeModal('login')">Log in</a>

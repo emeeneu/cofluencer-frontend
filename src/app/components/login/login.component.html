@@ -1,6 +1,10 @@
-<div class="loginModal">
+<div [hidden]="toggleUser" class="loginModal" id="brand">
   <div class="flex flex-center flex-middle flexModal modalBg">
     <div class="loginForm mb-100">
+      <div class="flex sp-around">
+        <p (click)="controlUser()">brand</p>
+        <p (click)="controlUser()">influencer</p>
+      </div>
       <div class="container p-50">
           <p class="h1">Log in</p>
         <div class="row mt-40">

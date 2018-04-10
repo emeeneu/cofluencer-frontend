@@ -45,11 +45,20 @@ export class AuthService {
       .then((data) => this.setUser(data));
   }
 
-  signup(user: any): Promise<any> {
+  signupBrand(user: any): Promise<any> {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.post(`${this.API_URL}/signup`, user, options)
+    return this.httpClient.post(`${this.API_URL}/brand/signup`, user, options)
+      .toPromise()
+      .then((data) => this.setUser(data));
+  }
+
+  signupInfluencer(user: any): Promise<any> {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.post(`${this.API_URL}/influencer/signup`, user, options)
       .toPromise()
       .then((data) => this.setUser(data));
   }
