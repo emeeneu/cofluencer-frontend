@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   @Output() close = new EventEmitter<any>();
   @Output() change = new EventEmitter<any>();
 
+  toggleLogin: boolean;
+
   formInfo = {
     username: '',
     password: ''
@@ -19,8 +21,6 @@ export class LoginComponent implements OnInit {
 
   user: any;
   error: string;
-
-  toggleUser: boolean;
 
   constructor(
     private session: AuthService,
@@ -52,8 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   controlUser() {
-    this.toggleUser = !this.toggleUser;
-    console.log(this.toggleUser);
+    this.toggleLogin = !this.toggleLogin;
   }
 
 }

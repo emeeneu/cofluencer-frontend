@@ -1,7 +1,6 @@
 .loginModal {
   width: 100%;
   z-index: 9999;
-  background-color: rgba(248, 250, 253, .95);
 }
 
 .loginForm {

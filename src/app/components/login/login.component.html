@@ -1,12 +1,15 @@
-<div [hidden]="toggleUser" class="loginModal" id="brand">
+<div class="loginModal">
+
   <div class="flex flex-center flex-middle flexModal modalBg">
     <div class="loginForm mb-100">
-      <div class="flex sp-around">
-        <p (click)="controlUser()">brand</p>
-        <p (click)="controlUser()">influencer</p>
-      </div>
       <div class="container p-50">
+        <div class="title flex sp-between flex-baseline">
           <p class="h1">Log in</p>
+          <p>
+            <span (click)="controlUser()" class="bodyText">Brand</span> /
+            <span (click)="controlUser()" class="bodyText">Influencer</span>
+          </p>
+        </div>
         <div class="row mt-40">
           <div class="col-12 flex flex-middle sp-between socialLogin">
             <p class="bodyText colorGrey">Use your social account:</p>
@@ -39,7 +42,8 @@
           </div>
           <div class="col-12">
             <div class="form-group">
-              <button (click)="login()" class="btn btn-round btn-primary loginButton h4">Log in</button>
+              <button [hidden]="toggleLogin" (click)="login()" class="btn btn-round btn-primary loginButton h4">Log in like brand</button>
+              <button [hidden]="!toggleLogin" (click)="login()" class="btn btn-round btn-primary loginButton h4">Log in like influencer</button>
             </div>
             <p class="bodyText">No account?
               <a (click)="changeModal('signup')">Sign up</a>

@@ -11,6 +11,8 @@ export class ModalComponent implements OnInit {
   @Input() optionLoginSignup: string;
   @Output() closeModal = new EventEmitter<boolean>();
 
+  toggleUser: boolean;
+
   constructor(
     private router: Router,
   ) { }
