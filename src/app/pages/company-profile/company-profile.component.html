@@ -76,7 +76,7 @@
       </div>
     </div>
     <div class="container flex sp-between" id="buttons">
-      <button class="btn btn-lg btn-primary btn-round h4" id="searchButton">CREATE CAMPAIGN</button>
+      <button (click)="newCampaign()" class="btn btn-lg btn-primary btn-round h4" id="searchButton">CREATE CAMPAIGN</button>
       <button class="h4 flex sp-between w-100" id="moreButton" (click)="moreButtonControl()">
         <i [hidden]="toggleMoreButton" class="icon-arrow-up"></i>
         <i [hidden]=!toggleMoreButton class="icon-arrow-down"></i>
@@ -121,7 +121,7 @@
   <section id="stats">
     <div class="container">
       <h2 class="h3">Stats</h2>
-      <p>{{ user.profileImage }}</p>
+      
     </div>
   </section>
 </main>

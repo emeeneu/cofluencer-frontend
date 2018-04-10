@@ -33,7 +33,10 @@ export class CompanyProfileComponent implements OnInit {
 
   moreButtonControl() {
     this.toggleMoreButton = !this.toggleMoreButton;
-    console.log(this.toggleMoreButton);
+  }
+
+  newCampaign() {
+    this.router.navigate(['company/newCampaign']);
   }
 
 }
