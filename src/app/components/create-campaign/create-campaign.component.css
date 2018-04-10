@@ -1,3 +1,11 @@
+.bg {
+  background-color: rgba(248, 250, 253, .95);
+}
+
+nav {
+  background-color: rgba(248, 250, 253, .95);
+}
+
 .iconMenu {
   width: 30px;
   margin-top: 5px;
@@ -21,3 +29,15 @@
   transform: rotate(-45deg);
   transform-origin: 40% 50%;
 }
+
+.createButton {
+  width: 100%;
+}
+
+.formCampaign {
+  width: 500px;
+  min-height: 650px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+

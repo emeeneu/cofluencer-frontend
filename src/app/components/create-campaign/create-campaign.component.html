@@ -12,8 +12,8 @@
   </div>
 </nav>
 
-<div class="loginModal">
-  <div class="flex flex-center flex-middle flexModal modalBg">
+<div class="flex flex-center bg">
+  <div class="formCampaign flex flex-center flex-middle flexModal modalBg">
     <div class="loginForm mb-100">
       <div class="container p-50">
         <p class="h1">New Campaign</p>
@@ -44,7 +44,7 @@
           
           <div class="col-12">
             <div class="form-group">
-              <button class="btn btn-round btn-primary createButton h4">Create Campaign</button>
+              <button (click)="createCampaign()" class="btn btn-round btn-primary createButton h4">Create Campaign</button>
             </div>
           </div>
         </form>
