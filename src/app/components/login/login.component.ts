@@ -30,9 +30,22 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
+  loginBrand() {
     this.session
-      .login(this.formInfo)
+      .loginCompany(this.formInfo)
+      .then(user => {
+        this.user = user;
+        this.router.navigate(['company/:id']);
+      })
+      .catch((error) => {
+        console.log('login error', error);
+        this.error = error;
+      });
+  }
+
+  loginInfluencer() {
+    this.session
+      .loginInfluencer(this.formInfo)
       .then(user => {
         this.user = user;
         this.router.navigate(['app']);

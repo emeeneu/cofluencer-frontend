@@ -48,7 +48,7 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService]
   },
   {
-    path: 'company',
+    path: 'company/:id',
     component: CompanyProfileComponent,
     canActivate: [RequireUserGuardService]
   },

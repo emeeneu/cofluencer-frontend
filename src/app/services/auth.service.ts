@@ -36,11 +36,20 @@ export class AuthService {
       });
   }
 
-  login(user: any): Promise<any> {
+  loginCompany(user: any): Promise<any> {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.post(`${this.API_URL}/login`, user, options)
+    return this.httpClient.post(`${this.API_URL}/login/company`, user, options)
+      .toPromise()
+      .then((data) => this.setUser(data));
+  }
+
+  loginInfluencer(user: any): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.post(`${this.API_URL}/login/influencer`, user, options)
       .toPromise()
       .then((data) => this.setUser(data));
   }

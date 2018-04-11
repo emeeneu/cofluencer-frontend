@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
       .signupBrand(this.formInfo)
       .then(user => {
         this.user = user;
-        this.router.navigate(['company']);
+        this.router.navigate(['company/:id']);
       })
       .catch(err => (this.error = err));
   }
