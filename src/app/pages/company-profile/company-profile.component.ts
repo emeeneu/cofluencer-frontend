@@ -43,7 +43,7 @@ export class CompanyProfileComponent implements OnInit {
   }
 
   newCampaign() {
-    this.router.navigate(['company/:id/newCampaign']);
+    this.router.navigate(['company', this.user.username, 'new-campaign']);
   }
 
 }

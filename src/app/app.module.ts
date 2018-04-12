@@ -44,19 +44,22 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'app',
+    path: 'app/:id',
     component: AppPageComponent,
     canActivate: [RequireUserGuardService]
   },
   {
     path: 'company/:id',
     component: CompanyProfileComponent,
-    canActivate: [RequireUserGuardService]
+    canActivate: [RequireUserGuardService],
   },
   {
-    path: 'company/:id/newCampaign',
+    path: 'company/:id/new-campaign',
     component: CreateCampaignComponent,
-    canActivate: [RequireUserGuardService]
+    canActivateChild: [RequireUserGuardService],
+  },
+  {
+    path: 'company/:id/edit-profile',
   },
   {
     path: '**', redirectTo: '',

@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
       .signupBrand(this.formInfo)
       .then(user => {
         this.user = user;
-        this.router.navigate(['company/:id']);
+        this.router.navigate(['company', this.user.username]);
       })
       .catch(err => (this.error = err));
   }
@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
     this.session.signupInfluencer(this.formInfo)
       .then(user => {
         this.user = user;
-        this.router.navigate(['app']);
+        this.router.navigate(['app', this.user.username]);
       })
       .catch(err => (this.error = err));
   }

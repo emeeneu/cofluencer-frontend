@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   user: any;
   error: string;
+  username: any;
 
   constructor(
     private session: AuthService,
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
       .loginCompany(this.formInfo)
       .then(user => {
         this.user = user;
-        this.router.navigate(['company/:id']);
+        this.router.navigate(['company', this.user.username]);
       })
       .catch((error) => {
         console.log('login error', error);
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit {
       .loginInfluencer(this.formInfo)
       .then(user => {
         this.user = user;
-        this.router.navigate(['app']);
+        this.router.navigate(['app', this.user.username]);
       })
       .catch((error) => {
         console.log('login error', error);

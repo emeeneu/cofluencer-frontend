@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyService } from '../../services/company.service';
+import { AuthService } from '../../services/auth.service';
 
 
 
@@ -12,9 +13,12 @@ import { CompanyService } from '../../services/company.service';
 })
 export class CreateCampaignComponent implements OnInit {
 
+  username: any;
+
   constructor(
     private router: Router,
     private companyService: CompanyService,
+    private session: AuthService,
   ) { }
 
   formCampaign = {
@@ -27,10 +31,11 @@ export class CreateCampaignComponent implements OnInit {
   newCampaign: any;
 
   ngOnInit() {
+    this.username = this.session.getUser().username;
   }
 
   close() {
-    this.router.navigate(['company/:id']);
+    this.router.navigate(['company', this.username]);
   }
 
   createCampaign() {
