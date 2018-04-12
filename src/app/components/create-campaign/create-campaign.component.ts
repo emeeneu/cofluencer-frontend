@@ -30,14 +30,14 @@ export class CreateCampaignComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate(['company']);
+    this.router.navigate(['company/:id']);
   }
 
   createCampaign() {
     this.companyService.createCampaign(this.formCampaign)
       .then(newCampaign => {
         this.newCampaign = newCampaign;
-        this.router.navigate(['company']);
+        this.router.navigate(['company/:id']);
         console.log(this.newCampaign);
       })
       .catch((error) => {

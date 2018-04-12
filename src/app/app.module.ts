@@ -23,6 +23,7 @@ import { AppPageComponent } from './pages/app-page/app-page.component';
 import { InstagramInfoComponent } from './components/instagram-info/instagram-info.component';
 import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
 import { CreateCampaignComponent } from './components/create-campaign/create-campaign.component';
+import { CompanyService } from './services/company.service';
 
 const routes: Routes = [
   {
@@ -53,7 +54,7 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService]
   },
   {
-    path: 'company/newCampaign',
+    path: 'company/:id/newCampaign',
     component: CreateCampaignComponent,
     canActivate: [RequireUserGuardService]
   },
@@ -85,6 +86,7 @@ const routes: Routes = [
   ],
   providers: [
     IgDatauserService,
+    CompanyService,
     AuthService,
     RequireUserGuardService,
     RequireAnonGuardService,

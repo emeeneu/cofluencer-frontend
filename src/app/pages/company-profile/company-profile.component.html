@@ -70,8 +70,6 @@
 
   <div class="wrapper">
     <div class="page-header gradient">
-      <!-- <div class="page-header-image" data-parallax="true" style="background-image: url('https://cdn.planetared.com/wp-content/uploads/2018/02/Adidas-regala-5000-pares-de-zapatos-gratis-1.jpg');">
-      </div> -->
       <div class="page-header-image" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
       </div>
     </div>
@@ -115,8 +113,11 @@
   </section>
   <section id="campaigns">
     <div class="container">
-      <h2 class="h3">Campaigns</h2>
-
+      <h2 class="h3" (click)="getCampaigns()">Campaigns</h2>
+      <div *ngFor="let campaign of this.companyService.campaigns">
+        <h3>{{ campaign.title }}</h3>
+        <p>{{ campaign.description }}</p>
+      </div>
     </div>
   </section>
   <section id="stats">

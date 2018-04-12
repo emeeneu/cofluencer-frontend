@@ -7,12 +7,31 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class CompanyService {
 
+  campaigns: any = [];
+  companyId: string;
+
   private API_URL = 'http://localhost:3000/api';
   private newCampaign: any;
 
   constructor(
     private httpClient: HttpClient,
   ) { }
+
+  campaignsList(user: any): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.API_URL}/campaigns`, options)
+      .toPromise()
+      .then((campaigns) => {
+        this.campaigns = campaigns;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
 
   createCampaign(formCampaign: any): Promise<any> {
     const options = {
