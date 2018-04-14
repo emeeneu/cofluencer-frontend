@@ -27,7 +27,8 @@ export class EditCompanyComponent implements OnInit {
   }
 
   updateUser() {
-    this.session.updateUser(this.editingUser);
+    console.log(this.editingUser);
+    this.companyService.updateUser(this.editingUser);
   }
 
 }

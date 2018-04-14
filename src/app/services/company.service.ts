@@ -45,6 +45,14 @@ export class CompanyService {
       });
   }
 
+  updateUser(userForm: any) {
+    console.log('servicio: ', userForm);
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.put(`${this.API_URL}/updateUser`, userForm, options);
+  }
+
 
 
 }
