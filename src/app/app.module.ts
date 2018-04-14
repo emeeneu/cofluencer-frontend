@@ -24,6 +24,7 @@ import { InstagramInfoComponent } from './components/instagram-info/instagram-in
 import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
 import { CreateCampaignComponent } from './components/create-campaign/create-campaign.component';
 import { CompanyService } from './services/company.service';
+import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 
 const routes: Routes = [
   {
@@ -56,10 +57,12 @@ const routes: Routes = [
   {
     path: 'company/:id/new-campaign',
     component: CreateCampaignComponent,
-    canActivateChild: [RequireUserGuardService],
+    canActivate: [RequireUserGuardService],
   },
   {
     path: 'company/:id/edit-profile',
+    component: EditCompanyComponent,
+    canActivate: [RequireUserGuardService],
   },
   {
     path: '**', redirectTo: '',
@@ -78,7 +81,8 @@ const routes: Routes = [
     AppPageComponent,
     InstagramInfoComponent,
     CompanyProfileComponent,
-    CreateCampaignComponent
+    CreateCampaignComponent,
+    EditCompanyComponent
   ],
   imports: [
     BrowserModule,

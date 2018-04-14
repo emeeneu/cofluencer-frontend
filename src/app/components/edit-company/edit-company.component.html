@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent">
+  <div class="container">
+    <div class="navbar-translate flex sp-between w-100 flex-middle">
+      <a class="navbar-brand w-115" href="/" rel="tooltip" data-placement="bottom">
+        <img src="../../../assets/img/brand/logo-dark.png" alt="logo-cofluencer">
+      </a>
+      <div class="iconMenu" (click)="close()">
+        <span class="bar1"></span>
+        <span class="bar2"></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="flex flex-center bg">
+  <div class="formProfile flex flex-center flex-middle flexModal modalBg">
+    <div class="loginForm mb-100">
+      <div class="container p-50">
+        <p class="h1">Edit Profile</p>
+
+        <form class="row mt-40">
+          <div class="col-12">
+            <div class="form-group">
+              <input [(ngModel)]="editingUser.username" name="username" type="text" value="" placeholder="{{ user.username }}" class="form-control">
+            </div>
+            <p>{{ editingUser.username }}</p>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <textarea [(ngModel)]="editingUser.bio" name="bio" rows="5" class="form-control" placeholder="A few lines about the event and info for the influencers"></textarea>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <button (click)="updateUser()" class="btn btn-round btn-primary updateButton h4">Update Profile</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

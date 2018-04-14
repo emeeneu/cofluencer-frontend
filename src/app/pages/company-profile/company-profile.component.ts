@@ -46,4 +46,8 @@ export class CompanyProfileComponent implements OnInit {
     this.router.navigate(['company', this.user.username, 'new-campaign']);
   }
 
+  editProfile() {
+    this.router.navigate(['company', this.user.username, 'edit-profile']);
+  }
+
 }

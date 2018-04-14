@@ -93,4 +93,11 @@ export class AuthService {
       .toPromise();
   }
 
+  updateUser(userForm) {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.put(`${this.API_URL}/updateUser`, options);
+  }
+
 }

@@ -61,7 +61,7 @@
         <a (click)="menuControl()" href="#" class="bodyTextBold capitalize colorGrey">Create campaign</a>
       </li>
       <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a class="bodyTextBold capitalize colorGrey" href="#">Edit profile</a>
+        <a class="bodyTextBold capitalize colorGrey" (click)="editProfile()">Edit profile</a>
       </li>
       <li class="pb-20 mt-20 w-100 b-bottomThin">
         <a class="bodyTextBold capitalize colorGrey" (click)="logout()">Logout</a>
@@ -85,7 +85,7 @@
     <div [hidden]="!toggleMoreButton" id="insideMoreButton" class="flex flex-column">
       <button class="btn btn-primary btn-round">top influencers</button>
       <button class="btn btn-primary btn-round">my stats</button>
-      <button class="btn btn-primary btn-round">edit profile</button>
+      <button class="btn btn-primary btn-round" (click)="editProfile()">edit profile</button>
       <button (click)="logout()" class="btn btn-primary btn-round">logout</button>
     </div>
   </div>
