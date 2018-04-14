@@ -13,4 +13,9 @@ export class IgDatauserService {
     return this.http.get('http://localhost:3000/api/ig/emeeneu')
       .map((res: Response) => res.json());
   }
+
+  getInfoTwitterUser() {
+    return this.http.get('http://localhost:3000/api/twt/emeeneu')
+      .map((res: Response) => res.json());
+  }
 }
