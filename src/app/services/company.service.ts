@@ -11,6 +11,7 @@ export class CompanyService {
   campaigns: any = [];
   companyId: string;
   user: any;
+  campaignDetail: any;
 
   private API_URL = 'http://localhost:3000/api';
   private newCampaign: any;
@@ -28,6 +29,22 @@ export class CompanyService {
       .toPromise()
       .then((campaigns) => {
         this.campaigns = campaigns;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  campaign(campaignTitle: any): Promise<any> {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.get(`${this.API_URL}/campaigns/campaign-detail`, options)
+      .toPromise()
+      .then((campaign) => {
+        this.campaignDetail = campaign;
       })
       .catch((err) => {
         if (err.status === 404) {

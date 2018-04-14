@@ -218,6 +218,11 @@ section {
   transform-origin: 40% 50%;
 }
 
+.campaignBox {
+  border: 1px solid #1f271b;
+  margin-bottom: 20px;
+}
+
 
 @media (max-width: 980px) {
   #navLogo {

@@ -25,6 +25,7 @@ import { CompanyProfileComponent } from './pages/company-profile/company-profile
 import { CreateCampaignComponent } from './components/create-campaign/create-campaign.component';
 import { CompanyService } from './services/company.service';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
+import { CampaignDetailComponent } from './components/campaign-detail/campaign-detail.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,11 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService],
   },
   {
+    path: 'company/:id/:campaigntitle',
+    component: CampaignDetailComponent,
+    canActivate: [RequireUserGuardService],
+  },
+  {
     path: 'company/:id/new-campaign',
     component: CreateCampaignComponent,
     canActivate: [RequireUserGuardService],
@@ -82,7 +88,8 @@ const routes: Routes = [
     InstagramInfoComponent,
     CompanyProfileComponent,
     CreateCampaignComponent,
-    EditCompanyComponent
+    EditCompanyComponent,
+    CampaignDetailComponent
   ],
   imports: [
     BrowserModule,
