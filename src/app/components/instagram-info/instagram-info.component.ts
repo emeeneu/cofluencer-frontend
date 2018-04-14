@@ -10,7 +10,11 @@ import { IgDatauserService } from '../../services/ig-datauser.service';
 export class InstagramInfoComponent implements OnInit {
 
   instaInfo: any;
-  constructor(private userInstaInfo: IgDatauserService) { }
+  twitterInfo: any;
+  constructor(
+    private userInstaInfo: IgDatauserService,
+    private userTwitterInfo: IgDatauserService,
+  ) { }
 
   ngOnInit() {
   }
@@ -18,5 +22,10 @@ export class InstagramInfoComponent implements OnInit {
   getInstaInfo() {
     this.userInstaInfo.getInfoInstaUser()
       .subscribe((instaInfo) => this.instaInfo = instaInfo);
+  }
+
+  getTwitterInfo() {
+    this.userTwitterInfo.getInfoTwitterUser()
+      .subscribe((twitterInfo) => this.twitterInfo = twitterInfo);
   }
 }
