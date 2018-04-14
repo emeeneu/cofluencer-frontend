@@ -42,7 +42,7 @@ export class CreateCampaignComponent implements OnInit {
     this.companyService.createCampaign(this.formCampaign)
       .then(newCampaign => {
         this.newCampaign = newCampaign;
-        this.router.navigate(['company/:id']);
+        this.router.navigate(['company', this.username]);
         console.log(this.newCampaign);
       })
       .catch((error) => {

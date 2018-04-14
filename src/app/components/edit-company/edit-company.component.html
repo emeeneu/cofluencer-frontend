@@ -21,13 +21,13 @@
         <form class="row mt-40">
           <div class="col-12">
             <div class="form-group">
-              <input [(ngModel)]="editingUser.username" name="username" type="text" value="" placeholder="{{ user.username }}" class="form-control">
+              <input [(ngModel)]="editingUser.username" name="username" type="text" placeholder="{{ user.username }}" class="form-control">
             </div>
             <p>{{ editingUser.username }}</p>
           </div>
           <div class="col-12">
             <div class="form-group">
-              <textarea [(ngModel)]="editingUser.bio" name="bio" rows="5" class="form-control" placeholder="A few lines about the event and info for the influencers"></textarea>
+              <textarea [(ngModel)]="editingUser.bio" value="{{ user.bio }}" name="bio" rows="5" class="form-control" placeholder="A few lines about the event and info for the influencers"></textarea>
             </div>
           </div>
           <div class="col-12">

@@ -27,8 +27,18 @@ export class EditCompanyComponent implements OnInit {
   }
 
   updateUser() {
-    console.log(this.editingUser);
-    this.companyService.updateUser(this.editingUser);
+    this.companyService.updateUser(this.editingUser)
+      .then((updatedUser) => {
+        this.session.setUser(updatedUser);
+        this.router.navigate(['company', updatedUser.username]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  close() {
+    this.router.navigate(['company', this.user.username]);
   }
 
 }
