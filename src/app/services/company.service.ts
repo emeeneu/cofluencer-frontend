@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 import { AuthService } from './auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class CompanyService {
@@ -13,12 +14,14 @@ export class CompanyService {
   user: any;
   campaignDetail: any;
 
+  private sub: any;
   private API_URL = 'http://localhost:3000/api';
   private newCampaign: any;
 
   constructor(
     private httpClient: HttpClient,
     private session: AuthService,
+    private route: ActivatedRoute,
   ) { }
 
   campaignsList(user: any): Promise<any> {
@@ -37,14 +40,14 @@ export class CompanyService {
       });
   }
 
-  campaign(campaignTitle: any): Promise<any> {
+  campaign(campaignId: any): Promise<any> {
     const options = {
       withCredentials: true,
     };
-    return this.httpClient.get(`${this.API_URL}/campaigns/campaign-detail`, options)
+    return this.httpClient.get(`${this.API_URL}/campaigns/${campaignId}`, options)
       .toPromise()
       .then((campaign) => {
-        this.campaignDetail = campaign;
+        return this.campaignDetail = campaign;
       })
       .catch((err) => {
         if (err.status === 404) {

@@ -56,7 +56,7 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService],
   },
   {
-    path: 'company/:id/:campaigntitle',
+    path: 'company/:id/:campaignid',
     component: CampaignDetailComponent,
     canActivate: [RequireUserGuardService],
   },

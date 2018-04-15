@@ -50,7 +50,7 @@ export class CompanyProfileComponent implements OnInit {
     this.router.navigate(['company', this.user.username, 'edit-profile']);
   }
 
-  campaignDetail(campaignTitle) {
-    this.router.navigate(['company', this.user.username, campaignTitle]);
+  campaignDetail(campaignId) {
+    this.router.navigate(['company', this.user.username, campaignId]);
   }
 }

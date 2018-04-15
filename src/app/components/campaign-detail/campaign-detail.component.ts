@@ -11,8 +11,9 @@ import { CompanyService } from '../../services/company.service';
 export class CampaignDetailComponent implements OnInit {
 
   campaignDetail: any;
-  campaignTitle: any;
+  campaignId: any;
   private sub: any;
+  toggleMenu: boolean;
 
   constructor(
     private session: AuthService,
@@ -23,16 +24,15 @@ export class CampaignDetailComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.campaignTitle = params['campaigntitle'];
+      this.campaignId = params['campaignid'];
     });
-    console.log(this.campaignTitle);
-    // this.companyService.campaign()
-    //   .then((campaign) => {
-    //     this.campaignDetail = campaign;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    this.companyService.campaign(this.campaignId)
+      .then((campaign) => {
+        this.campaignDetail = campaign;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
 }

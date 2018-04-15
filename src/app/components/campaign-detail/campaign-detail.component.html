@@ -5,7 +5,7 @@
     <div class="container">
       <div class="navbar-translate" id="navLogo">
         <a class="navbar-brand w-115" href="/company" rel="tooltip" data-placement="bottom">
-          <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
+          <img src="../../../assets/img/brand/logo-dark.png" alt="logo-cofluencer">
         </a>
         <div class="iconMenu" (click)="menuControl()">
           <span class="bar1"></span>
@@ -69,3 +69,10 @@
     </ul>
   </div>
   <!-- End Mobile Menu -->
+
+  <main>
+    <div class="container mt-100">
+      <h2 class="h2">{{ companyService.campaignDetail.title }}</h2>
+      <p class="">{{ companyService.campaignDetail.description }}</p>
+    </div>
+  </main>
