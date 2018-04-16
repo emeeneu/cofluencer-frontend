@@ -4,16 +4,20 @@ import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 
 @Component({
-  selector: 'app-campaign-detail',
-  templateUrl: './campaign-detail.component.html',
-  styleUrls: ['./campaign-detail.component.css']
+  selector: 'app-edit-campaign',
+  templateUrl: './edit-campaign.component.html',
+  styleUrls: ['./edit-campaign.component.css']
 })
-export class CampaignDetailComponent implements OnInit {
+export class EditCampaignComponent implements OnInit {
 
   user: any;
+  campaignDetail: any = '';
   campaignId: any;
   private sub: any;
-  toggleMenu: boolean;
+  editingCampaign: Object = {
+    title: '',
+    description: '',
+  };
 
   constructor(
     private session: AuthService,
@@ -24,14 +28,19 @@ export class CampaignDetailComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
+    this.campaignDetail = this.companyService.campaignDetail;
     this.sub = this.route.params.subscribe(params => {
       this.campaignId = params['campaignid'];
     });
-    this.companyService.campaign(this.campaignId);
   }
 
-  editCampaign() {
-    this.router.navigate(['company', this.user.username, this.campaignId, 'edit']);
+  close() {
+    this.router.navigate(['company', this.user.username, this.campaignId]);
+  }
+
+  updateCampaign() {
+    this.companyService.updateCampaign(this.editingCampaign, this.campaignId);
+    this.router.navigate(['company', this.user.username, this.campaignId]);
   }
 
 }

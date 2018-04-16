@@ -26,6 +26,7 @@ import { CreateCampaignComponent } from './components/create-campaign/create-cam
 import { CompanyService } from './services/company.service';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 import { CampaignDetailComponent } from './components/campaign-detail/campaign-detail.component';
+import { EditCampaignComponent } from './components/edit-campaign/edit-campaign.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,11 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService],
   },
   {
+    path: 'company/:id/:campaignid/edit',
+    component: EditCampaignComponent,
+    canActivate: [RequireUserGuardService],
+  },
+  {
     path: 'company/:id/new-campaign',
     component: CreateCampaignComponent,
     canActivate: [RequireUserGuardService],
@@ -89,7 +95,8 @@ const routes: Routes = [
     CompanyProfileComponent,
     CreateCampaignComponent,
     EditCompanyComponent,
-    CampaignDetailComponent
+    CampaignDetailComponent,
+    EditCampaignComponent
   ],
   imports: [
     BrowserModule,

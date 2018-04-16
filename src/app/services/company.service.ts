@@ -10,9 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 export class CompanyService {
 
   campaigns: any = [];
+  updatedCampaign: any;
   companyId: string;
   user: any;
-  campaignDetail: any;
+  campaignDetail: any = '';
 
   private sub: any;
   private API_URL = 'http://localhost:3000/api';
@@ -68,7 +69,7 @@ export class CompanyService {
       });
   }
 
-  updateUser(userForm: any) {
+  updateUser(userForm: any): Promise<any> {
     const options = {
       withCredentials: true,
     };
@@ -77,6 +78,23 @@ export class CompanyService {
       .then((updatedUser) => {
         this.user = updatedUser;
         return this.user;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  updateCampaign(campaignForm: any, campaignId: any) {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.put(`${this.API_URL}/${campaignId}/update-campaign`, campaignForm, options)
+      .toPromise()
+      .then((updatedCampaign) => {
+        this.updatedCampaign = updatedCampaign;
+        return this.updatedCampaign;
       })
       .catch((err) => {
         if (err.status === 404) {
