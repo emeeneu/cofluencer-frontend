@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { ModalComponent } from './components/modal/modal.component';
 
 import { AuthService } from './services/auth.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
@@ -13,10 +16,6 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
-
-import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
-import { ModalComponent } from './components/modal/modal.component';
 
 import { IgDatauserService } from './services/ig-datauser.service';
 import { AppPageComponent } from './pages/app-page/app-page.component';
@@ -57,13 +56,8 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService],
   },
   {
-    path: 'company/:id/:campaignid',
-    component: CampaignDetailComponent,
-    canActivate: [RequireUserGuardService],
-  },
-  {
-    path: 'company/:id/:campaignid/edit',
-    component: EditCampaignComponent,
+    path: 'company/:id/edit-profile',
+    component: EditCompanyComponent,
     canActivate: [RequireUserGuardService],
   },
   {
@@ -72,8 +66,13 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService],
   },
   {
-    path: 'company/:id/edit-profile',
-    component: EditCompanyComponent,
+    path: 'company/:id/:campaignid',
+    component: CampaignDetailComponent,
+    canActivate: [RequireUserGuardService],
+  },
+  {
+    path: 'company/:id/:campaignid/edit',
+    component: EditCampaignComponent,
     canActivate: [RequireUserGuardService],
   },
   {
@@ -96,7 +95,7 @@ const routes: Routes = [
     CreateCampaignComponent,
     EditCompanyComponent,
     CampaignDetailComponent,
-    EditCampaignComponent
+    EditCampaignComponent,
   ],
   imports: [
     BrowserModule,
