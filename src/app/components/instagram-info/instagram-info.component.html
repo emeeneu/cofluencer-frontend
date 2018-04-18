@@ -4,10 +4,3 @@
 
 <button (click)="getInstaInfo()">Get Ig Api</button>
 <pre>{{ instaInfo | json }} </pre>
-
-<button (click)="getTwitterInfo()">Get Twt Api</button>
-
-<pre>
-  <img src='{{ twitterInfo.user[0].profile_image_url }}' alt="">
-  {{ twitterInfo | json }}
-</pre>

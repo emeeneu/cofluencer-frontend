@@ -19,12 +19,14 @@ import { HttpModule } from '@angular/http';
 import { ModalComponent } from './components/modal/modal.component';
 
 import { IgDatauserService } from './services/ig-datauser.service';
+import { TwtDatauserService } from './services/twt-datauser.service';
 import { AppPageComponent } from './pages/app-page/app-page.component';
 import { InstagramInfoComponent } from './components/instagram-info/instagram-info.component';
 import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
 import { CreateCampaignComponent } from './components/create-campaign/create-campaign.component';
 import { CompanyService } from './services/company.service';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
+import { TwitterInfoComponent } from './components/twitter-info/twitter-info.component';
 
 const routes: Routes = [
   {
@@ -82,7 +84,8 @@ const routes: Routes = [
     InstagramInfoComponent,
     CompanyProfileComponent,
     CreateCampaignComponent,
-    EditCompanyComponent
+    EditCompanyComponent,
+    TwitterInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -93,6 +96,7 @@ const routes: Routes = [
   ],
   providers: [
     IgDatauserService,
+    TwtDatauserService,
     CompanyService,
     AuthService,
     RequireUserGuardService,
