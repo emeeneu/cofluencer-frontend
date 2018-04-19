@@ -1,0 +1,11 @@
+<p>
+  youtube-info works!
+</p>
+
+<button (click)="getYoutubeInfo()">Get YouTube Api</button>
+<pre>
+  <div *ngFor='let video of this.userYoutubeInfo.videoUser'>
+    {{ video }}
+    <iframe width="560" height="315" src='{{ video }}' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</pre>

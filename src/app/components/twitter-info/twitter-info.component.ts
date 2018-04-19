@@ -15,6 +15,5 @@ export class TwitterInfoComponent implements OnInit {
 
   getTwitterInfo() {
     this.userTwitterInfo.getInfoTwitterUser()
-      .subscribe((twitterInfo) => this.twitterInfo = twitterInfo);
   }
 }

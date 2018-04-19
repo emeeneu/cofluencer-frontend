@@ -27,6 +27,8 @@ import { CreateCampaignComponent } from './components/create-campaign/create-cam
 import { CompanyService } from './services/company.service';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 import { TwitterInfoComponent } from './components/twitter-info/twitter-info.component';
+import { YoutubeInfoComponent } from './components/youtube-info/youtube-info.component';
+import { YoutubeDatauserService } from './services/youtube-datauser.service';
 
 const routes: Routes = [
   {
@@ -85,7 +87,8 @@ const routes: Routes = [
     CompanyProfileComponent,
     CreateCampaignComponent,
     EditCompanyComponent,
-    TwitterInfoComponent
+    TwitterInfoComponent,
+    YoutubeInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +100,7 @@ const routes: Routes = [
   providers: [
     IgDatauserService,
     TwtDatauserService,
+    YoutubeDatauserService,
     CompanyService,
     AuthService,
     RequireUserGuardService,
