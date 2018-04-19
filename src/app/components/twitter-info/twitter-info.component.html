@@ -20,6 +20,28 @@
   <div class="twitter-timeline">
     <div *ngFor='let tweet of this.userTwitterInfo.userTweets'>
       <div class="tweet">
+
+        <div class="tweet--user">
+          <img class="tweet--user-avatar" src="{{ tweet.user.profile_image_url }}" alt="" />
+          <div class="tweet--user-name">{{ tweet.user.name }}
+            <span>@{{ this.userTwitterInfo.twitterUser.screen_name }}</span>
+          </div>
+        </div>
+
+        <p class="tweet--body">{{ tweet.text }}</p>
+
+        <div class="tweet--time">{{ tweet.created_at }}</div>
+
+        <div class="tweet--actions">
+          <i class="fa fa-ellipsis-h"></i>
+          <i class="fa fa-heart"></i>
+          <i class="fa fa-retweet"></i>
+          <i class="fa fa-reply"></i>
+          <span>51 retweets</span>
+        </div>
+      </div>
+      
+      <!-- <div class="tweet">
         <div class='tweet-header'>
           <div>
             <img src='{{ tweet.user.profile_image_url }}' alt="">
@@ -32,9 +54,9 @@
           {{ tweet.text }}
         </div>
         <div class="tweet-likes">
-  
+
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- {{ this.userTwitterInfo.userTweets[1] | json }} -->

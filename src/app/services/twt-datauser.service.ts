@@ -12,11 +12,11 @@ export class TwtDatauserService {
   constructor(private httpClient: HttpClient) { }
 
   getInfoTwitterUser(): Promise<any> {
-    return this.httpClient.get(`${this.API_URL}/twt/emeeneu`)
+    return this.httpClient.get(`${this.API_URL}/twt/IsraSeyd`)
       .toPromise()
       .then((data) => {
-        this.twitterUser = data.user[0];
-        this.userTweets = data.tweets;
+        this.twitterUser = data.user[0]
+        this.userTweets = data.tweets
       })
       .catch((err) => {
         console.log(err);

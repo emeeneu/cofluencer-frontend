@@ -25,7 +25,7 @@ export class YoutubeDatauserService {
         const url = 'https://www.youtube.com/embed/';
         const videoId = video.id.videoId;
         const urlDone = url+videoId;
-        this.videoUser.push(this.sanitizer.bypassSecurityTrustUrl(urlDone));
+        this.videoUser.push(urlDone);
       })
       console.log(this.videoUser);
     })
