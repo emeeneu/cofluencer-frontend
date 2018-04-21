@@ -1,0 +1,9 @@
+<p>
+  YouTube
+</p>
+  <div class='youtube-videos'>
+    <div *ngFor='let video of this.userYoutubeInfo.videoUser'>
+      <iframe width="360" height="215" [src]="cleanURL(video)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+      </iframe>
+    </div>
+  </div>

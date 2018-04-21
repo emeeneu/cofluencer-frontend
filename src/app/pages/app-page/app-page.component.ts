@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { CompanyService } from '../../services/company.service';
 
 @Component({
   selector: 'app-app-page',
@@ -9,12 +10,24 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AppPageComponent implements OnInit {
 
+  user: any;
+  toggleMenu: boolean;
+  toggleMoreButton: boolean;
+
   constructor(
     private session: AuthService,
     private router: Router,
+    private companyService: CompanyService
   ) { }
 
   ngOnInit() {
+    this.user = this.session.getUser();
+
+    this.getCampaigns();
+  }
+
+  ngOnChanges(changes: any) {
+    console.log('cambios: ', this.session.getUser());
   }
 
   logout() {
@@ -22,4 +35,25 @@ export class AppPageComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  menuControl() {
+    this.toggleMenu = !this.toggleMenu;
+  }
+
+  moreButtonControl() {
+    this.toggleMoreButton = !this.toggleMoreButton;
+  }
+
+  getCampaigns() {
+    this.companyService.campaignsList(this.user);
+  }
+
+  newCampaign() {
+    this.router.navigate(['company', this.user.username, 'new-campaign']);
+  }
+
+  editProfile() {
+    this.router.navigate(['app', this.user.username, 'edit-profile']);
+  }
+
 }
+
