@@ -19,6 +19,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
 
 import { IgDatauserService } from './services/ig-datauser.service';
+import { TwtDatauserService } from './services/twt-datauser.service';
 import { AppPageComponent } from './pages/app-page/app-page.component';
 import { InstagramInfoComponent } from './components/instagram-info/instagram-info.component';
 import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
@@ -27,6 +28,7 @@ import { CompanyService } from './services/company.service';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 import { CampaignDetailComponent } from './components/campaign-detail/campaign-detail.component';
 import { EditCampaignComponent } from './components/edit-campaign/edit-campaign.component';
+import { TwitterInfoComponent } from './components/twitter-info/twitter-info.component';
 
 const routes: Routes = [
   {
@@ -97,6 +99,7 @@ const routes: Routes = [
     EditCompanyComponent,
     CampaignDetailComponent,
     EditCampaignComponent,
+    TwitterInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -108,6 +111,7 @@ const routes: Routes = [
   ],
   providers: [
     IgDatauserService,
+    TwtDatauserService,
     CompanyService,
     AuthService,
     RequireUserGuardService,
