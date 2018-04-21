@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { ModalComponent } from './components/modal/modal.component';
 
 import { AuthService } from './services/auth.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
@@ -13,6 +13,7 @@ import { InitAuthGuardService } from './guards/init-auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { ModalComponent } from './components/modal/modal.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
@@ -101,6 +102,7 @@ const routes: Routes = [
     BrowserModule,
     HttpModule,
     FormsModule,
+    PasswordStrengthBarModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],

@@ -16,9 +16,11 @@ export class SignupComponent implements OnInit {
 
   formInfo = {
     username: '',
+    email: '',
     password: ''
   };
 
+  public myColors = ['#EE5622', '#ECA72C', '#44355B', '#28AFB0', '#28AFB0'];
   user: any;
   error: string;
 

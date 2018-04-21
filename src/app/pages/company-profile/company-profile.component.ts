@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 
+
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
@@ -17,8 +18,9 @@ export class CompanyProfileComponent implements OnInit {
   constructor(
     private session: AuthService,
     private router: Router,
-    private companyService: CompanyService
-  ) { }
+    private companyService: CompanyService,
+  ) {
+  }
 
   ngOnInit() {
     this.user = this.session.getUser();
