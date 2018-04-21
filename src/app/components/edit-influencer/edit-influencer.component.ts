@@ -13,9 +13,12 @@ export class EditInfluencerComponent implements OnInit {
   user: any;
   editingUser: any = {
     username: '',
+    email: '',
     bio: '',
-    youtube: '',
-    twitter: '',
+    socialLinks: {
+      youtube: '',
+      twitter: '',
+    },
   };
 
   constructor(

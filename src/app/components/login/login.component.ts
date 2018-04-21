@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   toggleLogin: boolean;
 
   formInfo = {
-    username: '',
+    email: '',
     password: ''
   };
 
