@@ -1,9 +1,7 @@
 <p>
-  twitter-info works!
+  Twitter
 </p>
 
-<button (click)="getTwitterInfo()">Get Twt Api</button>
-<pre>
   <div class="tweet-profile">
     <div>
       <img src='{{ this.userTwitterInfo.twitterUser.profile_image_url }}' alt="">
@@ -40,24 +38,5 @@
           <span>51 retweets</span>
         </div>
       </div>
-      
-      <!-- <div class="tweet">
-        <div class='tweet-header'>
-          <div>
-            <img src='{{ tweet.user.profile_image_url }}' alt="">
-          </div>
-          <div>
-            <span><b>{{ tweet.user.name }}</b> @{{ this.userTwitterInfo.twitterUser.screen_name }}  ·  {{ tweet.created_at }}</span>
-          </div>
-        </div>
-        <div class="tweet-content">
-          {{ tweet.text }}
-        </div>
-        <div class="tweet-likes">
-
-        </div>
-      </div> -->
     </div>
   </div>
-  <!-- {{ this.userTwitterInfo.userTweets[1] | json }} -->
-</pre>

@@ -29,6 +29,8 @@ import { EditCompanyComponent } from './components/edit-company/edit-company.com
 import { TwitterInfoComponent } from './components/twitter-info/twitter-info.component';
 import { YoutubeInfoComponent } from './components/youtube-info/youtube-info.component';
 import { YoutubeDatauserService } from './services/youtube-datauser.service';
+import { EditInfluencerComponent } from './components/edit-influencer/edit-influencer.component';
+import { InfluencerService } from './services/influencer.service';
 
 const routes: Routes = [
   {
@@ -52,6 +54,11 @@ const routes: Routes = [
     path: 'app/:id',
     component: AppPageComponent,
     canActivate: [RequireUserGuardService]
+  },
+  {
+    path: 'app/:id/edit-profile',
+    component: EditInfluencerComponent,
+    canActivate: [RequireUserGuardService],
   },
   {
     path: 'company/:id',
@@ -88,7 +95,8 @@ const routes: Routes = [
     CreateCampaignComponent,
     EditCompanyComponent,
     TwitterInfoComponent,
-    YoutubeInfoComponent
+    YoutubeInfoComponent,
+    EditInfluencerComponent
   ],
   imports: [
     BrowserModule,
@@ -102,6 +110,7 @@ const routes: Routes = [
     TwtDatauserService,
     YoutubeDatauserService,
     CompanyService,
+    InfluencerService,
     AuthService,
     RequireUserGuardService,
     RequireAnonGuardService,

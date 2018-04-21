@@ -15,12 +15,13 @@ export class YoutubeDatauserService {
     private sanitizer: DomSanitizer,
   ) { }
 
-  getInfoYoutubeUser(): Promise<any> {
-    return this.httpClient.get(`${this.API_URL}/youtube/idcanal`)
+  getInfoYoutubeUser(yt_user): Promise<any> {
+    return this.httpClient.get(`${this.API_URL}/youtube/${yt_user}`)
     .toPromise()
-    .then((data)=>{
+    .then((data: any)=>{
       this.youTubeUser = data.result.items.slice(1);
       console.log(this.youTubeUser);
+      this.videoUser = [];
       this.youTubeUser.forEach((video)=>{
         const url = 'https://www.youtube.com/embed/';
         const videoId = video.id.videoId;
