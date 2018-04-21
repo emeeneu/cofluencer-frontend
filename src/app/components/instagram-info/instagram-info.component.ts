@@ -15,7 +15,7 @@ export class InstagramInfoComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   getInstaInfo() {
     this.userInstaInfo.getInfoInstaUser()
       .subscribe((instaInfo) => this.instaInfo = instaInfo);

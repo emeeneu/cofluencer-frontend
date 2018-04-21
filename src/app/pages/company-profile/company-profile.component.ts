@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
+import { ToasterService } from '../../services/toaster.service';
 
 
 @Component({
@@ -19,12 +20,14 @@ export class CompanyProfileComponent implements OnInit {
     private session: AuthService,
     private router: Router,
     private companyService: CompanyService,
+    private toaster: ToasterService,
   ) {
   }
 
   ngOnInit() {
     this.user = this.session.getUser();
     this.getCampaigns();
+    this.toaster.success(`Welcome back ${this.user.username}`);
   }
 
   logout() {

@@ -33,6 +33,7 @@ import { YoutubeInfoComponent } from './components/youtube-info/youtube-info.com
 import { YoutubeDatauserService } from './services/youtube-datauser.service';
 import { EditInfluencerComponent } from './components/edit-influencer/edit-influencer.component';
 import { InfluencerService } from './services/influencer.service';
+import { ToasterService } from './services/toaster.service';
 
 const routes: Routes = [
   {
@@ -129,7 +130,8 @@ const routes: Routes = [
     AuthService,
     RequireUserGuardService,
     RequireAnonGuardService,
-    InitAuthGuardService
+    InitAuthGuardService,
+    ToasterService,
   ],
   bootstrap: [AppComponent]
 })
