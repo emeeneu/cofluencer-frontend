@@ -16,23 +16,22 @@
   <div class="formProfile flex flex-center flex-middle flexModal modalBg">
     <div class="loginForm mb-100">
       <div class="container p-50">
-        <p class="h1">Edit Profile</p>
+        <p class="h1">Edit Campaign</p>
 
         <form class="row mt-40">
           <div class="col-12">
             <div class="form-group">
-              <input [(ngModel)]="editingUser.username" name="username" type="text" placeholder="{{ user.username }}" class="form-control">
-            </div>
-            <p>{{ editingUser.username }}</p>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              <textarea [(ngModel)]="editingUser.bio" value="{{ user.bio }}" name="bio" rows="5" class="form-control" placeholder="A few lines about the event and info for the influencers"></textarea>
+              <input [(ngModel)]="editingCampaign.title" name="title" type="text" placeholder="{{ campaignDetail.title }}" class="form-control">
             </div>
           </div>
           <div class="col-12">
             <div class="form-group">
-              <button (click)="updateUser()" class="btn btn-round btn-primary updateButton h4">Update Profile</button>
+              <textarea [(ngModel)]="editingCampaign.description" value="" name="description" rows="5" class="form-control" placeholder="{{ campaignDetail.description }}"></textarea>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <button (click)="updateCampaign()" class="btn btn-round btn-primary updateButton h4">Update Campaign</button>
             </div>
           </div>
         </form>

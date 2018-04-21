@@ -4,20 +4,25 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 import { AuthService } from './auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class CompanyService {
 
   campaigns: any = [];
+  updatedCampaign: any;
   companyId: string;
   user: any;
+  campaignDetail: any = '';
 
+  private sub: any;
   private API_URL = 'http://localhost:3000/api';
   private newCampaign: any;
 
   constructor(
     private httpClient: HttpClient,
     private session: AuthService,
+    private route: ActivatedRoute,
   ) { }
 
   campaignsList(user: any): Promise<any> {
@@ -28,6 +33,22 @@ export class CompanyService {
       .toPromise()
       .then((campaigns) => {
         this.campaigns = campaigns;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  campaign(campaignId: any): Promise<any> {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.get(`${this.API_URL}/campaigns/${campaignId}`, options)
+      .toPromise()
+      .then((campaign) => {
+        return this.campaignDetail = campaign;
       })
       .catch((err) => {
         if (err.status === 404) {
@@ -48,15 +69,32 @@ export class CompanyService {
       });
   }
 
-  updateUser(userForm: any) {
+  updateUser(userForm: any): Promise<any> {
     const options = {
       withCredentials: true,
     };
-    return this.httpClient.put(`${this.API_URL}/update-user`, userForm, options)
+    return this.httpClient.put(`${this.API_URL}/update-company`, userForm, options)
       .toPromise()
       .then((updatedUser) => {
         this.user = updatedUser;
         return this.user;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  updateCampaign(campaignForm: any, campaignId: any) {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.put(`${this.API_URL}/${campaignId}/update-campaign`, campaignForm, options)
+      .toPromise()
+      .then((updatedCampaign) => {
+        this.updatedCampaign = updatedCampaign;
+        return this.updatedCampaign;
       })
       .catch((err) => {
         if (err.status === 404) {

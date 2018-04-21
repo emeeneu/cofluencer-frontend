@@ -1,14 +1,15 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
+
 
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
   styleUrls: ['./company-profile.component.css']
 })
-export class CompanyProfileComponent implements OnInit, OnChanges {
+export class CompanyProfileComponent implements OnInit {
 
   user: any;
   toggleMenu: boolean;
@@ -17,17 +18,13 @@ export class CompanyProfileComponent implements OnInit, OnChanges {
   constructor(
     private session: AuthService,
     private router: Router,
-    private companyService: CompanyService
-  ) { }
+    private companyService: CompanyService,
+  ) {
+  }
 
   ngOnInit() {
     this.user = this.session.getUser();
-    
     this.getCampaigns();
-  }
-
-  ngOnChanges(changes: any) {
-    console.log('cambios: ', this.session.getUser());
   }
 
   logout() {
@@ -55,4 +52,7 @@ export class CompanyProfileComponent implements OnInit, OnChanges {
     this.router.navigate(['company', this.user.username, 'edit-profile']);
   }
 
+  campaignDetail(campaignId) {
+    this.router.navigate(['company', this.user.username, campaignId]);
+  }
 }

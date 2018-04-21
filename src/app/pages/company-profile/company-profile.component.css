@@ -218,6 +218,28 @@ section {
   transform-origin: 40% 50%;
 }
 
+.campaignBox {
+  color: #fff;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* Users */
+.card-container {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-img {
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+}
 
 @media (max-width: 980px) {
   #navLogo {

@@ -11,7 +11,7 @@ import { CompanyService } from '../../services/company.service';
 export class EditCompanyComponent implements OnInit {
 
   user: any;
-  editingUser: Object = {
+  editingUser = {
     username: '',
     bio: '',
   };

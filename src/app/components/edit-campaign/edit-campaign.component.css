@@ -1,18 +1,9 @@
-.modal-bg {
-  height: 100vh;
-  background-position: center;
-  background-size: cover;
+.bg {
+  background-color: rgba(248, 250, 253, .95);
 }
 
-.gradient {
-  background-image: linear-gradient(137deg, rgba(40, 175, 176, .4), rgba(68, 53, 91, .4));
-  height: 100vh;
-}
-
-.navbar {
-  box-shadow: none;
-  padding: 20px 0;
-  margin-bottom: 0;
+nav {
+  background-color: rgba(248, 250, 253, .95);
 }
 
 .iconMenu {
@@ -23,7 +14,7 @@
 }
 
 .iconMenu [class^=bar] {
-  background-color: #fff;
+  background-color: #1f271b;
   display: block;
   height: 3px;
   border-radius: 2px;
@@ -38,3 +29,15 @@
   transform: rotate(-45deg);
   transform-origin: 40% 50%;
 }
+
+.updateButton {
+  width: 100%;
+}
+
+.formProfile {
+  width: 500px;
+  min-height: 650px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
