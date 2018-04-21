@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private session: AuthService,
     private router: Router,
+    private toaster: ToasterService,
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
       .then(user => {
         this.user = user;
         this.router.navigate(['company', this.user.username]);
+        this.toaster.info(`${this.user.username}`, `Welcome back`);
       })
       .catch((error) => {
         console.log('login error', error);

@@ -27,12 +27,12 @@ export class CompanyProfileComponent implements OnInit {
   ngOnInit() {
     this.user = this.session.getUser();
     this.getCampaigns();
-    this.toaster.success(`Welcome back ${this.user.username}`);
   }
 
   logout() {
     this.session.logout();
     this.router.navigate(['/']);
+    this.toaster.info(`See you soon ${this.user.username}`);
   }
 
   menuControl() {

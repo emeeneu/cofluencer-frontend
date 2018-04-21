@@ -8,22 +8,18 @@ export class ToasterService {
   }
 
   success(title: string, message?: string) {
-
     toastr.success(title, message);
   }
 
   warning(title: string, message?: string) {
-
     toastr.warning(title, message);
   }
 
   error(title: string, message?: string) {
-
     toastr.error(title, message);
   }
 
   info(title: string, message?: string) {
-
     toastr.info(title, message);
   }
 
@@ -38,7 +34,7 @@ export class ToasterService {
       'onclick': null,
       'showDuration': '300',
       'hideDuration': '1000',
-      'timeOut': '5000',
+      'timeOut': '6000',
       'extendedTimeOut': '1000',
       'showEasing': 'swing',
       'hideEasing': 'linear',

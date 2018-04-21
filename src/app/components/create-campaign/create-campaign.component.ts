@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyService } from '../../services/company.service';
 import { AuthService } from '../../services/auth.service';
+import { ToasterService } from '../../services/toaster.service';
 
 
 
@@ -19,6 +20,7 @@ export class CreateCampaignComponent implements OnInit {
     private router: Router,
     private companyService: CompanyService,
     private session: AuthService,
+    private toaster: ToasterService,
   ) { }
 
   formCampaign = {
@@ -43,6 +45,7 @@ export class CreateCampaignComponent implements OnInit {
       .then(newCampaign => {
         this.newCampaign = newCampaign;
         this.router.navigate(['company', this.username]);
+        this.toaster.success(`Campaign added`, `${newCampaign.title} is public now`);
         console.log(this.newCampaign);
       })
       .catch((error) => {
