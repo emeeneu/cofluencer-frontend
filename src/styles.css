@@ -387,9 +387,12 @@ img {
   color: #ffffff;
 }
 
-
 .iconMenu {
   display: none;
+}
+
+.hand:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 980px) {
