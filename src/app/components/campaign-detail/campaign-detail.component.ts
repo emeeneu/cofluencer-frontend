@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'app-campaign-detail',
@@ -20,6 +21,7 @@ export class CampaignDetailComponent implements OnInit {
     private router: Router,
     private companyService: CompanyService,
     private route: ActivatedRoute,
+    private toaster: ToasterService,
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,12 @@ export class CampaignDetailComponent implements OnInit {
 
   editCampaign() {
     this.router.navigate(['company', this.user.username, this.campaignId, 'edit']);
+  }
+
+  deleteCampaign() {
+    this.companyService.deleteCampaign(this.campaignId);
+    this.router.navigate(['company', this.user.username]);
+    this.toaster.success(`Your campaign ${this.companyService.campaignDetail.title} has been removed correctly.`);
   }
 
 }

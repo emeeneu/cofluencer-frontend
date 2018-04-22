@@ -103,6 +103,22 @@ export class CompanyService {
       });
   }
 
+  deleteCampaign(campaignId: any) {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.delete(`${this.API_URL}/${campaignId}/delete-campaign`, options)
+      .toPromise()
+      .then((deletedCampaign) => {
+        console.log(deletedCampaign);
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
 
 
 }
