@@ -42,8 +42,13 @@ export class LoginComponent implements OnInit {
         this.toaster.info(`${this.user.username}`, `Welcome back`);
       })
       .catch((error) => {
-        console.log('login error', error);
         this.error = error;
+        if (this.formInfo.email === '' || this.formInfo.password === '') {
+          this.toaster.error('Please, fill all the fields to login', 'Empty fields');
+        } else {
+          // tslint:disable-next-line:max-line-length
+          this.toaster.error('Make sure you are registered and login in your role and check if the email and password are correct', 'User not found');
+        }
       });
   }
 
@@ -55,8 +60,13 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['app', this.user.username]);
       })
       .catch((error) => {
-        console.log('login error', error);
         this.error = error;
+        if (this.formInfo.email === '' || this.formInfo.password === '') {
+          this.toaster.error('Please, fill all the fields to login', 'Empty fields');
+        } else {
+          // tslint:disable-next-line:max-line-length
+          this.toaster.error('Make sure you are registered and login in your role and check if the email and password are correct', 'User not found');
+        }
       });
   }
 

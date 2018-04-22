@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'app-signup',
@@ -27,6 +28,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private session: AuthService,
     private router: Router,
+    private toaster: ToasterService
   ) {
   }
 
@@ -39,8 +41,15 @@ export class SignupComponent implements OnInit {
       .then(user => {
         this.user = user;
         this.router.navigate(['company', this.user.username]);
+        // tslint:disable-next-line:max-line-length
+        this.toaster.success('Please, complete your profile to take advantage of the full potential of cofluencer', `Welcome ${this.user.username}`);
       })
-      .catch(err => (this.error = err));
+      .catch((err) => {
+        this.error = err;
+        if (err) {
+          this.toaster.error('Change your signup info to create a new account', 'Username or email already exists');
+        }
+      });
   }
 
   signupInfluencer() {
@@ -48,8 +57,15 @@ export class SignupComponent implements OnInit {
       .then(user => {
         this.user = user;
         this.router.navigate(['app', this.user.username]);
+        // tslint:disable-next-line:max-line-length
+        this.toaster.success('Please, complete your profile to take advantage of the full potential of cofluencer', `Welcome ${this.user.username}`);
       })
-      .catch(err => (this.error = err));
+      .catch((err) => {
+        this.error = err;
+        if (err) {
+          this.toaster.error('Change your signup info to create a new account', 'Username or email already exists');
+        }
+      });
   }
 
   closeSignup(event) {
