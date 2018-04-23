@@ -130,5 +130,6 @@
   </section>
 </main>
 <!-- <app-instagram-info></app-instagram-info> -->
-<app-youtube-info></app-youtube-info>
-<app-twitter-info></app-twitter-info>
+
+<app-youtube-info *ngIf='youtubeProfile'></app-youtube-info>
+<app-twitter-info *ngIf='twitterProfile'></app-twitter-info>

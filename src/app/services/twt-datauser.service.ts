@@ -5,7 +5,9 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TwtDatauserService {
-  twitterUser: Object;
+  twitterUser: Object = {
+    profile_image_url: '',
+  };
   userTweets: Array<any> = [];
 
   private API_URL = 'http://localhost:3000/api';
@@ -15,7 +17,8 @@ export class TwtDatauserService {
     return this.httpClient.get(`${this.API_URL}/twt/${user}`)
       .toPromise()
       .then((data: any) => {
-        this.twitterUser = data.user[0]
+        this.twitterUser = data.user[0];
+        this.userTweets = [];
         for(let i=0;i<3;i++){
           this.userTweets.push(data.tweets[i])
         }

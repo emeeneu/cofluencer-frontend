@@ -13,6 +13,8 @@ export class AppPageComponent implements OnInit {
   user: any;
   toggleMenu: boolean;
   toggleMoreButton: boolean;
+  youtubeProfile: boolean;
+  twitterProfile: boolean;
 
   constructor(
     private session: AuthService,
@@ -22,7 +24,8 @@ export class AppPageComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
-
+    this.checkYoutube();
+    this.checkTwitter();
     this.getCampaigns();
   }
 
@@ -53,6 +56,22 @@ export class AppPageComponent implements OnInit {
 
   editProfile() {
     this.router.navigate(['app', this.user.username, 'edit-profile']);
+  }
+
+  checkYoutube() {
+    if(this.user.socialLinks.youtube == null || this.user.socialLinks.youtube === ''){
+      this.youtubeProfile = false;
+    } else {
+      this.youtubeProfile = true;
+    }
+  }
+
+  checkTwitter() {
+    if (this.user.socialLinks.twitter == null || this.user.socialLinks.twitter === '') {
+      this.twitterProfile = false;
+    } else {
+      this.twitterProfile = true;
+    }
   }
 
 }
