@@ -6,6 +6,12 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 
 @Injectable()
 export class YoutubeDatauserService {
+  channelInfo: any = {
+    snippet: {
+      channelTitle: '',
+      description: '',
+    }
+  };
   youTubeUser: Array<any>;
   videoUser: Array<any> = [];
 
@@ -19,8 +25,8 @@ export class YoutubeDatauserService {
     return this.httpClient.get(`${this.API_URL}/youtube/${yt_user}`)
     .toPromise()
     .then((data: any)=>{
+      this.channelInfo = data.result.items[0];
       this.youTubeUser = data.result.items.slice(1);
-      console.log(this.youTubeUser);
       this.videoUser = [];
       this.youTubeUser.forEach((video)=>{
         const url = 'https://www.youtube.com/embed/';
@@ -28,7 +34,6 @@ export class YoutubeDatauserService {
         const urlDone = url+videoId;
         this.videoUser.push(urlDone);
       })
-      console.log(this.videoUser);
     })
     .catch((err)=>{
       console.log(err);

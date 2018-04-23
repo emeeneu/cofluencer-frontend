@@ -1,9 +1,17 @@
-<p>
-  YouTube
-</p>
-  <div class='youtube-videos'>
-    <div *ngFor='let video of this.userYoutubeInfo.videoUser'>
-      <iframe width="360" height="215" [src]="cleanURL(video)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-      </iframe>
-    </div>
+<div class="container">
+  <img src="../../../assets/img/youtube.png" alt="logo-youtube">
+  <div>
+  <br>
+    <p>@{{ this.userYoutubeInfo.channelInfo.snippet.channelTitle }}</p>
+    <!-- <p>{{ this.userYoutubeInfo.channelInfo.snippet.description }}</p> -->
   </div>
+  <div class='youtube-videos'>
+      <div *ngFor='let video of this.userYoutubeInfo.videoUser'>
+        <iframe width="345" height="200" [src]="cleanURL(video)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+        <br>
+      </div>
+    </div>
+  <br>
+  <hr>
+</div>
