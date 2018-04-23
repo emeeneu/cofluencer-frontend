@@ -33,6 +33,12 @@
           </div>
           <div class="col-12">
             <div class="form-group">
+              Real name
+              <input [(ngModel)]="editingUser.name" name="name" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
               Bio
               <textarea [(ngModel)]="editingUser.bio" name="bio" rows="5" class="form-control"></textarea>
             </div>

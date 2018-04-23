@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       .then(user => {
         this.user = user;
         this.router.navigate(['company', this.user.username]);
-        this.toaster.info(`${this.user.username}`, `Welcome back`);
+        this.toaster.success(`${this.user.username}`, `Welcome back! 🎉`);
       })
       .catch((error) => {
         this.error = error;
@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
       .then(user => {
         this.user = user;
         this.router.navigate(['app', this.user.username]);
+        this.toaster.success(`${this.user.username}`, `Welcome back! 🎉`);
       })
       .catch((error) => {
         this.error = error;
