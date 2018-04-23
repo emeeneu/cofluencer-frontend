@@ -57,9 +57,9 @@
       <li class="pb-20 mt-20 w-100 b-bottomThin">
         <a (click)="menuControl()" href="#mystats" class="bodyTextBold capitalize colorGrey">Search campaings</a>
       </li>
-      <li class="pb-20 mt-20 w-100 b-bottomThin">
+      <!-- <li class="pb-20 mt-20 w-100 b-bottomThin">
         <a (click)="menuControl()" href="#" class="bodyTextBold capitalize colorGrey">My stats</a>
-      </li>
+      </li> -->
       <li class="pb-20 mt-20 w-100 b-bottomThin">
         <a class="bodyTextBold capitalize colorGrey" (click)="editProfile()">Edit profile</a>
       </li>
@@ -83,8 +83,8 @@
       </button>
     </div>
     <div [hidden]="!toggleMoreButton" id="insideMoreButton" class="flex flex-column">
-      <button class="btn btn-primary btn-round">top influencers</button>
-      <button class="btn btn-primary btn-round">my stats</button>
+      <button class="btn btn-primary btn-round">my campaigns</button>
+      <!-- <button class="btn btn-primary btn-round">my stats</button> -->
       <button class="btn btn-primary btn-round" (click)="editProfile()">edit profile</button>
       <button (click)="logout()" class="btn btn-primary btn-round">logout</button>
     </div>
@@ -109,11 +109,11 @@
   </section>
   <section id="info">
     <div class="container">
-      <h2 class="h3 capitalize">{{ session.user.username }}</h2>
+      <h2 class="h3 capitalize">{{ session.user.name }}</h2>
       <p class="bodyText">{{ user.bio }}</p>
     </div>
   </section>
-  <section id="campaigns">
+  <!-- <section id="campaigns">
     <div class="container">
       <h2 class="h3" (click)="getCampaigns()">Campaigns</h2>
       <div *ngFor="let campaign of this.companyService.campaigns">
@@ -125,9 +125,8 @@
   <section id="stats">
     <div class="container">
       <h2 class="h3">Stats</h2>
-
     </div>
-  </section>
+  </section> -->
 </main>
 <!-- <app-instagram-info></app-instagram-info> -->
 

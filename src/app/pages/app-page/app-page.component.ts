@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'app-app-page',
@@ -19,7 +20,8 @@ export class AppPageComponent implements OnInit {
   constructor(
     private session: AuthService,
     private router: Router,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private toaster: ToasterService
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,7 @@ export class AppPageComponent implements OnInit {
   logout() {
     this.session.logout();
     this.router.navigate(['/']);
+    this.toaster.success(`${this.user.username}`, `See you! 👋🏻`);
   }
 
   menuControl() {
