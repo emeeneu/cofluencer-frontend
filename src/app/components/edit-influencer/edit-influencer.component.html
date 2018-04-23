@@ -27,20 +27,20 @@
           </div>
           <div class="col-12">
             <div class="form-group">
-              email
-              <input [(ngModel)]="editingUser.email" name="email" type="text" class="form-control">
+              Email
+              <input [(ngModel)]="editingUser.email" name="email" type="email" class="form-control">
             </div>
           </div>
           <div class="col-12">
             <div class="form-group">
               Bio
-              <textarea [(ngModel)]="editingUser.bio" [ngModelOptions]="{standalone: true}" name="bio" rows="5" class="form-control"></textarea>
+              <textarea [(ngModel)]="editingUser.bio" name="bio" rows="5" class="form-control"></textarea>
             </div>
           </div>
           <div class="col-12">
             <div class="form-group">
               <p>YouTube</p>
-              <input [(ngModel)]="editingUser.socialLinks.youtube" class="form-control">
+              <input [(ngModel)]="editingUser.socialLinks.youtube" name="youtube" class="form-control">
               <p>Twitter</p>
               <input [(ngModel)]="editingUser.socialLinks.twitter" name="twitter" type="text" class="form-control">
             </div>

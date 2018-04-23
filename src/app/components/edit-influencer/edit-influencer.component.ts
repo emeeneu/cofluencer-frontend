@@ -11,7 +11,15 @@ import { InfluencerService } from '../../services/influencer.service';
 export class EditInfluencerComponent implements OnInit {
 
   user: any;
-  editingUser: any;
+  editingUser: any = {
+    username: '',
+    email: '',
+    bio: '',
+    socialLinks: {
+      youtube: '',
+      twitter: '',
+    },
+  };
 
   constructor(
     private session: AuthService,

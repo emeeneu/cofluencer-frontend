@@ -1,6 +1,6 @@
-<div class="loginModal">
+<div class="loginModal h-92vh">
 
-  <div class="flex flex-center flex-middle flexModal modalBg h-100">
+  <div class="flex flex-center flex-middle flexModal modalBg h-100x centerVertical">
     <div class="loginForm">
       <div class="container p-50">
         <div class="title flex sp-between flex-baseline">
@@ -32,7 +32,7 @@
         <form class="row mt-40">
           <div class="col-12">
             <div class="form-group">
-              <input [(ngModel)]="formInfo.username" name="username" type="text" value="" placeholder="Your name" class="form-control">
+              <input [(ngModel)]="formInfo.email" name="email" type="email" value="" placeholder="Your email" class="form-control">
             </div>
           </div>
           <div class="col-12">
@@ -41,9 +41,11 @@
             </div>
           </div>
           <div class="col-12">
-            <div class="form-group">
-              <button [hidden]="toggleLogin" (click)="loginBrand()" class="btn btn-round btn-primary loginButton h4">Log in like brand</button>
-              <button [hidden]="!toggleLogin" (click)="loginInfluencer()" class="btn btn-round btn-primary loginButton h4">Log in like influencer</button>
+            <div *ngIf="toggleLogin" class="form-group">
+              <button (click)="loginBrand()" class="btn btn-round btn-primary loginButton h4">Log in like brand</button>
+            </div>
+            <div *ngIf="!toggleLogin" class="form-group">
+              <button (click)="loginInfluencer()" class="btn btn-round btn-primary loginButton h4">Log in like influencer yall</button>
             </div>
             <p class="bodyText">No account?
               <a (click)="changeModal('signup')">Sign up</a>
