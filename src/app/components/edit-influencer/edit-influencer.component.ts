@@ -11,12 +11,7 @@ import { InfluencerService } from '../../services/influencer.service';
 export class EditInfluencerComponent implements OnInit {
 
   user: any;
-  editingUser: any = {
-    username: '',
-    bio: '',
-    youtube: '',
-    twitter: '',
-  };
+  editingUser: any;
 
   constructor(
     private session: AuthService,
@@ -26,6 +21,7 @@ export class EditInfluencerComponent implements OnInit {
 
   ngOnInit() {
     this.editingUser = this.session.getUser();
+    console.log(this.editingUser);
   }
 
   updateUser() {
