@@ -23,6 +23,8 @@
     "@angular/router": "^5.2.0",
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
+    "ng-file-upload": "^12.2.13",
+    "ng2-file-upload": "^1.3.0",
     "ng2-password-strength-bar": "^1.2.0",
     "ng2-toastr": "^4.1.2",
     "rxjs": "^5.5.6",

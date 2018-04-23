@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 
+
 @Component({
   selector: 'app-edit-company',
   templateUrl: './edit-company.component.html',
@@ -19,7 +20,7 @@ export class EditCompanyComponent implements OnInit {
   constructor(
     private session: AuthService,
     private router: Router,
-    private companyService: CompanyService
+    private companyService: CompanyService,
   ) { }
 
   ngOnInit() {
