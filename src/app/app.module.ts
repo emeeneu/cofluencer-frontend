@@ -10,6 +10,7 @@ import { AuthService } from './services/auth.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
 import { RequireUserGuardService } from './guards/require-user-guard.service';
 import { InitAuthGuardService } from './guards/init-auth-guard.service';
+import { PublicProfileService } from './guards/public-profile.service';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -34,6 +35,7 @@ import { YoutubeDatauserService } from './services/youtube-datauser.service';
 import { EditInfluencerComponent } from './components/edit-influencer/edit-influencer.component';
 import { InfluencerService } from './services/influencer.service';
 import { ToasterService } from './services/toaster.service';
+import { CompanyPublicComponent } from './pages/company-public/company-public.component';
 
 const routes: Routes = [
   {
@@ -66,7 +68,7 @@ const routes: Routes = [
   {
     path: 'company/:id',
     component: CompanyProfileComponent,
-    canActivate: [RequireUserGuardService],
+    canActivate: [RequireUserGuardService, PublicProfileService],
   },
   {
     path: 'company/:id/edit-profile',
@@ -86,6 +88,11 @@ const routes: Routes = [
   {
     path: 'company/:id/:campaignid/edit',
     component: EditCampaignComponent,
+    canActivate: [RequireUserGuardService],
+  },
+  {
+    path: 'company',
+    component: CompanyPublicComponent,
     canActivate: [RequireUserGuardService],
   },
   {
@@ -111,7 +118,8 @@ const routes: Routes = [
     EditCampaignComponent,
     TwitterInfoComponent,
     YoutubeInfoComponent,
-    EditInfluencerComponent
+    EditInfluencerComponent,
+    CompanyPublicComponent
   ],
   imports: [
     BrowserModule,
@@ -131,6 +139,7 @@ const routes: Routes = [
     RequireUserGuardService,
     RequireAnonGuardService,
     InitAuthGuardService,
+    PublicProfileService,
     ToasterService,
   ],
   bootstrap: [AppComponent]
