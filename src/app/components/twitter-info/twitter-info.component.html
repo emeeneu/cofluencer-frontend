@@ -1,42 +1,32 @@
-<p>
-  Twitter
-</p>
-
-  <div class="tweet-profile">
-    <div>
-      <img src='{{ this.userTwitterInfo.twitterUser.profile_image_url }}' alt="">
-    </div>
-    <div>
-      <span>{{ this.userTwitterInfo.twitterUser.name }}</span>
-      <span>@{{ this.userTwitterInfo.twitterUser.screen_name }}</span>
-    </div>
-    <div>
-      <span>location: {{ this.userTwitterInfo.twitterUser.location }}</span>
-      <span>followers: {{ this.userTwitterInfo.twitterUser.followers_count }}</span>
-    </div>
+<div class="container">
+  <img class ='logo' src="../../../assets/img/twitter.png" alt="logo-twitter">
+  <div>
+    <br>
+    <p>@{{ this.userTwitterInfo.twitterUser.screen_name }}      <b>{{ this.userTwitterInfo.twitterUser.followers_count }}</b> followers</p>
   </div>
-  <div class="twitter-timeline">
-    <div *ngFor='let tweet of this.userTwitterInfo.userTweets'>
-      <div class="tweet">
-
-        <div class="tweet--user">
-          <img class="tweet--user-avatar" src="{{ tweet.user.profile_image_url }}" alt="" />
-          <div class="tweet--user-name">{{ tweet.user.name }}
-            <span>@{{ this.userTwitterInfo.twitterUser.screen_name }}</span>
+    <div class="twitter-timeline">
+      <div *ngFor='let tweet of this.userTwitterInfo.userTweets'>
+        <div class="tweet">
+  
+          <div class="tweet--user">
+            <img class="tweet--user-avatar" src="{{ tweet.user.profile_image_url }}" alt="" />
+            <div class="tweet--user-name">{{ tweet.user.name }}
+              <span>@{{ this.userTwitterInfo.twitterUser.screen_name }}</span>
+            </div>
           </div>
-        </div>
-
-        <p class="tweet--body">{{ tweet.text }}</p>
-
-        <div class="tweet--time">{{ tweet.created_at }}</div>
-
-        <div class="tweet--actions">
-          <i class="fa fa-ellipsis-h"></i>
-          <i class="fa fa-heart"></i>
-          <i class="fa fa-retweet"></i>
-          <i class="fa fa-reply"></i>
-          <span>51 retweets</span>
+  
+          <p class="tweet--body">{{ tweet.text }}</p>
+  
+          <div class="tweet--time">{{ tweet.created_at }}</div>
+  
+          <div class="tweet--actions">
+            <i class="fa fa-ellipsis-h"></i>
+            <i class="fa fa-heart"></i>
+            <i class="fa fa-retweet"></i>
+            <i class="fa fa-reply"></i>
+            <span>51 retweets</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+</div>

@@ -3,6 +3,16 @@ img{
   height: 40px;
 }
 
+.logo {
+  width: 190px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 body{
   font-family: Sans-Serif;
   background: #F5F8FA;
@@ -14,10 +24,10 @@ body {
 }
 
 .tweet {
-  margin: 10vh auto;
+  margin: 2vh auto;
   border: 1px solid #eee;
-  padding: 25px 50px;
-  border-radius: 5px;
+  padding: 25px 30px;
+  border-radius: 10px;
   max-width: 500px;
   background: white;
 }

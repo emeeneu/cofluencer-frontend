@@ -1,6 +1,22 @@
 .youtube-videos{
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
+  border-bottom: 1px solid #eee;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+img{
+  width: 160px;
+}
+
+iframe{
+  margin: 2vh auto;
+  box-shadow: 12px 14px 34px -17px rgba(0, 0, 0, 1);
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { InfluencerService } from '../../services/influencer.service';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'app-edit-influencer',
@@ -14,6 +15,7 @@ export class EditInfluencerComponent implements OnInit {
   editingUser: any = {
     username: '',
     email: '',
+    name: '',
     bio: '',
     socialLinks: {
       youtube: '',
@@ -24,11 +26,13 @@ export class EditInfluencerComponent implements OnInit {
   constructor(
     private session: AuthService,
     private router: Router,
-    private influencerService: InfluencerService
+    private influencerService: InfluencerService,
+    private toaster: ToasterService
   ) { }
 
   ngOnInit() {
     this.editingUser = this.session.getUser();
+    console.log(this.editingUser);
   }
 
   updateUser() {
@@ -37,6 +41,7 @@ export class EditInfluencerComponent implements OnInit {
       .then((updatedUser) => {
         this.session.setUser(updatedUser);
         this.router.navigate(['app', updatedUser.username]);
+        this.toaster.success(`${this.editingUser.username}`, 'your profile is updated! 👍');
       })
       .catch((error) => {
         console.log(error);

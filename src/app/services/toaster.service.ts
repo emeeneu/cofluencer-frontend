@@ -25,11 +25,11 @@ export class ToasterService {
 
   setting() {
     toastr.options = {
-      'closeButton': true,
+      'closeButton': false,
       'debug': false,
       'newestOnTop': true,
       'progressBar': false,
-      'positionClass': 'toast-top-right',
+      'positionClass': 'toast-top-center',
       'preventDuplicates': false,
       'onclick': null,
       'showDuration': '300',

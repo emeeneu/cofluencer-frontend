@@ -9,8 +9,6 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./youtube-info.component.css']
 })
 export class YoutubeInfoComponent implements OnInit {
-  
-
   youtubeInfo: any
   
   constructor(
