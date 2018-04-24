@@ -92,43 +92,24 @@
 
 </header>
 
-<main>
-  <section class="container flex sp-between" id="stats">
-    <div class="flex flex-column flex-center">
-      <h2 class="colorGrey introductionText textCenter">Campaigns</h2>
-      <p class="quoteText textCenter">13K</p>
+<div *ngFor="let campaign of influencer.campaigns" class="campaignBox gradient-reverse shadow">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="h3 capitalize mb-10">{{ campaign.title }}</h3>
+      <p>
+        <span class="bodyTextBold">{{ campaign.startDate | date: 'dd/MM/yyyy' }}</span> |
+        <span class="bodyTextBold">{{ campaign.endDate | date: 'dd/MM/yyyy' }}</span>
+      </p>
+      <p class="bodyTextBold w-50">{{ campaign.description }}</p>
     </div>
-    <div class="flex flex-column flex-center">
-      <h2 class="colorGrey introductionText textCenter">Cofluencity</h2>
-      <p class="quoteText textCenter">90%</p>
+  </div>
+  <h4 class="h4 capitalize mb-10">Influencers</h4>
+  <div class="flex user">
+    <div class="card-box" *ngFor="let user of campaign.influencer_id">
+      <a href="#" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
+      </a>
     </div>
-    <div class="flex flex-column flex-center">
-      <h2 class="colorGrey introductionText textCenter">Total reach</h2>
-      <p class="quoteText textCenter">254</p>
-    </div>
-  </section>
-  <section id="info">
-    <div class="container">
-      <h2 class="h3 capitalize">{{ session.user.name }}</h2>
-      <p class="bodyText">{{ user.bio }}</p>
-    </div>
-  </section>
-  <!-- <section id="campaigns">
-    <div class="container">
-      <h2 class="h3" (click)="getCampaigns()">Campaigns</h2>
-      <div *ngFor="let campaign of this.companyService.campaigns">
-        <h3>{{ campaign.title }}</h3>
-        <p>{{ campaign.description }}</p>
-      </div>
-    </div>
-  </section>
-  <section id="stats">
-    <div class="container">
-      <h2 class="h3">Stats</h2>
-    </div>
-  </section> -->
-</main>
-<!-- <app-instagram-info></app-instagram-info> -->
-
-<app-youtube-info *ngIf='youtubeProfile'></app-youtube-info>
-<app-twitter-info *ngIf='twitterProfile'></app-twitter-info>
+  </div>
+  <button (click)="campaignDetail(campaign._id)" class="btn btn-md btn-primary btn-round h4">View details</button>
+  <button *ngIf='campaign.influencer_id.indexOf(user._id) == -1' (click)='influencer.joinCampaign()' class="btn btn-md btn-primary btn-round h4">Join in</button>
+</div>

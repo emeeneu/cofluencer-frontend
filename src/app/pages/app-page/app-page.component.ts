@@ -28,7 +28,6 @@ export class AppPageComponent implements OnInit {
     this.user = this.session.getUser();
     this.checkYoutube();
     this.checkTwitter();
-    this.getCampaigns();
   }
 
   ngOnChanges(changes: any) {
@@ -50,11 +49,7 @@ export class AppPageComponent implements OnInit {
   }
 
   getCampaigns() {
-    this.companyService.campaignsList(this.user);
-  }
-
-  newCampaign() {
-    this.router.navigate(['company', this.user.username, 'new-campaign']);
+    this.router.navigate(['/campaigns'])
   }
 
   editProfile() {

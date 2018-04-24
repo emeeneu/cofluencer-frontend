@@ -34,6 +34,7 @@ import { YoutubeDatauserService } from './services/youtube-datauser.service';
 import { EditInfluencerComponent } from './components/edit-influencer/edit-influencer.component';
 import { InfluencerService } from './services/influencer.service';
 import { ToasterService } from './services/toaster.service';
+import { CampaignsComponent } from './pages/campaigns/campaigns.component';
 
 const routes: Routes = [
   {
@@ -89,6 +90,11 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService],
   },
   {
+    path: 'campaigns',
+    component: CampaignsComponent,
+    canActivate: [RequireUserGuardService],
+  },
+  {
     path: '**', redirectTo: '',
   },
 ];
@@ -111,7 +117,8 @@ const routes: Routes = [
     EditCampaignComponent,
     TwitterInfoComponent,
     YoutubeInfoComponent,
-    EditInfluencerComponent
+    EditInfluencerComponent,
+    CampaignsComponent
   ],
   imports: [
     BrowserModule,
