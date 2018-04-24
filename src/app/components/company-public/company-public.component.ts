@@ -5,11 +5,11 @@ import { CompanyService } from '../../services/company.service';
 import { ToasterService } from '../../services/toaster.service';
 
 @Component({
-  selector: 'app-company-profile',
-  templateUrl: './company-profile.component.html',
-  styleUrls: ['./company-profile.component.css']
+  selector: 'app-company-public',
+  templateUrl: './company-public.component.html',
+  styleUrls: ['./company-public.component.css']
 })
-export class CompanyProfileComponent implements OnInit {
+export class CompanyPublicComponent implements OnInit {
 
   user: any;
   toggleMenu: boolean;
@@ -57,4 +57,5 @@ export class CompanyProfileComponent implements OnInit {
   campaignDetail(campaignId) {
     this.router.navigate(['company', this.user.username, campaignId]);
   }
+
 }

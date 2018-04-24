@@ -10,7 +10,6 @@ import { AuthService } from './services/auth.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
 import { RequireUserGuardService } from './guards/require-user-guard.service';
 import { InitAuthGuardService } from './guards/init-auth-guard.service';
-import { PublicProfileService } from './guards/public-profile.service';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -19,11 +18,14 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
 
+import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
+import { CompanyPublicComponent } from './components/company-public/company-public.component';
+import { CompanyPrivateComponent } from './components/company-private/company-private.component';
+
 import { IgDatauserService } from './services/ig-datauser.service';
 import { TwtDatauserService } from './services/twt-datauser.service';
 import { AppPageComponent } from './pages/app-page/app-page.component';
 import { InstagramInfoComponent } from './components/instagram-info/instagram-info.component';
-import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
 import { CreateCampaignComponent } from './components/create-campaign/create-campaign.component';
 import { CompanyService } from './services/company.service';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
@@ -35,7 +37,6 @@ import { YoutubeDatauserService } from './services/youtube-datauser.service';
 import { EditInfluencerComponent } from './components/edit-influencer/edit-influencer.component';
 import { InfluencerService } from './services/influencer.service';
 import { ToasterService } from './services/toaster.service';
-import { CompanyPublicComponent } from './pages/company-public/company-public.component';
 
 const routes: Routes = [
   {
@@ -68,7 +69,7 @@ const routes: Routes = [
   {
     path: 'company/:id',
     component: CompanyProfileComponent,
-    canActivate: [RequireUserGuardService, PublicProfileService],
+    canActivate: [RequireUserGuardService],
   },
   {
     path: 'company/:id/edit-profile',
@@ -119,7 +120,8 @@ const routes: Routes = [
     TwitterInfoComponent,
     YoutubeInfoComponent,
     EditInfluencerComponent,
-    CompanyPublicComponent
+    CompanyPublicComponent,
+    CompanyPrivateComponent,
   ],
   imports: [
     BrowserModule,
@@ -139,7 +141,6 @@ const routes: Routes = [
     RequireUserGuardService,
     RequireAnonGuardService,
     InitAuthGuardService,
-    PublicProfileService,
     ToasterService,
   ],
   bootstrap: [AppComponent]
