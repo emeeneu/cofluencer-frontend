@@ -10,6 +10,7 @@ export class InfluencerService {
 
   influencerId: string;
   user: any;
+  campaigns: any;
 
   private API_URL = 'http://localhost:3000/api';
 
@@ -33,5 +34,26 @@ export class InfluencerService {
           console.log(err);
         }
       });
+  }
+
+  listCampaigns(){
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.get(`${this.API_URL}/list-campaigns`, options)
+      .toPromise()
+      .then((listCampaigns) => {
+        this.campaigns = listCampaigns;
+        // return this.campaigns;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  joinCampaign(){
+    console.log('hola')
   }
 }
