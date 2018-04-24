@@ -54,6 +54,6 @@ export class InfluencerService {
   }
 
   joinCampaign(){
-    console.log('hola')
+    
   }
 }
