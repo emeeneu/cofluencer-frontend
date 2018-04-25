@@ -125,14 +125,14 @@
             <p class="bodyTextBold w-50">{{ campaign.description }}</p>
           </div>
         </div>
-        <h4 class="h4 capitalize mb-10">Influencers</h4>
+        <!-- <h4 class="h4 capitalize mb-10">Influencers</h4>
         <div class="flex user">
           <div class="card-box" *ngFor="let user of campaign.influencer_id">
             <a href="#" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
             </a>
           </div>
-        </div>
-        <button (click)="campaignDetail(campaign._id)" class="btn btn-md btn-primary btn-round h4">View details</button>
+        </div> -->
+        <button (click)="campaignDetail()" class="btn btn-md btn-primary btn-round h4">View details</button>
       </div>
     </div>
   </section>

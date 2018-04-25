@@ -55,6 +55,7 @@ export class CompanyProfileComponent implements OnInit {
   }
 
   campaignDetail(campaignId) {
+    // necesito el companyName y el companyId
     this.router.navigate(['company', this.user.username, campaignId]);
   }
 }

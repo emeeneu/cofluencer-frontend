@@ -64,4 +64,8 @@ export class CompanyPublicComponent implements OnInit {
     this.router.navigate(['company', this.user.username, 'edit-profile']);
   }
 
+  campaignDetail() {
+    this.router.navigate(['company', this.influencer.companyDetail.username, this.influencer.companyDetail._id]);
+  }
+
 }
