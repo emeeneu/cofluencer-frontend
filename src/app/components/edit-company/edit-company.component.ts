@@ -12,6 +12,12 @@ import { FileUploader } from 'ng2-file-upload';
 export class EditCompanyComponent implements OnInit {
 
   private API_URL = 'http://localhost:3000/api';
+
+  uploader: FileUploader = new FileUploader({
+    url: `${this.API_URL}/upload-image`
+  });
+  feedback: string;
+
   user: any;
   editingUser = {
     username: '',
@@ -26,6 +32,13 @@ export class EditCompanyComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
+    // this.uploader.onSuccessItem = (item, response) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
+
+    // this.uploader.onErrorItem = (item, response, status, headers) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
   }
 
   updateUser() {
@@ -37,6 +50,10 @@ export class EditCompanyComponent implements OnInit {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  uploadImage(item) {
+      this.uploader.uploadAll();
   }
 
   close() {
