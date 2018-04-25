@@ -11,6 +11,7 @@ export class InfluencerService {
   influencerId: string;
   user: any;
   campaigns: any;
+  companyDetail: any = '';
 
   private API_URL = 'http://localhost:3000/api';
 
@@ -62,8 +63,24 @@ export class InfluencerService {
       return false;
     }
   }
+  
+  getCompany(companyParams: any) {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.get(`${this.API_URL}/company/${companyParams}`, options)
+      .toPromise()
+      .then((theCompany) => {
+        this.companyDetail = theCompany;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
 
-  joinCampaign(){
-    console.log('hola')
+  joinCampaign() {
+    console.log('hola');
   }
 }

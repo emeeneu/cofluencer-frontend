@@ -57,6 +57,22 @@ export class CompanyService {
       });
   }
 
+  campaignByCompany(companyName: any): Promise<any> {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.get(`${this.API_URL}/campaigns/${companyName}`, options)
+      .toPromise()
+      .then((campaigns) => {
+        return this.campaigns = campaigns;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
   createCampaign(formCampaign: any): Promise<any> {
     const options = {
       withCredentials: true,

@@ -95,6 +95,7 @@
 <div *ngFor="let campaign of influencer.campaigns" class="campaignBox gradient-reverse shadow">
   <div class="row">
     <div class="col-12">
+      <h4 (click)="companyDetail(campaign.company_id.username)" class="h4 capitalize">{{ campaign.company_id.username }}</h4>
       <h3 class="h3 capitalize mb-10">{{ campaign.title }}</h3>
       <p>
         <span class="bodyTextBold">{{ campaign.startDate | date: 'dd/MM/yyyy' }}</span> |

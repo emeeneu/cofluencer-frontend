@@ -49,7 +49,7 @@ export class AppPageComponent implements OnInit {
   }
 
   getCampaigns() {
-    this.router.navigate(['/campaigns'])
+    this.router.navigate(['/campaigns']);
   }
 
   editProfile() {
