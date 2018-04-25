@@ -123,7 +123,7 @@ const routes: Routes = [
     EditInfluencerComponent,
     CompanyPublicComponent,
     CompanyPrivateComponent,
-    CampaignsComponent
+    CampaignsComponent,
   ],
   imports: [
     BrowserModule,

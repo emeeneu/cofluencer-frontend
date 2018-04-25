@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
-
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-edit-company',
@@ -11,6 +11,7 @@ import { CompanyService } from '../../services/company.service';
 })
 export class EditCompanyComponent implements OnInit {
 
+  private API_URL = 'http://localhost:3000/api';
   user: any;
   editingUser = {
     username: '',
