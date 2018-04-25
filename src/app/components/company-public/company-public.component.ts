@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 import { ToasterService } from '../../services/toaster.service';
+import { InfluencerService } from '../../services/influencer.service';
 
 @Component({
   selector: 'app-company-public',
@@ -14,18 +15,25 @@ export class CompanyPublicComponent implements OnInit {
   user: any;
   toggleMenu: boolean;
   toggleMoreButton: boolean;
+  companyParams: any;
+  private sub: any;
 
   constructor(
     private session: AuthService,
     private router: Router,
     private companyService: CompanyService,
+    private route: ActivatedRoute,
     private toaster: ToasterService,
+    private influencer: InfluencerService,
   ) {
   }
 
   ngOnInit() {
     this.user = this.session.getUser();
-    this.getCampaigns();
+    this.sub = this.route.params.subscribe(params => {
+      this.companyParams = params['id'];
+    });
+    this.influencer.getCompany(this.companyParams);
   }
 
   logout() {
@@ -52,10 +60,6 @@ export class CompanyPublicComponent implements OnInit {
 
   editProfile() {
     this.router.navigate(['company', this.user.username, 'edit-profile']);
-  }
-
-  campaignDetail(campaignId) {
-    this.router.navigate(['company', this.user.username, campaignId]);
   }
 
 }

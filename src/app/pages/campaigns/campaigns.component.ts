@@ -26,8 +26,7 @@ export class CampaignsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
-    this.campaigns = this.influencer.listCampaigns()
-    console.log(this.campaigns[0]);
+    this.campaigns = this.influencer.listCampaigns();
   }
 
   logout() {
@@ -42,6 +41,10 @@ export class CampaignsComponent implements OnInit {
 
   moreButtonControl() {
     this.toggleMoreButton = !this.toggleMoreButton;
+  }
+
+  companyDetail(company) {
+    this.router.navigate(['company', company]);
   }
 
 }
