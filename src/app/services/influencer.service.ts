@@ -11,7 +11,7 @@ export class InfluencerService {
   influencerId: string;
   user: any;
   campaigns: any;
-  companyDetail: any;
+  companyDetail: any = '';
 
   private API_URL = 'http://localhost:3000/api';
 
