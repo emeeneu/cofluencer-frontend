@@ -16,6 +16,7 @@ export class CompanyPublicComponent implements OnInit {
   toggleMenu: boolean;
   toggleMoreButton: boolean;
   companyParams: any;
+  campaignId: any;
   private sub: any;
 
   constructor(
@@ -34,6 +35,7 @@ export class CompanyPublicComponent implements OnInit {
       this.companyParams = params['id'];
     });
     this.influencer.getCompany(this.companyParams);
+    this.companyService.campaignByCompany(this.companyParams);
   }
 
   logout() {
