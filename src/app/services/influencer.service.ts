@@ -37,6 +37,7 @@ export class InfluencerService {
   }
 
   listCampaigns(){
+    this.user = this.session.getUser();
     const options = {
       withCredentials: true,
     };
@@ -53,7 +54,16 @@ export class InfluencerService {
       });
   }
 
+  filterId(obj) {
+    console.log(this.user)
+    if(obj._id === this.user._id){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   joinCampaign(){
-    
+    console.log('hola')
   }
 }

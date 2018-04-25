@@ -111,5 +111,8 @@
     </div>
   </div>
   <button (click)="campaignDetail(campaign._id)" class="btn btn-md btn-primary btn-round h4">View details</button>
-  <button *ngIf='campaign.influencer_id.indexOf(user._id) == -1' (click)='influencer.joinCampaign()' class="btn btn-md btn-primary btn-round h4">Join in</button>
+  <div *ngIf="campaign.influencer_id.filter(influencer.filterId)">
+    hola
+    <button (click)='influencer.joinCampaign()' class="btn btn-md btn-primary btn-round h4">Join in</button>
+  </div>
 </div>
