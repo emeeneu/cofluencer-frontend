@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
-
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-edit-company',
@@ -11,10 +11,20 @@ import { CompanyService } from '../../services/company.service';
 })
 export class EditCompanyComponent implements OnInit {
 
+  private API_URL = 'http://localhost:3000/api';
+
+  uploader: FileUploader = new FileUploader({
+    url: `${this.API_URL}/upload-image`,
+  });
+  feedback: string;
+
   user: any;
   editingUser = {
     username: '',
     bio: '',
+  };
+  options = {
+    withCredentials: true,
   };
 
   constructor(
@@ -25,6 +35,13 @@ export class EditCompanyComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
+    // this.uploader.onSuccessItem = (item, response) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
+
+    // this.uploader.onErrorItem = (item, response, status, headers) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
   }
 
   updateUser() {
@@ -36,6 +53,10 @@ export class EditCompanyComponent implements OnInit {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  uploadImage(item, options) {
+      this.uploader.uploadAll();
   }
 
   close() {

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import { AuthService } from './services/auth.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
@@ -128,7 +129,8 @@ const routes: Routes = [
     EditInfluencerComponent,
     CompanyPublicComponent,
     CompanyPrivateComponent,
-    CampaignsComponent
+    CampaignsComponent,
+    FileSelectDirective,
   ],
   imports: [
     BrowserModule,
