@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 import { ToasterService } from '../../services/toaster.service';
+import { InfluencerService } from '../../services/influencer.service';
 
 @Component({
   selector: 'app-app-page',
@@ -21,6 +22,7 @@ export class AppPageComponent implements OnInit {
     private session: AuthService,
     private router: Router,
     private companyService: CompanyService,
+    private influencer: InfluencerService,
     private toaster: ToasterService
   ) { }
 
@@ -28,6 +30,7 @@ export class AppPageComponent implements OnInit {
     this.user = this.session.getUser();
     this.checkYoutube();
     this.checkTwitter();
+    this.influencer.listMyCampaigns();
   }
 
   ngOnChanges(changes: any) {

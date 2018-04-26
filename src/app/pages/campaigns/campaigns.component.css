@@ -89,6 +89,10 @@
   background-color: #a6a4a8;
 }
 
+.page-header{
+    height: 10vh !important;
+}
+
 .page-header .container>.content-center {
   background-color: rebeccapurple;
   top: 90%;
@@ -221,6 +225,7 @@ section {
   padding: 20px 30px;
   margin-bottom: 20px;
   border-radius: 5px;
+  margin: 10px;
 }
 
 /* Users */

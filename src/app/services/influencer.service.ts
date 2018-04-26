@@ -11,6 +11,10 @@ export class InfluencerService {
 
   influencerId: string;
   user: any;
+  stats: any = {
+    registeredCampaigns: Number,
+    cofluencity: Number,
+  }
   campaigns: any;
   companyDetail: any = '';
   options = {
@@ -47,7 +51,21 @@ export class InfluencerService {
       .toPromise()
       .then((listCampaigns) => {
         this.campaigns = listCampaigns;
-        // return this.campaigns;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  listMyCampaigns() {
+    this.user = this.session.getUser();
+    return this.httpClient.get(`${this.API_URL}/list-my-campaigns`, this.options)
+      .toPromise()
+      .then((listCampaigns) => {
+        this.campaigns = listCampaigns;
+        this.stats.registeredCampaigns = Object.keys(listCampaigns).length;
       })
       .catch((err) => {
         if (err.status === 404) {
@@ -76,7 +94,11 @@ export class InfluencerService {
     return this.httpClient.put(`${this.API_URL}/campaigns/join/${idCampaign}`,{}, this.options)
       .toPromise()
       .then((res) => {
-        this.listCampaigns();
+        if (window.location.pathname === '/campaigns') {
+          this.listCampaigns();
+        } else if (window.location.pathname === '/campaigns/me') {
+          this.listMyCampaigns();
+        }
         this.toaster.success(`Registered correctly, good luck! 🤙🏻`);
         console.log(res);
       })
@@ -91,7 +113,11 @@ export class InfluencerService {
     return this.httpClient.put(`${this.API_URL}/campaigns/out/${idCampaign}`,{}, this.options)
       .toPromise()
       .then((res) => {
-        this.listCampaigns();
+        if (window.location.pathname === '/campaigns') {
+          this.listCampaigns();
+        } else if (window.location.pathname === '/campaigns/me') {
+          this.listMyCampaigns();
+        }
         this.toaster.success('Removed from this campaign 🤭');
         console.log(res);
       })
@@ -101,4 +127,8 @@ export class InfluencerService {
         }
       })
   } 
+
+  updateCofluencity() {
+    
+  }
 }

@@ -98,6 +98,11 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService],
   },
   {
+    path: 'campaigns/me',
+    component: CampaignsComponent,
+    canActivate: [RequireUserGuardService],
+  },
+  {
     path: '**', redirectTo: '',
   },
 ];

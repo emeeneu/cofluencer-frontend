@@ -14,7 +14,7 @@ export class CampaignsComponent implements OnInit {
   user: any;
   toggleMenu: Boolean;
   toggleMoreButton: Boolean;
-  campaigns: any;
+  myCampaigns: Boolean;
 
   constructor(
     private influencer: InfluencerService,
@@ -26,13 +26,31 @@ export class CampaignsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
-    this.campaigns = this.influencer.listCampaigns();
+    if(window.location.pathname === '/campaigns'){
+      this.influencer.listCampaigns();
+      this.myCampaigns = false;
+    } else if (window.location.pathname === '/campaigns/me'){
+      this.influencer.listMyCampaigns();
+      this.myCampaigns = true;
+    }
   }
 
   logout() {
     this.session.logout();
     this.router.navigate(['/']);
     this.toaster.success(`${this.user.username}`, `See you! 👋🏻`);
+  }
+
+  goProfile() {
+    this.router.navigate([`/app/${this.user.username}`]);
+  }
+
+  goCampaigns() {
+    this.router.navigate([`/campaigns`]);
+  }
+
+  goMyCampaigns() {
+    this.router.navigate([`/campaigns/me`]);
   }
 
   menuControl() {
