@@ -47,4 +47,16 @@ export class CampaignsComponent implements OnInit {
     this.router.navigate(['company', company]);
   }
 
+  campaignDetail(campaignId) {
+    // necesito el companyName y el companyId
+    this.router.navigate(['company', this.user.username, campaignId]);
+  }
+
+  checkJoinCampaign(influencers){
+    if (influencers.filter(x => x._id === this.user._id).length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

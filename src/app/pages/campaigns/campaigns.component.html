@@ -112,8 +112,6 @@
     </div>
   </div>
   <button (click)="campaignDetail(campaign._id)" class="btn btn-md btn-primary btn-round h4">View details</button>
-  <div *ngIf="campaign.influencer_id.filter(influencer.filterId)">
-    hola
-    <button (click)='influencer.joinCampaign()' class="btn btn-md btn-primary btn-round h4">Join in</button>
-  </div>
+  <button *ngIf="checkJoinCampaign(campaign.influencer_id)" (click)='influencer.joinCampaign(campaign._id)' class="btn btn-md btn-primary btn-round h4">Join in</button>
+  <button *ngIf="!checkJoinCampaign(campaign.influencer_id)" (click)='influencer.outCampaign(campaign._id)' class="btn btn-md btn-primary btn-round h4">Out!</button>
 </div>
