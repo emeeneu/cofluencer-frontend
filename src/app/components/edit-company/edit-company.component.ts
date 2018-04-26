@@ -14,7 +14,7 @@ export class EditCompanyComponent implements OnInit {
   private API_URL = 'http://localhost:3000/api';
 
   uploader: FileUploader = new FileUploader({
-    url: `${this.API_URL}/upload-image`
+    url: `${this.API_URL}/upload-image`,
   });
   feedback: string;
 
@@ -22,6 +22,9 @@ export class EditCompanyComponent implements OnInit {
   editingUser = {
     username: '',
     bio: '',
+  };
+  options = {
+    withCredentials: true,
   };
 
   constructor(
@@ -52,7 +55,7 @@ export class EditCompanyComponent implements OnInit {
       });
   }
 
-  uploadImage(item) {
+  uploadImage(item, options) {
       this.uploader.uploadAll();
   }
 
