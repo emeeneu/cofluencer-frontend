@@ -89,6 +89,7 @@ export class CompanyService {
     const options = {
       withCredentials: true,
     };
+    console.log(userForm);
     return this.httpClient.put(`${this.API_URL}/update-user`, userForm, options)
       .toPromise()
       .then((updatedUser) => {

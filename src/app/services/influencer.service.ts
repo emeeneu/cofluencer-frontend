@@ -73,7 +73,7 @@ export class InfluencerService {
         }
       });
   }
-  
+
   getCompany(companyParams: any) {
     const options = {
       withCredentials: true,
