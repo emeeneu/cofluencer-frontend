@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { InfluencerService } from '../../services/influencer.service';
 import { ToasterService } from '../../services/toaster.service';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-edit-influencer',
@@ -10,6 +11,8 @@ import { ToasterService } from '../../services/toaster.service';
   styleUrls: ['./edit-influencer.component.css']
 })
 export class EditInfluencerComponent implements OnInit {
+
+  private API_URL = 'http://localhost:3000/api';
 
   user: any;
   editingUser: any = {
@@ -22,6 +25,13 @@ export class EditInfluencerComponent implements OnInit {
       twitter: '',
     },
   };
+  uploader: FileUploader = new FileUploader({
+    url: `${this.API_URL}/upload-image`,
+  });
+  feedback: string;
+  options = {
+    withCredentials: true,
+  };
 
   constructor(
     private session: AuthService,
@@ -32,7 +42,6 @@ export class EditInfluencerComponent implements OnInit {
 
   ngOnInit() {
     this.editingUser = this.session.getUser();
-    console.log(this.editingUser);
   }
 
   updateUser() {
@@ -46,6 +55,11 @@ export class EditInfluencerComponent implements OnInit {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  uploadImage(item, options) {
+    console.log('hi')
+    this.uploader.uploadAll();
   }
 
   close() {
