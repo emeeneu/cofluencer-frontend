@@ -9,7 +9,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./youtube-info.component.css']
 })
 export class YoutubeInfoComponent implements OnInit {
-  youtubeInfo: any
+  youtubeInfo: any;
+  accountInput: Boolean = false;
+  accountAddId: any = '';
   
   constructor(
     private userYoutubeInfo: YoutubeDatauserService,
@@ -23,12 +25,25 @@ export class YoutubeInfoComponent implements OnInit {
       this.userYoutubeInfo.getInfoYoutubeUser(this.youtubeInfo);
     }
   }
-
-  // getYoutubeInfo() {
-  //   this.userYoutubeInfo.getInfoYoutubeUser()
-  // }
   
   cleanURL(oldURL: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(oldURL);
   }
+
+  toggleAccount(){
+    this.accountInput = !this.accountInput;
+  }
+
+  saveAccount(){
+    this.userYoutubeInfo.getInfoYoutubeUser(this.accountAddId)
+    .then((res) => {
+      if(res !== 'err'){
+        this.userYoutubeInfo.addChannelId(this.accountAddId);
+        this.youtubeInfo = this.accountAddId;
+      } else {
+        this.toggleAccount();
+      }
+    }) 
+  }
+
 }
