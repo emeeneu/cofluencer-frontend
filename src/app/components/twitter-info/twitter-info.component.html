@@ -1,24 +1,29 @@
 <div class="container">
-  <img class ='logo' src="../../../assets/img/twitter.png" alt="logo-twitter">
-  <div>
-    <br>
-    <p>@{{ this.userTwitterInfo.twitterUser.screen_name }}      <b>{{ this.userTwitterInfo.twitterUser.followers_count }}</b> followers</p>
+  <img class='logo' src="../../../assets/img/twitter.png" alt="logo-twitter">
+  <div *ngIf='!twitterInfo'>
+    No have Twitter account!
   </div>
+  <div *ngIf='twitterInfo'>
+    <div>
+      <br>
+      <p>@{{ this.userTwitterInfo.twitterUser.screen_name }}
+        <b>{{ this.userTwitterInfo.twitterUser.followers_count }}</b> followers</p>
+    </div>
     <div class="twitter-timeline">
       <div *ngFor='let tweet of this.userTwitterInfo.userTweets'>
         <div class="tweet">
-  
+
           <div class="tweet--user">
             <img class="tweet--user-avatar" src="{{ tweet.user.profile_image_url }}" alt="" />
             <div class="tweet--user-name">{{ tweet.user.name }}
               <span>@{{ this.userTwitterInfo.twitterUser.screen_name }}</span>
             </div>
           </div>
-  
+
           <p class="tweet--body">{{ tweet.text }}</p>
-  
+
           <div class="tweet--time">{{ tweet.created_at }}</div>
-  
+
           <div class="tweet--actions">
             <i class="fa fa-ellipsis-h"></i>
             <i class="fa fa-heart"></i>
@@ -29,4 +34,5 @@
         </div>
       </div>
     </div>
+  </div>
 </div>

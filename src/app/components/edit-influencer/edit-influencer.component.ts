@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { InfluencerService } from '../../services/influencer.service';
 import { ToasterService } from '../../services/toaster.service';
 import { FileUploader } from 'ng2-file-upload';
+import { TagInputModule } from 'ngx-chips';
 
 @Component({
   selector: 'app-edit-influencer',
@@ -24,6 +25,7 @@ export class EditInfluencerComponent implements OnInit {
       youtube: '',
       twitter: '',
     },
+    tags: [],
   };
   uploader: FileUploader = new FileUploader({
     url: `${this.API_URL}/upload-image`,
@@ -33,11 +35,12 @@ export class EditInfluencerComponent implements OnInit {
     withCredentials: true,
   };
 
+
   constructor(
     private session: AuthService,
     private router: Router,
     private influencerService: InfluencerService,
-    private toaster: ToasterService
+    private toaster: ToasterService,
   ) { }
 
   ngOnInit() {
@@ -45,7 +48,6 @@ export class EditInfluencerComponent implements OnInit {
   }
 
   updateUser() {
-    console.log(this.editingUser);
     this.influencerService.updateUser(this.editingUser)
       .then((updatedUser) => {
         this.session.setUser(updatedUser);
@@ -58,7 +60,6 @@ export class EditInfluencerComponent implements OnInit {
   }
 
   uploadImage(item, options) {
-    console.log('hi')
     this.uploader.uploadAll();
   }
 

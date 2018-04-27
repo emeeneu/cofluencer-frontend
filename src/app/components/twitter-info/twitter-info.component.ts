@@ -15,6 +15,10 @@ export class TwitterInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userTwitterInfo.getInfoTwitterUser(this.session.getUser().socialLinks.twitter)
+    this.twitterInfo = this.session.getUser().socialLinks.twitter;
+    console.log(this.twitterInfo)
+    if (this.twitterInfo) {
+      this.userTwitterInfo.getInfoTwitterUser(this.twitterInfo);
+    }
   }
 }

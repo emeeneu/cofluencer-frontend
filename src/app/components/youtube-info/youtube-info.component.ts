@@ -18,7 +18,10 @@ export class YoutubeInfoComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.userYoutubeInfo.getInfoYoutubeUser(this.session.getUser().socialLinks.youtube)
+    this.youtubeInfo = this.session.getUser().socialLinks.youtube;
+    if(this.youtubeInfo){
+      this.userYoutubeInfo.getInfoYoutubeUser(this.youtubeInfo);
+    }
   }
 
   // getYoutubeInfo() {

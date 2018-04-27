@@ -40,6 +40,10 @@ import { InfluencerService } from './services/influencer.service';
 import { ToasterService } from './services/toaster.service';
 import { CampaignsComponent } from './pages/campaigns/campaigns.component';
 
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+
 const routes: Routes = [
   {
     path: '',
@@ -139,6 +143,9 @@ const routes: Routes = [
     PasswordStrengthBarModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    TagInputModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     IgDatauserService,

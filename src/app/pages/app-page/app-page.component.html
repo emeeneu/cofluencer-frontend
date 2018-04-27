@@ -109,8 +109,9 @@
   </section>
   <section id="info">
     <div class="container">
-      <h2 class="h3 capitalize">{{ session.user.name }}</h2>
+      <h3>{{ session.user.name }}</h3>
       <h3 class="bodyText">{{ user.email }} | @{{ user.username }}</h3>
+      <p><tag-input class="tags" [ngModel]="user.tags" [ngModelOptions]="{standalone: true}" theme='minimal' [removable]='false' [disable]='false' placeholder='' secondaryPlaceholder='No tags added'></tag-input></p>
       <p class="bodyText">{{ user.bio }}</p>
     </div>
   </section>
@@ -131,5 +132,5 @@
 </main>
 <!-- <app-instagram-info></app-instagram-info> -->
 
-<app-youtube-info *ngIf='youtubeProfile'></app-youtube-info>
-<app-twitter-info *ngIf='twitterProfile'></app-twitter-info>
+<app-youtube-info></app-youtube-info>
+<app-twitter-info></app-twitter-info>
