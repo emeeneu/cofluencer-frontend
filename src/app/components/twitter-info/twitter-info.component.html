@@ -1,8 +1,25 @@
 <div class="container">
   <img class='logo' src="../../../assets/img/twitter.png" alt="logo-twitter">
   <div *ngIf='!twitterInfo'>
-    No have Twitter account!
+    <div class='no-account'>
+      <div *ngIf='!accountInput'>
+        <p>nothing to read here.. ☹️</p>
+        <button class="btn btn-info" (click)="toggleAccount()">Add Twitter Account!</button>
+      </div>
+      <div *ngIf='accountInput'>
+        <p> great! we need your username 🤩</p>
+        <input [(ngModel)]='accountAddUsername' name='accountAddUsername' type="text" class="form-control ng-untouched ng-pristine ng-valid">
+        <br>
+        <button class="btn btn-info" (click)="saveAccount()">Save Twitter Account!</button>
+        <p>Or
+          <span (click)="toggleAccount()">
+            <b>cancel</b>
+          </span>
+        </p>
+      </div>
+    </div>
   </div>
+
   <div *ngIf='twitterInfo'>
     <div>
       <br>
