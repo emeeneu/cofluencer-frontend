@@ -40,3 +40,18 @@ nav {
   background-color: #ffffff;
   border-radius: 4px;
 }
+
+.card-container {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-img {
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+}
