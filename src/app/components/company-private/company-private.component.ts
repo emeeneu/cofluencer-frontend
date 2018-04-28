@@ -25,7 +25,6 @@ export class CompanyPrivateComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
-    console.log('user comp: ', this.user);
     this.getCampaigns();
   }
 

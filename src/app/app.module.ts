@@ -6,6 +6,7 @@ import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FileSelectDirective } from 'ng2-file-upload';
+import { ScrollEventModule } from 'ngx-scroll-event';
 
 import { AuthService } from './services/auth.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
@@ -146,6 +147,7 @@ const routes: Routes = [
     TagInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    ScrollEventModule,
   ],
   providers: [
     IgDatauserService,

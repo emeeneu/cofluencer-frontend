@@ -28,6 +28,7 @@ export class EditCompanyComponent implements OnInit {
     bio: '',
     city: '',
     profileImage: '',
+    avatar: '',
   };
   options = {
     withCredentials: true,
@@ -43,6 +44,7 @@ export class EditCompanyComponent implements OnInit {
   ngOnInit() {
     this.editingUser = this.session.getUser();
     this.uploader.onAfterAddingFile = (item) => {
+      console.log(item);
       this.uploadImage(item, this.options);
       this.editingUser = this.session.getUser();
     };

@@ -50,12 +50,6 @@
 
     <ul class="menu container flex flex-column flex-middle mt-100">
       <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a (click)="menuControl()" href="#mycampaigns" class="bodyTextBold capitalize colorGrey">My campaigns</a>
-      </li>
-      <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a (click)="menuControl()" href="#mystats" class="bodyTextBold capitalize colorGrey">My stats</a>
-      </li>
-      <li class="pb-20 mt-20 w-100 b-bottomThin">
         <a (click)="newCampaign()" class="bodyTextBold capitalize colorGrey">Create campaign</a>
       </li>
       <li class="pb-20 mt-20 w-100 b-bottomThin">
@@ -67,7 +61,7 @@
     </ul>
   </div>
   <!-- End Mobile Menu -->
-
+  
   <div class="wrapper">
     <div class="page-header gradient">
       <div class="page-header-image" data-parallax="true" [ngStyle]="{'background-image': 'url(' + session.user.profileImage + ')'}">
@@ -81,8 +75,6 @@
       </button>
     </div>
     <div [hidden]="!toggleMoreButton" id="insideMoreButton" class="flex flex-column">
-      <button class="btn btn-primary btn-round">top influencers</button>
-      <button class="btn btn-primary btn-round">my stats</button>
       <button class="btn btn-primary btn-round" (click)="editProfile()">edit profile</button>
       <button (click)="logout()" class="btn btn-primary btn-round">logout</button>
     </div>

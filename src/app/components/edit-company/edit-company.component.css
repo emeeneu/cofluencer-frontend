@@ -64,3 +64,27 @@ nav {
   border-radius: 50%;
   display: none;
 }
+
+.bigImage-bg {
+  background-size: cover;
+  background-position: center;
+}
+
+.bigImage > .uploadInput {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.bigImage > label {
+  width: 100%;
+  height: 190px;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.box-form {
+  position: relative;
+  top: -115px;
+}
