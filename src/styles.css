@@ -118,6 +118,10 @@ img {
   height: 100%;
 }
 
+.h-50 {
+  height: 50px;
+}
+
 .centerVertical {
   margin-top: auto;
   margin-bottom: auto;
@@ -165,6 +169,10 @@ img {
 
 .pr-10 {
   padding-right: 10px;
+}
+
+.p-0 {
+  padding: 0;
 }
 /* --··--··--··--··--··----··--··--··--··--··----··--··--··--··--··----··--··--··--··--··----··--··--··--··--··-- */
 
@@ -319,7 +327,10 @@ img {
 
 .gradient-reverse {
   background-image: linear-gradient(137deg, #44355b, #28afb0);
+}
 
+.gradient-opacity {
+  background-image: linear-gradient(137deg, rgba(40, 175, 176, .4), rgba(68, 53, 91, .4));
 }
 
 /* --··--··--··--··--··----··--··--··--··--··----··--··--··--··--··----··--··--··--··--··----··--··--··--··--··-- */
