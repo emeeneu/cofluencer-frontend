@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 import { FileUploader } from 'ng2-file-upload';
 import { ToasterService } from '../../services/toaster.service';
+import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'app-edit-company',
@@ -41,10 +42,11 @@ export class EditCompanyComponent implements OnInit {
 
   ngOnInit() {
     this.editingUser = this.session.getUser();
-    console.log(this.editingUser);
     this.uploader.onAfterAddingFile = (item) => {
       this.uploadImage(item, this.options);
+      console.log('file: ', this.editingUser);
       this.toaster.success(`${this.editingUser.username}`, 'Image update! 📸 Update Profile to see the changes');
+      setTimeout(() => { this.router.navigate(['company', this.editingUser.username, 'edit-profile']); }, 1000 );
     };
   }
 

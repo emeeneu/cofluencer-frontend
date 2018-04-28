@@ -136,6 +136,22 @@ export class CompanyService {
       });
   }
 
+  getCompany(companyId: any): Promise<any> {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.get(`${this.API_URL}/company/${companyId}`, options)
+      .toPromise()
+      .then((companyDB) => {
+        return companyDB;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
 
 
 }
