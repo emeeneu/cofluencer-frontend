@@ -18,6 +18,13 @@
       <div class="container p-50">
         <p class="h1">Edit Profile</p>
 
+        <div class="col-12">
+          <div class="form-group">
+            <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+          </div>
+          <button (click)="uploadImage()" class="btn btn-round h4">Upload Image</button>
+        </div>
+
         <form class="row mt-40">
           <div class="col-12">
             <div class="form-group">
@@ -44,6 +51,9 @@
             </div>
           </div>
           <div class="col-12">
+            <tag-input [(ngModel)]="editingUser.tags" [ngModelOptions]="{standalone: true}" theme='minimal' allowDupes='true'></tag-input>
+          </div>
+          <div class="col-12">
             <div class="form-group">
               <p>YouTube</p>
               <input [(ngModel)]="editingUser.socialLinks.youtube" name="youtube" class="form-control">
@@ -56,6 +66,7 @@
               <button (click)="updateUser()" class="btn btn-round btn-primary updateButton h4">Update Profile</button>
             </div>
           </div>
+          <!-- <tag-input [ngModel]="editingUser.tags" [ngModelOptions]="{standalone: true}" theme='minimal' [removable]='false' [disable]='true' placeholder='' secondaryPlaceholder='No tags added'></tag-input> -->
         </form>
       </div>
     </div>

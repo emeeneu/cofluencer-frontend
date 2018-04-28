@@ -1,17 +1,32 @@
 <div class="container">
   <img src="../../../assets/img/youtube.png" alt="logo-youtube">
-  <div>
-  <br>
-    <p>@{{ this.userYoutubeInfo.channelInfo.snippet.channelTitle }}</p>
-    <!-- <p>{{ this.userYoutubeInfo.channelInfo.snippet.description }}</p> -->
+  <div *ngIf='!youtubeInfo'>
+    <div class='no-account'>
+      <div *ngIf='!accountInput'>
+        <p>nothing to see here.. ☹️</p>
+        <button class="btn btn-danger" (click)="toggleAccount()">Add YouTube Account!</button>
+      </div>
+      <div *ngIf='accountInput'>
+        <p> great! we need your channel id 🤩</p>
+        <input [(ngModel)]='accountAddId' name='accountAddId' type="text" class="form-control ng-untouched ng-pristine ng-valid"><br>
+        <button class="btn btn-danger" (click)="saveAccount()">Save YouTube Account!</button>
+        <p>Or <span (click)="toggleAccount()"><b>cancel</b></span></p>
+      </div>
+    </div>
   </div>
-  <div class='youtube-videos'>
+  <div *ngIf='youtubeInfo'>
+    <div>
+      <br>
+        <p>@{{ this.userYoutubeInfo.channelInfo.snippet.channelTitle }}</p>
+        <!-- <p>{{ this.userYoutubeInfo.channelInfo.snippet.description }}</p> -->
+    </div>
+    <div class='youtube-videos'>
       <div *ngFor='let video of this.userYoutubeInfo.videoUser'>
-        <iframe width="345" height="200" [src]="cleanURL(video)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-        </iframe>
+        <iframe width="345" height="200" [src]="cleanURL(video)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         <br>
       </div>
     </div>
+  </div>
   <br>
   <hr>
 </div>
