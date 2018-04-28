@@ -9,12 +9,34 @@ import { AuthService } from '../../services/auth.service';
 })
 export class TwitterInfoComponent implements OnInit {
   twitterInfo: any;
+  accountInput: Boolean = false;
+  accountAddUsername: any = '';
+
   constructor(
     private userTwitterInfo: TwtDatauserService,
     private session: AuthService,
   ) { }
 
   ngOnInit() {
-    this.userTwitterInfo.getInfoTwitterUser(this.session.getUser().socialLinks.twitter)
+    this.twitterInfo = this.session.getUser().socialLinks.twitter;
+    if (this.twitterInfo) {
+      this.userTwitterInfo.getInfoTwitterUser(this.twitterInfo);
+    }
+  }
+
+  toggleAccount() {
+    this.accountInput = !this.accountInput;
+  }
+
+  saveAccount() {
+    this.userTwitterInfo.getInfoTwitterUser(this.accountAddUsername)
+      .then((res) => {
+        if (res !== 'err') {
+          this.userTwitterInfo.addAccount(this.accountAddUsername);
+          this.twitterInfo = this.accountAddUsername;
+        } else {
+          this.toggleAccount();
+        }
+      })
   }
 }

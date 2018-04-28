@@ -237,12 +237,21 @@ section {
   border-radius: 50%;
   background-size: cover;
   background-position: center;
+  margin-right: 20px;
 }
 
 .card-img {
   background-size: cover;
   background-position: center;
   border-radius: 5px;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 980px) {
@@ -262,5 +271,17 @@ section {
     font-size: 1.6rem;
     padding: 0 30px;
   }
+}
+
+footer {
+  margin-top: 50px;
+}
+
+h3 {
+  margin-bottom: 5px !important;
+}
+
+.bodyTextBold{
+  width: 100% !important; 
 }
 

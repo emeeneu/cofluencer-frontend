@@ -107,23 +107,43 @@
 <div *ngFor="let campaign of influencer.campaigns" class="campaignBox gradient-reverse shadow">
   <div class="row">
     <div class="col-12">
-      <h4 (click)="companyDetail(campaign.company_id.username)" class="h4 capitalize">{{ campaign.company_id.username }}</h4>
       <h3 class="h3 capitalize mb-10">{{ campaign.title }}</h3>
-      <p>
-        <span class="bodyTextBold">{{ campaign.startDate | date: 'dd/MM/yyyy' }}</span> |
-        <span class="bodyTextBold">{{ campaign.endDate | date: 'dd/MM/yyyy' }}</span>
-      </p>
+      <div class="user">
+        <div class="card-box">
+          <a href="#" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + campaign.company_id.profileImage + ')'}">
+          </a>
+        </div>
+        <div>
+          <h3 (click)="companyDetail(campaign.company_id.username)" class="capitalize">{{ campaign.company_id.username }}</h3>
+          <p>
+            <span class="bodyTextBold">{{ campaign.startDate | date: 'dd/MM/yyyy' }}</span> |
+            <span class="bodyTextBold">{{ campaign.endDate | date: 'dd/MM/yyyy' }}</span>
+          </p>
+        </div>
+      </div>
+      <tag-input class="tags" theme='minimal' [removable]='false' [disable]='false' placeholder='' secondaryPlaceholder='No tags added'></tag-input>
       <p class="bodyTextBold w-50">{{ campaign.description }}</p>
     </div>
   </div>
-  <h4 class="h4 capitalize mb-10">Influencers</h4>
-  <div class="flex user">
-    <div class="card-box" *ngFor="let user of campaign.influencer_id">
-      <a href="#" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
-      </a>
-    </div>
+  <div>
+    <h4 class="h4 capitalize mb-10">Interested Cofluencers | {{ campaign.influencer_id.length }}</h4>
+    <p *ngIf="!checkJoinCampaign(campaign.influencer_id)">are you interested in this collaboration!</p>
   </div>
   <button (click)="campaignDetail(campaign._id)" class="btn btn-md btn-primary btn-round h4">View details</button>
   <button *ngIf="checkJoinCampaign(campaign.influencer_id)" (click)='influencer.joinCampaign(campaign._id)' class="btn btn-md btn-primary btn-round h4">Join in</button>
   <button *ngIf="!checkJoinCampaign(campaign.influencer_id)" (click)='influencer.outCampaign(campaign._id)' class="btn btn-md btn-primary btn-round h4">Out!</button>
 </div>
+
+<footer class="bg-darkJungleGreen">
+  <div class="container">
+    <div class="flex flex-center socialFooter pt-50">
+      <span class="icon-social-facebook colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-twitter colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-instagram colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-youtube colorGrey pr-10 pl-10"></span>
+    </div>
+  </div>
+  <div class="bg-darkJungleGreen pt-50 pb-10 flex flex-center flex-middle">
+    <p class="bodyText colorGrey textCenter">©2018 cofluencer</p>
+  </div>
+</footer>
