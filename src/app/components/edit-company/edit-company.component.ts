@@ -42,17 +42,9 @@ export class EditCompanyComponent implements OnInit {
 
   ngOnInit() {
     this.editingUser = this.session.getUser();
-    console.log('item al iniciar: ', this.editingUser.profileImage);
     this.uploader.onAfterAddingFile = (item) => {
-      console.log('item antes de upload: ', this.editingUser.profileImage);
       this.uploadImage(item, this.options);
-      console.log('item after upload: ', this.editingUser.profileImage);
       this.editingUser = this.session.getUser();
-      console.log('item después de cambiar la sesión: ', this.editingUser.profileImage);
-      this.toaster.success(`${this.editingUser.username}`, 'Image update! 📸 Update Profile to see the changes');
-    };
-    this.uploader.onCompleteItem = (item) => {
-      console.log(this.editingUser);
     };
   }
 
@@ -70,7 +62,11 @@ export class EditCompanyComponent implements OnInit {
   }
 
   uploadImage(item, options) {
-      this.uploader.uploadAll();
+    this.uploader.uploadAll();
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      this.editingUser = JSON.parse(response);
+      this.toaster.success(`${this.editingUser.username}`, 'Image updated! 📸 ');
+    };
   }
 
   close() {
