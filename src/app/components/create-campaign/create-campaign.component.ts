@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { CompanyService } from '../../services/company.service';
 import { AuthService } from '../../services/auth.service';
 import { ToasterService } from '../../services/toaster.service';
-
-
+import { TagInputModule } from 'ngx-chips';
 
 @Component({
   selector: 'app-create-campaign',
@@ -26,6 +25,7 @@ export class CreateCampaignComponent implements OnInit {
   formCampaign = {
     title: '',
     description: '',
+    tags: [],
     startDate: Date,
     endDate: Date,
   };

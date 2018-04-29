@@ -24,6 +24,9 @@
               <input [(ngModel)]="formCampaign.title" name="title" type="text" value="" placeholder="A title for the campaign" class="form-control">
             </div>
           </div>
+            <div class="col-12">
+              <tag-input [(ngModel)]="formCampaign.tags" [ngModelOptions]="{standalone: true}" theme='minimal' allowDupes='true'></tag-input>
+            </div>
           <div class="col-12">
             <div class="form-group">
               <textarea [(ngModel)]="formCampaign.description" name="description" rows="5" class="form-control" placeholder="A few lines about the event and info for the influencers"></textarea>

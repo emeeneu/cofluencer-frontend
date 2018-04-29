@@ -9,6 +9,7 @@ import { InfluencerService } from '../../services/influencer.service';
 })
 export class CampaignCardComponent implements OnInit {
   user: any;
+  rolControl: Boolean;
   dropdownControl: Boolean = false;
 
   @Input() campaign: any;
@@ -20,6 +21,7 @@ export class CampaignCardComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
+    this.user.role === 'company' ? this.rolControl = true : this.rolControl = false;
   }
 
   checkJoinCampaign(influencers) {

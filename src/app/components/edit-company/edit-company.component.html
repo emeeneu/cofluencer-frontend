@@ -66,6 +66,10 @@
                 <input [(ngModel)]="editingUser.email" name="email" type="email" class="form-control">
               </div>
             </div>
+            
+            <div class="col-12">
+              <tag-input [(ngModel)]="editingUser.tags" [ngModelOptions]="{standalone: true}" theme='minimal' allowDupes='true'></tag-input>
+            </div>
   
             <div class="row form-group">
               <div class="col-12">
@@ -73,9 +77,6 @@
               </div>  
             </div>
 
-            <div class="col-12">
-              <tag-input [(ngModel)]="editingUser.tags" [ngModelOptions]="{standalone: true}" theme='minimal' allowDupes='true'></tag-input>
-            </div>
           </div>
           
           <div class="col-12">
