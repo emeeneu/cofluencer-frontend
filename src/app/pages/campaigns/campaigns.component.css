@@ -18,6 +18,10 @@
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
 }
 
+body{
+  background-color: rgba(248, 248, 248)
+}
+
 .gradient {
   background-image: linear-gradient(137deg, rgba(40, 175, 176, .4), rgba(68, 53, 91, .4));
 }
@@ -220,39 +224,6 @@ section {
   transform-origin: 40% 50%;
 }
 
-.campaignBox {
-  color: #fff;
-  padding: 20px 30px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  margin: 10px;
-}
-
-/* Users */
-
-.card-container {
-  display: block;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  margin-right: 20px;
-}
-
-.card-img {
-  background-size: cover;
-  background-position: center;
-  border-radius: 5px;
-}
-
-.user {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
 @media (max-width: 980px) {
   #navLogo {
@@ -281,7 +252,7 @@ h3 {
   margin-bottom: 5px !important;
 }
 
-.bodyTextBold{
-  width: 100% !important; 
+.pb-5 {
+  padding-bottom: 0rem !important;
 }
 

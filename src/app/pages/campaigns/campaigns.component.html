@@ -1,8 +1,8 @@
 <router-outlet></router-outlet>
 
 <header>
-  <nav [hidden]="toggleMenu" class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent" color-on-scroll="400">
-    <div class="container">
+  <nav [hidden]="toggleMenu" class="navbar navbar-expand-lg fixed-top gradient">
+    <div class="container" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
       <div class="navbar-translate" id="navLogo">
         <a class="navbar-brand w-115" href='app/{{ user.username }}' rel="tooltip" data-placement="bottom">
           <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
@@ -67,28 +67,16 @@
     </ul>
   </div>
   <!-- End Mobile Menu -->
-
+<!-- 
   <div class="wrapper">
     <div class="page-header gradient">
       <div class="page-header-image" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
       </div>
     </div>
-    <!-- <div class="container flex sp-between" id="buttons">
-      <button (click)="getCampaigns()" class="btn btn-lg btn-primary btn-round h4" id="searchButton">SEARCH CAMPAIGN</button>
-      <button class="h4 flex sp-between w-100" id="moreButton" (click)="moreButtonControl()">
-        <i [hidden]="toggleMoreButton" class="icon-arrow-up"></i>
-        <i [hidden]=!toggleMoreButton class="icon-arrow-down"></i>
-      </button>
-    </div> -->
-    <div [hidden]="!toggleMoreButton" id="insideMoreButton" class="flex flex-column">
-      <button class="btn btn-primary btn-round">my campaigns</button>
-      <!-- <button class="btn btn-primary btn-round">my stats</button> -->
-      <button class="btn btn-primary btn-round" (click)="editProfile()">edit profile</button>
-      <button (click)="logout()" class="btn btn-primary btn-round">logout</button>
-    </div>
-  </div>
+  </div> -->
 
 </header>
+<body>
   <div class="container p-5">
     <div class="row pb-5">
       <div class="col-10">
@@ -102,37 +90,10 @@
     </div>
   </div>
 
-
-
-<div *ngFor="let campaign of influencer.campaigns" class="campaignBox gradient-reverse shadow">
-  <div class="row">
-    <div class="col-12">
-      <h3 class="h3 capitalize mb-10">{{ campaign.title }}</h3>
-      <div class="user">
-        <div class="card-box">
-          <a href="#" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + campaign.company_id.profileImage + ')'}">
-          </a>
-        </div>
-        <div>
-          <h3 (click)="companyDetail(campaign.company_id.username)" class="capitalize">{{ campaign.company_id.username }}</h3>
-          <p>
-            <span class="bodyTextBold">{{ campaign.startDate | date: 'dd/MM/yyyy' }}</span> |
-            <span class="bodyTextBold">{{ campaign.endDate | date: 'dd/MM/yyyy' }}</span>
-          </p>
-        </div>
-      </div>
-      <tag-input class="tags" theme='minimal' [removable]='false' [disable]='false' placeholder='' secondaryPlaceholder='No tags added'></tag-input>
-      <p class="bodyTextBold w-50">{{ campaign.description }}</p>
-    </div>
+  <div *ngFor="let campaign of influencer.campaigns">
+    <app-campaign-card [campaign]='campaign'></app-campaign-card>
   </div>
-  <div>
-    <h4 class="h4 capitalize mb-10">Interested Cofluencers | {{ campaign.influencer_id.length }}</h4>
-    <p *ngIf="!checkJoinCampaign(campaign.influencer_id)">are you interested in this collaboration!</p>
-  </div>
-  <button (click)="campaignDetail(campaign._id)" class="btn btn-md btn-primary btn-round h4">View details</button>
-  <button *ngIf="checkJoinCampaign(campaign.influencer_id)" (click)='influencer.joinCampaign(campaign._id)' class="btn btn-md btn-primary btn-round h4">Join in</button>
-  <button *ngIf="!checkJoinCampaign(campaign.influencer_id)" (click)='influencer.outCampaign(campaign._id)' class="btn btn-md btn-primary btn-round h4">Out!</button>
-</div>
+</body>
 
 <footer class="bg-darkJungleGreen">
   <div class="container">

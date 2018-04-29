@@ -1,0 +1,37 @@
+  <div class="campaignBox shadow">
+    <div class="row">
+      <div class="col-12">
+        <div>
+          <h3 class="h3 capitalize mb-10">{{ campaign.title }}</h3>
+          <i [ngClass]="dropdownControl?'icon-arrow-up':'icon-arrow-down'" (click)='ddControl()'></i>
+        </div>
+        <div class="user">
+          <div class="card-box">
+            <a href="#" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + campaign.company_id.profileImage + ')'}">
+            </a>
+          </div>
+          <div>
+            <h3 (click)="companyDetail(campaign.company_id.username)" class="capitalize">{{ campaign.company_id.username }}</h3>
+            <p>
+              <span class="bodyTextBold">{{ campaign.startDate | date: 'dd/MM/yyyy' }}</span> |
+              <span class="bodyTextBold">{{ campaign.endDate | date: 'dd/MM/yyyy' }}</span>
+            </p>
+          </div>
+        </div>
+        <tag-input class="tags" theme='minimal' [removable]='false' [disable]='false' placeholder='' secondaryPlaceholder='No tags added'></tag-input>
+        <div *ngIf='dropdownControl'>
+          <p class="bodyTextBold w-50">{{ campaign.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf='dropdownControl'>
+      <div>
+        <h4 class="h4 capitalize mb-10">Interested Cofluencers | {{ campaign.influencer_id.length }}</h4>
+        <p *ngIf="!checkJoinCampaign(campaign.influencer_id)">are you interested in this collaboration!</p>
+      </div>
+      <button (click)="campaignDetail(campaign._id)" class="btn btn-md btn-primary btn-round h4">View details</button>
+      <button *ngIf="checkJoinCampaign(campaign.influencer_id)" (click)='influencer.joinCampaign(campaign._id)' class="btn btn-md btn-primary btn-round h4">Join in</button>
+      <button *ngIf="!checkJoinCampaign(campaign.influencer_id)" (click)='influencer.outCampaign(campaign._id)' class="btn btn-md btn-primary btn-round h4">Out!</button>
+    </div>
+  </div>
+
