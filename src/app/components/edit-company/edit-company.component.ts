@@ -5,6 +5,7 @@ import { CompanyService } from '../../services/company.service';
 import { FileUploader } from 'ng2-file-upload';
 import { ToasterService } from '../../services/toaster.service';
 import 'rxjs/add/operator/toPromise';
+import { TagInputModule } from 'ngx-chips';
 
 @Component({
   selector: 'app-edit-company',
@@ -29,6 +30,7 @@ export class EditCompanyComponent implements OnInit {
     city: '',
     profileImage: '',
     avatar: '',
+    tags: [],
   };
   options = {
     withCredentials: true,
@@ -56,7 +58,7 @@ export class EditCompanyComponent implements OnInit {
       .then((updatedUser) => {
         this.session.setUser(updatedUser);
         this.router.navigate(['company', updatedUser.username]);
-        this.toaster.success(`${this.editingUser.username}`, 'your profile is updated! 👍');
+        this.toaster.success('your profile is updated! 👍');
       })
       .catch((error) => {
         console.log(error);
@@ -67,7 +69,7 @@ export class EditCompanyComponent implements OnInit {
     this.uploader.uploadAll();
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       this.editingUser = JSON.parse(response);
-      this.toaster.success(`${this.editingUser.username}`, 'Image updated! 📸 ');
+      this.toaster.success('Image updated! 📸 ');
     };
   }
 

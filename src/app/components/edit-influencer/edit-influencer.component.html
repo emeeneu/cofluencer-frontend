@@ -31,49 +31,78 @@
             </div>
           </div>
 
-        <div class="col-12">
-          <div class="form-group">
-            <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
-          </div>
-          <button (click)="uploadImage()" class="btn btn-round h4">Upload Image</button>
-        </div>
+          <div class="col-12">
+            <div class="row form-group mt-20">
+              <div class="col-3">
+                <label for="username">Username</label>
+              </div>
+              <div class="col-9">
+                <input [(ngModel)]="editingUser.username" name="username" type="text" class="form-control">
+              </div>
+            </div>
 
-        <form class="row mt-40">
-          <div class="col-12">
-            <div class="form-group">
-              Username
-              <input [(ngModel)]="editingUser.username" name="username" type="text" class="form-control">
+            <div class="row form-group">
+              <div class="col-3">
+                <label for="name">Real Name</label>
+              </div>
+              <div class="col-9">
+                <input [(ngModel)]="editingUser.name" name="name" type="text" class="form-control">
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              Email
-              <input [(ngModel)]="editingUser.email" name="email" type="email" class="form-control">
+
+            <div class="row form-group">
+              <div class="col-3">
+                <label for="email">Email</label>
+              </div>
+              <div class="col-9">
+                <input [(ngModel)]="editingUser.email" name="email" type="email" class="form-control">
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              Real name
-              <input [(ngModel)]="editingUser.name" name="name" type="text" class="form-control">
+
+
+            <div class="row form-group">
+              <div class="col-12">
+                <textarea [(ngModel)]="editingUser.bio" name="bio" rows="5" class="form-control" placeholder="A few lines about the event and info for the influencers"></textarea>
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              Bio
-              <textarea [(ngModel)]="editingUser.bio" name="bio" rows="5" class="form-control"></textarea>
             </div>
-          </div>
+
           <div class="col-12">
             <tag-input [(ngModel)]="editingUser.tags" [ngModelOptions]="{standalone: true}" theme='minimal' allowDupes='true'></tag-input>
           </div>
+
           <div class="col-12">
             <div class="form-group">
-              <p>YouTube</p>
-              <input [(ngModel)]="editingUser.socialLinks.youtube" name="youtube" class="form-control">
-              <p>Twitter</p>
-              <input [(ngModel)]="editingUser.socialLinks.twitter" name="twitter" type="text" class="form-control">
+
+            <div class="row form-group">
+              <div class="col-3">
+                <label for="instagram">Instagram</label>
+              </div>
+              <div class="col-9">
+                <input disabled name="instagram" class="form-control">
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-3">
+                <label for="youtube">YouYube</label>
+              </div>
+              <div class="col-9">
+                <input [(ngModel)]="editingUser.socialLinks.youtube" name="youtube" class="form-control">
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-3">
+                <label for="twitter">Twitter</label>
+              </div>
+              <div class="col-9">
+                <input [(ngModel)]="editingUser.socialLinks.twitter" name="twitter" class="form-control">
+              </div>
+            </div>
             </div>
           </div>
+
           <div class="col-12">
             <div class="form-group">
               <button (click)="updateUser()" class="btn btn-round btn-primary updateButton h4">Update Profile</button>

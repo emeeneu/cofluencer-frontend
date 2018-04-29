@@ -56,7 +56,7 @@ export class EditInfluencerComponent implements OnInit {
       .then((updatedUser) => {
         this.session.setUser(updatedUser);
         this.router.navigate(['app', updatedUser.username]);
-        this.toaster.success(`${this.editingUser.username}`, 'your profile is updated! 👍');
+        this.toaster.success('your profile is updated! 👍');
       })
       .catch((error) => {
         console.log(error);
@@ -67,7 +67,7 @@ export class EditInfluencerComponent implements OnInit {
     this.uploader.uploadAll();
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       this.editingUser = JSON.parse(response);
-      this.toaster.success(`${this.editingUser.username}`, 'Image updated! 📸 ');
+      this.toaster.success('Image updated! 📸 ');
     };
   }
 

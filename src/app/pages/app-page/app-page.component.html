@@ -83,8 +83,6 @@
       </button>
     </div>
     <div [hidden]="!toggleMoreButton" id="insideMoreButton" class="flex flex-column">
-      <a href='/campaigns/me' class="btn btn-primary btn-round">my campaigns</a>
-      <!-- <button class="btn btn-primary btn-round">my stats</button> -->
       <button class="btn btn-primary btn-round" (click)="editProfile()">edit profile</button>
       <button (click)="logout()" class="btn btn-primary btn-round">logout</button>
     </div>
@@ -123,20 +121,6 @@
       <p class="bodyText">{{ user.bio }}</p>
     </div>
   </section>
-  <!-- <section id="campaigns">
-    <div class="container">
-      <h2 class="h3" (click)="getCampaigns()">Campaigns</h2>
-      <div *ngFor="let campaign of this.companyService.campaigns">
-        <h3>{{ campaign.title }}</h3>
-        <p>{{ campaign.description }}</p>
-      </div>
-    </div>
-  </section>
-  <section id="stats">
-    <div class="container">
-      <h2 class="h3">Stats</h2>
-    </div>
-  </section> -->
 </main>
 
 <app-instagram-info></app-instagram-info>
