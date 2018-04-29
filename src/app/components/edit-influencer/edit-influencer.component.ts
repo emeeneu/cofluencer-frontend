@@ -45,6 +45,10 @@ export class EditInfluencerComponent implements OnInit {
 
   ngOnInit() {
     this.editingUser = this.session.getUser();
+    this.uploader.onAfterAddingFile = (item) => {
+      this.uploadImage(item, this.options);
+      this.editingUser = this.session.getUser();
+    };
   }
 
   updateUser() {
@@ -61,6 +65,10 @@ export class EditInfluencerComponent implements OnInit {
 
   uploadImage(item, options) {
     this.uploader.uploadAll();
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      this.editingUser = JSON.parse(response);
+      this.toaster.success(`${this.editingUser.username}`, 'Image updated! 📸 ');
+    };
   }
 
   close() {
