@@ -14,7 +14,7 @@ export class InfluencerService {
   stats: any = {
     registeredCampaigns: Number,
     cofluencity: Number,
-  }
+  };
   campaigns: any;
   companyDetail: any = '';
   options = {
@@ -106,7 +106,7 @@ export class InfluencerService {
         if (err.status === 404) {
           console.log(err);
         }
-      })
+      });
   }
 
   outCampaign(idCampaign: any) {
@@ -125,10 +125,6 @@ export class InfluencerService {
         if (err.status === 404) {
           console.log(err);
         }
-      })
-  } 
-
-  updateCofluencity() {
-    
+      });
   }
 }

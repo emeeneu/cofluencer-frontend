@@ -45,6 +45,7 @@ import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CampaignCardComponent } from './components/campaign-card/campaign-card.component';
+import { EditImageCoverComponent } from './components/edit-image-cover/edit-image-cover.component';
 
 const routes: Routes = [
   {
@@ -138,6 +139,7 @@ const routes: Routes = [
     CampaignsComponent,
     FileSelectDirective,
     CampaignCardComponent,
+    EditImageCoverComponent,
   ],
   imports: [
     BrowserModule,

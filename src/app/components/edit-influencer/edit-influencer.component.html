@@ -15,12 +15,7 @@
 <div class="flex flex-center bg">
   <div class="formProfile flex flex-center flex-middle flexModal modalBg">
     <div class="loginForm mb-100">
-      <div class="container-fluid h-200 overflowH p-0 bigImage-bg" [ngStyle]="{'background-image': 'url(' + editingUser.profileImage + ')'}">
-        <div class="container-fluid h-100 gradient-opacity bigImage">
-          <label for="bigImage" class="flex flex-start align-end">edit profileImage</label>
-          <input class="uploadInput" type="file" name="file" id="bigImage" ng2FileSelect [uploader]="uploader" />
-        </div>
-      </div>
+      <app-edit-image-cover></app-edit-image-cover>
       <div class="container p-20 box-form">
         <form class="row mt-40">
           <div class="col-12">

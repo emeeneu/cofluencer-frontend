@@ -1,0 +1,6 @@
+<div class="container-fluid h-200 overflowH p-0 bigImage-bg" [ngStyle]="{'background-image': 'url(' + editingUser.coverImage + ')'}">
+  <div class="container-fluid h-100 gradient-opacity bigImage">
+    <label for="coverImage" class="flex flex-start align-end">edit coverImage <i class="fa fa-pencil-square-o" aria-hidden="true"></i></label>
+    <input class="uploadInput" type="file" name="file" id="coverImage" ng2FileSelect [uploader]="uploader" />
+  </div>
+</div>

@@ -25,10 +25,12 @@ export class EditInfluencerComponent implements OnInit {
       youtube: '',
       twitter: '',
     },
+    profileImage: '',
+    coverImage: '',
     tags: [],
   };
   uploader: FileUploader = new FileUploader({
-    url: `${this.API_URL}/upload-image`,
+    url: `${this.API_URL}/upload-image/:profileImage`,
   });
   feedback: string;
   options = {
