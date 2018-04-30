@@ -34,6 +34,8 @@ export class EditCompanyComponent implements OnInit {
     withCredentials: true,
   };
 
+  theInput = '';
+
   constructor(
     private session: AuthService,
     private router: Router,
@@ -43,11 +45,10 @@ export class EditCompanyComponent implements OnInit {
 
   ngOnInit() {
     this.editingUser = this.session.getUser();
-    this.uploader.onAfterAddingFile = (item) => {
-      console.log(item);
+    this.uploader.onAfterAddingFile = (item => {
       this.uploadImage(item, this.options);
       this.editingUser = this.session.getUser();
-    };
+    });
   }
 
   updateUser() {
