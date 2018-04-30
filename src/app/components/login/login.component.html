@@ -5,10 +5,10 @@
       <div class="container p-50">
         <div class="title flex sp-between flex-baseline">
           <p class="h1">Log in</p>
-          <p>
-            <span (click)="controlUser()" class="bodyText">Brand</span> /
-            <span (click)="controlUser()" class="bodyText">Influencer</span>
-          </p>
+          <div class="flex sp-around w-100 selectLogin">
+            <span (click)="controlUser()" class="bodyText" [ngClass]="'selected'">Brand</span>
+            <span (click)="controlUser()" class="bodyText" [ngClass]="'selected'">Influencer</span>
+          </div>
         </div>
         <div class="row mt-40">
           <div class="col-12 flex flex-middle sp-between socialLogin">
