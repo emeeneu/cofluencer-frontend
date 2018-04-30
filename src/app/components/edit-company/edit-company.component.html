@@ -72,6 +72,10 @@
                 <textarea [(ngModel)]="editingUser.bio" name="bio" rows="5" class="form-control" placeholder="A few lines about the event and info for the influencers"></textarea>
               </div>  
             </div>
+
+            <div class="col-12">
+              <tag-input [(ngModel)]="editingUser.tags" [ngModelOptions]="{standalone: true}" theme='minimal' allowDupes='true'></tag-input>
+            </div>
           </div>
           
           <div class="col-12">

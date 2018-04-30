@@ -7,6 +7,12 @@
   margin: 10px;
 }
 
+.card-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .card-container {
   display: block;
   width: 80px;

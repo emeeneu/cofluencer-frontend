@@ -259,3 +259,34 @@ section {
   }
 }
 
+h3 {
+  margin-bottom: 5px !important;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+.card-container {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  margin-right: 20px;
+}
+
+.card-img {
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
