@@ -1,31 +1,48 @@
 $(document).ready(function() {
   console.log('cofluencer js ready');
-
+  
+  // Nav scroll background color change
   $(window).scroll(function() {
+    var pathname = window.location.pathname;
     var topPos = $(this).scrollTop();
-    var nav = $('nav');
+    var navPos = $('nav').offset();
+    var wrapperHeight = $('header').height();
+    var nav = $('#nav');
+    var homeNav = $('#home-nav');
+    var gradientDiv = $('#gradient');
+    // Get the background-image of the wrapper only if the path is not the homePage
+    var bgWrapper = document.getElementById('bgWrapper');
+    if (bgWrapper != null) {
+      var style = window.getComputedStyle(bgWrapper, null);
+      var bgValue = style.backgroundImage;
+      var bgUrl = bgValue.substring(bgValue.indexOf('(') + 1, bgValue.indexOf(')'));
+    }
 
     if (nav.hasClass('bigNav')) {
-      if (topPos > 600) {
-        nav.addClass('gradient-reverse-smooth');
-        nav.removeClass('navbar-transparent');  
-      }
-      if (topPos < 600) {
-        nav.addClass('navbar-transparent');
-        nav.removeClass('gradient-reverse-smooth');
-      }
-    } else {
-      if (topPos > 100) {
-        nav.addClass('gradient-reverse-smooth');
+      if (navPos.top >= wrapperHeight - 200) {
+        // nav.addClass('gradient-reverse-smooth');
         nav.removeClass('navbar-transparent');
+        gradientDiv.addClass('gradient-opacity');
+        nav.css('background-image', 'url(' + bgUrl + ')');
+      }
+      if (navPos.top < wrapperHeight - 200) {
+        nav.addClass('navbar-transparent');
+        gradientDiv.removeClass('gradient-opacity');
+        nav.css('background-image', "url('')");
+      }
+    } else if (homeNav.hasClass('smallNav')) {
+      if (topPos > 100) {
+        homeNav.addClass('gradient-reverse-smooth');
+        homeNav.removeClass('navbar-transparent');
       }
       if (topPos < 100) {
-        nav.addClass('navbar-transparent');
-        nav.removeClass('gradient-reverse-smooth');
+        homeNav.addClass('navbar-transparent');
+        homeNav.removeClass('gradient-reverse-smooth');
       }
     }
   });
 
+  // Text animation in home page
   var words = [
     'work.',
     'win.',
@@ -38,8 +55,10 @@ $(document).ready(function() {
     $('#changingWord').fadeOut(function() {
       $(this).html(words[i=(i+1)%words.length]).fadeIn();
     });
-  }, 2000 );
+  }, 3000 );
+
   
+
   
   
   
