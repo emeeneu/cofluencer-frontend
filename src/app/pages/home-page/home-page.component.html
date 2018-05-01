@@ -16,17 +16,17 @@
         <ul class="navbar-nav flex flex-middle">
           <li class="nav-item">
             <a class="nav-link" href="" onclick="scrollToDownload()">
-              <p class="bodyTextBold capitalize colorGrey">Influencers</p>
+              <p class="bodyTextBold capitalize colorGrey menuLink">Influencers</p>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="">
-              <p class="bodyTextBold capitalize colorGrey">Brands</p>
+              <p class="bodyTextBold capitalize colorGrey menuLink">Brands</p>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="">
-              <p class="bodyTextBold capitalize colorGrey">About us</p>
+              <p class="bodyTextBold capitalize colorGrey menuLink">About us</p>
             </a>
           </li>
           <li class="nav-item">
@@ -34,7 +34,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" (click)="modalControl('login')">
-              <p class="bodyTextBold capitalize colorGrey">Login</p>
+              <p class="bodyTextBold capitalize colorGrey menuLink">Login</p>
             </a>
           </li>
           <li class="nav-item">
@@ -88,9 +88,9 @@
       <div class="container">
         <div class="content-center brand">
           <img class="n-logo" src="./assets/img/now-logo.png" alt="">
-          <h1 class="h1-seo huge text-left">Let your <span class="underline">influence </span><span id="changingWord">work.</span></h1>
+          <h1 id="homeH1" class="h1-seo huge text-left">Let your <span class="underline">influence </span><span id="changingWord">work.</span></h1>
           <h2 class="introductionText text-left lineHeight-15">Connect with thousands of brands and find your perfect campaign.</h2>
-          <button class="btn btn-lg btn-round btn-author h4 mt-40" (click)="modalControl('signup')">Sign up</button>
+          <button class="btn btn-lg btn-round btn-author h4 mt-40" (click)="modalControl('signup')" id="signupHome">Sign up</button>
           <a (click)="modalControl('login')" class="h4" id="loginButton">Login</a>
         </div>
       </div>
