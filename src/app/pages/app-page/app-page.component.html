@@ -5,7 +5,7 @@
     <div class="container-fluid fixed-top h-50 smooth" id="gradient">
       <div class="container">
         <div class="navbar-translate" id="navLogo">
-          <a class="navbar-brand w-115" href="/app/{{ user.username }}" rel="tooltip" data-placement="bottom">
+          <a class="navbar-brand w-115" [routerLink]="['/app', user.username]" rel="tooltip" data-placement="bottom">
             <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
           </a>
           <div class="iconMenu" (click)="menuControl()">
@@ -41,7 +41,7 @@
     <nav class="navbar navbar-expand-lg bg-info fixed-top navbar-transparent">
       <div class="container">
         <div class="navbar-translate flex sp-between w-100 flex-middle">
-          <a class="navbar-brand w-115" href="/" rel="tooltip" data-placement="bottom">
+          <a class="navbar-brand w-115" rel="tooltip" data-placement="bottom">
             <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
           </a>
           <div class="iconMenu" (click)="menuControl()">
@@ -54,19 +54,16 @@
 
     <ul class="menu container flex flex-column flex-middle mt-100">
       <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a (click)="menuControl()" href="/campaigns/me" class="bodyTextBold capitalize colorGrey">My campaigns</a>
+        <a [routerLink]="['/campaigns/me']" class="bodyTextBold capitalize colorGrey">My campaigns</a>
       </li>
       <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a (click)="getCampaigns()" href="/campaigns" class="bodyTextBold capitalize colorGrey">Search campaings</a>
+        <a [routerLink]="['/campaigns']" class="bodyTextBold capitalize colorGrey">Search campaings</a>
       </li>
-      <!-- <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a (click)="menuControl()" href="#" class="bodyTextBold capitalize colorGrey">My stats</a>
-      </li> -->
-      <!-- <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a class="bodyTextBold capitalize colorGrey" (click)="editProfile()">Edit profile</a>
-      </li> -->
       <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <button class="bodyTextBold capitalize colorGrey" (click)="logout()">Logout</button>
+        <a [routerLink]="['/app', user.username, 'edit-profile']" class="bodyTextBold capitalize colorGrey">Edit profile</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a class="bodyTextBold capitalize colorGrey" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>
@@ -78,7 +75,7 @@
       </div>
     </div>
     <div class="container flex sp-between" id="buttons">
-      <button (click)="getCampaigns()" class="btn btn-lg btn-primary btn-round h4" id="searchButton">SEARCH CAMPAIGNS</button>
+      <button [routerLink]="['/campaigns']" class="btn btn-lg btn-primary btn-round h4" id="searchButton">SEARCH CAMPAIGNS</button>
       <button class="h4 flex sp-between w-100" id="moreButton" (click)="moreButtonControl()">
         <i [hidden]="toggleMoreButton" class="icon-arrow-up"></i>
         <i [hidden]=!toggleMoreButton class="icon-arrow-down"></i>
@@ -111,7 +108,7 @@
     <div class="container">
       <div class="user">
         <div class="card-box">
-          <a href="#" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
+          <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
           </a>
         </div>
         <div>

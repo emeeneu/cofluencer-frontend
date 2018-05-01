@@ -7,7 +7,7 @@
         </div>
         <div class="user">
           <div class="card-box">
-            <a href="#" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + campaign.company_id.profileImage + ')'}">
+            <a [routerLink]="['/company', campaign.company_id.username]" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + campaign.company_id.profileImage + ')'}">
             </a>
           </div>
           <div>
@@ -24,7 +24,6 @@
         </div>
       </div>
     </div>
-    <div *ngIf='dropdownControl'>
       <div>
         <h4 class="h4 capitalize mb-10">Interested Cofluencers | {{ campaign.influencer_id.length }}</h4>
         <p *ngIf="!checkJoinCampaign(campaign.influencer_id)">are you interested in this collaboration!</p>
@@ -37,6 +36,5 @@
         <button class="btn btn-md btn-primary btn-round h4">Edit</button>
         <button class="btn btn-md btn-primary btn-round h4">Delete</button>
       </div>
-    </div>
   </div>
 

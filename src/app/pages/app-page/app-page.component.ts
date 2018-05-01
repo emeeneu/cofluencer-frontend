@@ -51,10 +51,6 @@ export class AppPageComponent implements OnInit {
     this.toggleMoreButton = !this.toggleMoreButton;
   }
 
-  getCampaigns() {
-    this.router.navigate(['/campaigns']);
-  }
-
   editProfile() {
     this.router.navigate(['app', this.user.username, 'edit-profile']);
   }

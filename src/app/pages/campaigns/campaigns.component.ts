@@ -41,18 +41,6 @@ export class CampaignsComponent implements OnInit {
     this.toaster.success(`${this.user.username}`, `See you! 👋🏻`);
   }
 
-  goProfile() {
-    this.router.navigate([`/app/${this.user.username}`]);
-  }
-
-  goCampaigns() {
-    this.router.navigate([`/campaigns`]);
-  }
-
-  goMyCampaigns() {
-    this.router.navigate([`/campaigns/me`]);
-  }
-
   menuControl() {
     this.toggleMenu = !this.toggleMenu;
   }

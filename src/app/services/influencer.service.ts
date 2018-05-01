@@ -17,6 +17,7 @@ export class InfluencerService {
   };
   campaigns: any;
   companyDetail: any = '';
+  companyCampaigns: any = '';
   options = {
     withCredentials: true,
   };
@@ -45,7 +46,7 @@ export class InfluencerService {
       });
   }
 
-  listCampaigns(){
+  listCampaigns() {
     this.user = this.session.getUser();
     return this.httpClient.get(`${this.API_URL}/list-campaigns`, this.options)
       .toPromise()
@@ -75,13 +76,20 @@ export class InfluencerService {
   }
 
   getCompany(companyParams: any) {
-    const options = {
-      withCredentials: true,
-    };
-    return this.httpClient.get(`${this.API_URL}/company/${companyParams}`, options)
+    return this.httpClient.get(`${this.API_URL}/company/${companyParams}`, this.options)
       .toPromise()
       .then((theCompany) => {
         this.companyDetail = theCompany;
+        return this.httpClient.get(`${this.API_URL}/campaigns/${this.companyDetail.username}`, this.options)
+          .toPromise()
+          .then((campaigns) => {
+            this.companyCampaigns = campaigns;
+          })
+          .catch((err) => {
+            if (err.status === 404) {
+              console.log(err);
+            }
+          });
       })
       .catch((err) => {
         if (err.status === 404) {
@@ -91,14 +99,16 @@ export class InfluencerService {
   }
 
   joinCampaign(idCampaign: any) {
-    return this.httpClient.put(`${this.API_URL}/campaigns/join/${idCampaign}`,{}, this.options)
+    return this.httpClient.put(`${this.API_URL}/campaigns/join/${idCampaign}`, {}, this.options)
       .toPromise()
       .then((res) => {
         if (window.location.pathname === '/campaigns') {
           this.listCampaigns();
         } else if (window.location.pathname === '/campaigns/me') {
           this.listMyCampaigns();
-        }
+        } else if (window.location.pathname === `/company/${this.companyDetail.username}`) {
+          this.getCompany(this.companyDetail.username);
+        } 
         this.toaster.success(`Registered correctly, good luck! 🤙🏻`);
         console.log(res);
       })
@@ -110,14 +120,16 @@ export class InfluencerService {
   }
 
   outCampaign(idCampaign: any) {
-    return this.httpClient.put(`${this.API_URL}/campaigns/out/${idCampaign}`,{}, this.options)
+    return this.httpClient.put(`${this.API_URL}/campaigns/out/${idCampaign}`, {}, this.options)
       .toPromise()
       .then((res) => {
         if (window.location.pathname === '/campaigns') {
           this.listCampaigns();
         } else if (window.location.pathname === '/campaigns/me') {
           this.listMyCampaigns();
-        }
+        } else if (window.location.pathname === `/company/${this.companyDetail.username}`) {
+          this.getCompany(this.companyDetail.username);
+        } 
         this.toaster.success('Removed from this campaign 🤭');
         console.log(res);
       })

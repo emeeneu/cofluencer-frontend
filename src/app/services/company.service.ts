@@ -32,6 +32,7 @@ export class CompanyService {
     return this.httpClient.get(`${this.API_URL}/campaigns`, options)
       .toPromise()
       .then((campaigns) => {
+        console.log(this.campaigns)
         this.campaigns = campaigns;
       })
       .catch((err) => {
