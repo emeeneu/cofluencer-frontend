@@ -18,6 +18,7 @@
             </p>
           </div>
         </div>
+        <!-- <app-tags [data]='campaign.tags' [disable]='true'></app-tags> -->
         <tag-input class="tags" [(ngModel)]="campaign.tags" theme='minimal' [removable]='false' [disable]='false' placeholder='' secondaryPlaceholder='No tags added'></tag-input>
         <div *ngIf='dropdownControl'>
           <p class="bodyTextBold w-50">{{ campaign.description }}</p>

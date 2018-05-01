@@ -46,6 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CampaignCardComponent } from './components/campaign-card/campaign-card.component';
 import { EditImageCoverComponent } from './components/edit-image-cover/edit-image-cover.component';
+import { TagsComponent } from './components/tags/tags.component';
+import { FilterTagsPipe } from './pipes/filter-tags.pipe';
 
 const routes: Routes = [
   {
@@ -140,6 +142,8 @@ const routes: Routes = [
     FileSelectDirective,
     CampaignCardComponent,
     EditImageCoverComponent,
+    TagsComponent,
+    FilterTagsPipe,
   ],
   imports: [
     BrowserModule,

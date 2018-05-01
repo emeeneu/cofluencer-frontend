@@ -15,6 +15,13 @@ export class CampaignsComponent implements OnInit {
   toggleMenu: Boolean;
   toggleMoreButton: Boolean;
   myCampaigns: Boolean;
+  searchCat: Array<object> = [
+    {
+      value: 'tag',
+      display: 'tag',
+    }
+  ];
+  pattern: any;
 
   constructor(
     private influencer: InfluencerService,

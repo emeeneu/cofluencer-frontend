@@ -71,6 +71,7 @@
   <!-- End Mobile Menu -->
 
 </header>
+
 <body>
   <div class="container p-5">
     <div class="row pb-5">
@@ -85,7 +86,14 @@
     </div>
   </div>
 
-  <div *ngFor="let campaign of influencer.campaigns">
+  <tag-input [onlyFromAutocomplete]="true" [(ngModel)]="pattern">
+    <tag-input-dropdown [showDropdownIfEmpty]="true" [autocompleteItems]="searchCat">
+    </tag-input-dropdown>
+  </tag-input>
+
+  <!-- <input id="things_name" placeholder="thing name" type="text" [(ngModel)]="pattern"> -->
+
+  <div *ngFor="let campaign of influencer.campaigns | filterTags:'value':pattern; let i = index">
     <app-campaign-card [campaign]='campaign'></app-campaign-card>
   </div>
 </body>
