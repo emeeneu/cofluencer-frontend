@@ -50,6 +50,8 @@ import { TagsComponent } from './components/tags/tags.component';
 import { FilterTagsPipe } from './pipes/filter-tags.pipe';
 import { MsgSendComponent } from './components/msg-send/msg-send.component';
 import { MsgService } from './services/msg.service';
+import { MessagesComponent } from './pages/messages/messages.component';
+import { MsgCardComponent } from './components/msg-card/msg-card.component';
 
 const routes: Routes = [
   {
@@ -115,6 +117,11 @@ const routes: Routes = [
     canActivate: [RequireUserGuardService],
   },
   {
+    path: 'messages',
+    component: MessagesComponent,
+    canActivate: [RequireUserGuardService],
+  },
+  {
     path: '**', redirectTo: '',
   },
 ];
@@ -147,6 +154,8 @@ const routes: Routes = [
     TagsComponent,
     FilterTagsPipe,
     MsgSendComponent,
+    MessagesComponent,
+    MsgCardComponent,
   ],
   imports: [
     BrowserModule,

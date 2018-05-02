@@ -9,6 +9,7 @@ import { ToasterService } from '../services/toaster.service';
 export class MsgService {
 
   msgNoRead: any = 0;
+  messages: any;
 
   options = {
     withCredentials: true,
@@ -58,4 +59,17 @@ export class MsgService {
       })
   };
 
+  getMessagesUser() {
+    return this.httpClient.get(`${this.API_URL}/messages/me`, this.options)
+      .toPromise()
+      .then((messagesUser: any) => {
+        this.messages = messagesUser;
+        console.log(this.messages);
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      })
+  }
 }
