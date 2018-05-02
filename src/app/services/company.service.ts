@@ -153,6 +153,4 @@ export class CompanyService {
       });
   }
 
-
-
 }

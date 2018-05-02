@@ -8,6 +8,8 @@ import { ToasterService } from '../services/toaster.service';
 @Injectable()
 export class MsgService {
 
+  msgNoRead: any = 0;
+
   options = {
     withCredentials: true,
   };
@@ -37,4 +39,23 @@ export class MsgService {
         }
       })
   };
+
+  checkNotifications() {
+    return this.httpClient.get(`${this.API_URL}/user/me`, this.options)
+      .toPromise()
+      .then((updatedUser: any) => {
+        this.msgNoRead = 0;
+        updatedUser.messages.forEach(msg => {
+          if(msg.read === false){
+            this.msgNoRead++;
+          }
+        });
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      })
+  };
+
 }

@@ -20,5 +20,6 @@ export class MsgSendComponent implements OnInit {
 
   sendMsg() {
     this.msg.sendMsg(this.to, this.message);
+    this.message = '';
   }
 }

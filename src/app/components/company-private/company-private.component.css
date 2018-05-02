@@ -290,3 +290,21 @@ footer {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.noti{
+  margin-left: 140px;
+  margin-top: 4px;
+}
+
+.new-msg{
+  background-color: rgb(221, 2, 2);
+  border-radius: 30px;
+  height: 30px;
+  width: 30px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

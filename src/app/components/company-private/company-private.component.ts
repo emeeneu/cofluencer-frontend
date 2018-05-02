@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 import { ToasterService } from '../../services/toaster.service';
+import { MsgService } from '../../services/msg.service';
 
 @Component({
   selector: 'app-company-private',
@@ -20,12 +21,14 @@ export class CompanyPrivateComponent implements OnInit {
     private router: Router,
     private companyService: CompanyService,
     private toaster: ToasterService,
+    private msg: MsgService,
   ) {
   }
 
   ngOnInit() {
     this.user = this.session.getUser();
     this.getCampaigns();
+    this.msg.checkNotifications();
   }
 
   logout() {

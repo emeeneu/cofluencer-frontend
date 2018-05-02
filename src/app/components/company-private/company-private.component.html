@@ -6,6 +6,10 @@
           <a class="navbar-brand w-115" [routerLink]="['/company', user.username]" rel="tooltip" data-placement="bottom">
             <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
           </a>
+          <div class="noti" [ngClass]="msg.msgNoRead !== 0 ?'new-msg':''">
+            <span *ngIf='msg.msgNoRead !== 0'>{{ msg.msgNoRead }}</span>
+            <i *ngIf='msg.msgNoRead === 0' class="icon-paper-plane"></i>
+          </div>
           <div class="iconMenu" (click)="menuControl()">
             <span class="bar1"></span>
             <span class="bar2"></span>
