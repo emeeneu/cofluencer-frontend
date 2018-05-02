@@ -25,11 +25,13 @@ $(document).ready(function() {
         nav.removeClass('navbar-transparent');
         gradientDiv.addClass('gradient-opacity');
         nav.css('background-image', 'url(' + bgUrl + ')');
+        menuLinks.css('color', 'white');
       }
       if (navPos.top < wrapperHeight - 200) {
         nav.addClass('navbar-transparent');
         gradientDiv.removeClass('gradient-opacity');
         nav.css('background-image', "url('')");
+        menuLinks.css('color', '');
       }
     } else if (homeNav.hasClass('smallNav')) {
       if (topPos > 100) {
