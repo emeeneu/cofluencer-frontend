@@ -57,7 +57,7 @@ export class EditInfluencerComponent implements OnInit {
     this.influencerService.updateUser(this.editingUser)
       .then((updatedUser) => {
         this.session.setUser(updatedUser);
-        this.router.navigate(['app', updatedUser.username]);
+        this.router.navigate(['influencer', updatedUser.username]);
         this.toaster.success('your profile is updated! 👍');
       })
       .catch((error) => {
@@ -74,7 +74,7 @@ export class EditInfluencerComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate(['app', this.editingUser.username]);
+    this.router.navigate(['influencer', this.editingUser.username]);
   }
 
 }

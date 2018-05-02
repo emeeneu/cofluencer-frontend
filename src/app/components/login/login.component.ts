@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
       .loginInfluencer(this.formInfo)
       .then(user => {
         this.user = user;
-        this.router.navigate(['app', this.user.username]);
+        this.router.navigate(['influencer', this.user.username]);
         this.toaster.success(`${this.user.username}`, `Welcome back! 🎉`);
       })
       .catch((error) => {

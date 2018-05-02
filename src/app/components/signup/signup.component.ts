@@ -56,7 +56,7 @@ export class SignupComponent implements OnInit {
     this.session.signupInfluencer(this.formInfo)
       .then(user => {
         this.user = user;
-        this.router.navigate(['app', this.user.username]);
+        this.router.navigate(['influencer', this.user.username]);
         // tslint:disable-next-line:max-line-length
         this.toaster.success('Please, complete your profile to take advantage of the full potential of cofluencer', `Welcome ${this.user.username}`);
       })
