@@ -10,6 +10,7 @@ $(document).ready(function() {
     var nav = $('#nav');
     var homeNav = $('#home-nav');
     var gradientDiv = $('#gradient');
+    var menuLinks = $('.menuLink');
     // Get the background-image of the wrapper only if the path is not the homePage
     var bgWrapper = document.getElementById('bgWrapper');
     if (bgWrapper != null) {
@@ -24,20 +25,24 @@ $(document).ready(function() {
         nav.removeClass('navbar-transparent');
         gradientDiv.addClass('gradient-opacity');
         nav.css('background-image', 'url(' + bgUrl + ')');
+        menuLinks.css('color', 'white');
       }
       if (navPos.top < wrapperHeight - 200) {
         nav.addClass('navbar-transparent');
         gradientDiv.removeClass('gradient-opacity');
         nav.css('background-image', "url('')");
+        menuLinks.css('color', '');
       }
     } else if (homeNav.hasClass('smallNav')) {
       if (topPos > 100) {
         homeNav.addClass('gradient-reverse-smooth');
         homeNav.removeClass('navbar-transparent');
+        menuLinks.css('color', 'white');
       }
       if (topPos < 100) {
         homeNav.addClass('navbar-transparent');
         homeNav.removeClass('gradient-reverse-smooth');
+        menuLinks.css('color', '');
       }
     }
   });
