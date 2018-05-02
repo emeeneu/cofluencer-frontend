@@ -74,10 +74,11 @@
       </div>
     </div>
     <div class="container flex sp-between" id="buttons">
-      <button class="btn btn-lg btn-primary btn-round h4" id="searchButton">CONTACT</button>
+      <button class="btn btn-lg btn-primary btn-round h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
       <button class="btn btn-lg btn-primary btn-round h4">FOLLOW</button>
     </div>
   </div>
+  <app-msg-send class="modal fade" id="sendMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [to]='influencer.companyDetail'></app-msg-send>
 
 </header>
 

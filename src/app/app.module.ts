@@ -48,6 +48,8 @@ import { CampaignCardComponent } from './components/campaign-card/campaign-card.
 import { EditImageCoverComponent } from './components/edit-image-cover/edit-image-cover.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { FilterTagsPipe } from './pipes/filter-tags.pipe';
+import { MsgSendComponent } from './components/msg-send/msg-send.component';
+import { MsgService } from './services/msg.service';
 
 const routes: Routes = [
   {
@@ -144,6 +146,7 @@ const routes: Routes = [
     EditImageCoverComponent,
     TagsComponent,
     FilterTagsPipe,
+    MsgSendComponent,
   ],
   imports: [
     BrowserModule,
@@ -168,6 +171,7 @@ const routes: Routes = [
     RequireAnonGuardService,
     InitAuthGuardService,
     ToasterService,
+    MsgService,
   ],
   bootstrap: [AppComponent]
 })
