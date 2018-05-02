@@ -5,7 +5,7 @@
     <div class="container-fluid fixed-top gradient-opacity h-50">
       <div class="container">
         <div class="navbar-translate" id="navLogo">
-          <a class="navbar-brand w-115" [routerLink]="['/app', user.username]" rel="tooltip" data-placement="bottom">
+          <a class="navbar-brand w-115" [routerLink]="['/company', user.username]" rel="tooltip" data-placement="bottom">
             <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
           </a>
           <div class="noti" [routerLink]="['/messages']" [ngClass]="msg.msgNoRead !== 0 ?'new-msg':''">
