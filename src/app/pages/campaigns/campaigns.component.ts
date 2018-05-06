@@ -33,10 +33,10 @@ export class CampaignsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
-    if(window.location.pathname === '/campaigns'){
+    if (window.location.pathname === '/campaigns') {
       this.influencer.listCampaigns();
       this.myCampaigns = false;
-    } else if (window.location.pathname === '/campaigns/me'){
+    } else if (window.location.pathname === '/campaigns/me') {
       this.influencer.listMyCampaigns();
       this.myCampaigns = true;
     }
