@@ -12,6 +12,7 @@ export class MsgService {
   msgNoRead: any = 0;
   messages: any;
   numMessages: Number;
+  messageSelected: any;
 
   options = {
     withCredentials: true,
@@ -29,6 +30,7 @@ export class MsgService {
     const messageContent = {
       to: to._id,
       message: message,
+      type: 'msg',
     }
     return this.httpClient.post(`${this.API_URL}/send-msg`, messageContent, this.options)
       .toPromise()
@@ -37,6 +39,24 @@ export class MsgService {
       })
       .catch((err) => {
         this.toaster.error(`Your message could not be sent... 🆘`);
+        if (err.status === 404) {
+          console.log(err);
+        }
+      })
+  };
+
+  sendNoti(to, message) {
+    console.log(to, message);
+    const messageContent = {
+      to: to,
+      message: message,
+      type: 'noti',
+    }
+    return this.httpClient.post(`${this.API_URL}/send-msg`, messageContent, this.options)
+      .toPromise()
+      .then((res) => {
+      })
+      .catch((err) => {
         if (err.status === 404) {
           console.log(err);
         }
@@ -65,7 +85,7 @@ export class MsgService {
     return this.httpClient.get(`${this.API_URL}/messages/me`, this.options)
       .toPromise()
       .then((messagesUser: any) => {
-        this.messages = messagesUser;
+        this.messages = messagesUser.reverse();
         this.numMessages = messagesUser.length;
       })
       .catch((err) => {
@@ -75,8 +95,12 @@ export class MsgService {
       })
   }
 
-  deleteMessage(idMessage) {
-    return this.httpClient.put(`${this.API_URL}/messages/delete/${idMessage}`, {}, this.options)
+  selectMessage(idMessage){
+    this.messageSelected = idMessage;
+  }
+
+  deleteMessage() {
+    return this.httpClient.put(`${this.API_URL}/messages/delete/${this.messageSelected}`, {}, this.options)
       .toPromise()
       .then((updateUser: any) => {
         console.log(updateUser);

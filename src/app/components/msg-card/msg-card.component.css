@@ -69,7 +69,26 @@ h3 {
   justify-content: flex-end;
   align-items: flex-end;
 }
+
+.icons-noti {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: -25px;
+}
+
 .icon {
   font-size: 20px;
   margin-left: 15px;
+}
+
+.pic-noti{
+ height: 60px !important;
+ margin-right: 10px;
+}
+
+.body-noti{
+  display: flex;
+  flex-direction: row;
 }
