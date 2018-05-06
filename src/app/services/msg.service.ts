@@ -72,4 +72,20 @@ export class MsgService {
         }
       })
   }
+
+  deleteMessage(idMessage) {
+    return this.httpClient.put(`${this.API_URL}/messages/delete/${idMessage}`, {}, this.options)
+      .toPromise()
+      .then((updateUser: any) => {
+        console.log(updateUser);
+        this.getMessagesUser();
+        this.checkNotifications();
+        this.toaster.success('delete ok');
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      })
+  }
 }

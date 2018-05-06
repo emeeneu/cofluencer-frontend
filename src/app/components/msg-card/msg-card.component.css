@@ -49,3 +49,18 @@ h3 {
   width: 100% !important;
 }
 
+.info-user{
+  margin-top: -15px;
+  width: 100%;
+}
+
+.icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.icon {
+  font-size: 20px;
+  margin-left: 15px;
+}
