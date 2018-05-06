@@ -37,7 +37,6 @@ export class EditImageCoverComponent implements OnInit {
 
   ngOnInit() {
     this.editingUser = this.session.getUser();
-    console.log(this.editingUser);
     this.uploader.onAfterAddingFile = (item => {
       this.uploadImage(item, this.options);
       this.editingUser = this.session.getUser();

@@ -1,7 +1,7 @@
 <div class="container">
   <img src="../../../assets/img/youtube.png" alt="logo-youtube">
   <div *ngIf='!youtubeInfo'>
-    <div class='no-account'>
+    <div *ngIf="rolControl" class='no-account'>
       <div *ngIf='!accountInput'>
         <p>nothing to see here.. ☹️</p>
         <button class="btn btn-danger" (click)="toggleAccount()">Add YouTube Account!</button>

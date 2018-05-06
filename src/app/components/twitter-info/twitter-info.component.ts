@@ -8,6 +8,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./twitter-info.component.css']
 })
 export class TwitterInfoComponent implements OnInit {
+
+  user: any;
+  rolControl: Boolean = false;
   twitterInfo: any;
   accountInput: Boolean = false;
   accountAddUsername: any = '';
@@ -18,6 +21,8 @@ export class TwitterInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.user = this.session.getUser();
+    this.user.role === 'influencer' ? this.rolControl = true : this.rolControl = false;
     this.twitterInfo = this.session.getUser().socialLinks.twitter;
     if (this.twitterInfo) {
       this.userTwitterInfo.getInfoTwitterUser(this.twitterInfo);

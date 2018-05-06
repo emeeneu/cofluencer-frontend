@@ -1,7 +1,7 @@
 <div class="container">
   <img class='logo' src="../../../assets/img/twitter.png" alt="logo-twitter">
   <div *ngIf='!twitterInfo'>
-    <div class='no-account'>
+    <div *ngIf="rolControl" class='no-account'>
       <div *ngIf='!accountInput'>
         <p>nothing to read here.. ☹️</p>
         <button class="btn btn-info" (click)="toggleAccount()">Add Twitter Account!</button>

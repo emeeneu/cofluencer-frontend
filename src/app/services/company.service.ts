@@ -12,6 +12,7 @@ export class CompanyService {
   campaigns: any = [];
   updatedCampaign: any;
   companyId: string;
+  influencer: any = '';
   user: any;
   campaignDetail: any = '';
 
@@ -144,6 +145,22 @@ export class CompanyService {
       .toPromise()
       .then((companyDB) => {
         return companyDB;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  getInfluencer(influencer: any): Promise<any> {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.get(`${this.API_URL}/company/${influencer}`, options)
+      .toPromise()
+      .then((influencerDB) => {
+        this.influencer = influencerDB;
       })
       .catch((err) => {
         if (err.status === 404) {
