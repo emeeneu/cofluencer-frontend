@@ -9,7 +9,8 @@
         <div class="info-user">
           <div class="icons">
             <i class="icon icon-eye"></i>
-            <i class="icon icon-trash" (click)='msg.deleteMessage(message._id)'></i>
+            <i class="icon icon-trash" data-toggle="modal" data-target="#alertDeleteMsg"></i>
+            <app-msg-alert-delete class="modal fade" id="alertDeleteMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [idMessage]='message._id'></app-msg-alert-delete>
           </div>
           <h3 class="capitalize">{{ message.from.name }}</h3>
           <p>

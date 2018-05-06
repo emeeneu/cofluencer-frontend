@@ -78,6 +78,16 @@
         <h2 class="font-weight-bold dark-grey-text mb-3">Messages & Notifications.</h2>
         <!--Section description-->
         <p class="subtitle-p grey-text">Check your messages and notifications, they can be important!</p>
+        <br><br>
+          <div *ngIf='msg.msgNoRead === 0'>
+            <div class="campaignBox shadow">
+              <div class="row">
+                <div class="col-12">
+                  At the moment you do not have messages or notifications in your mailbox!
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
