@@ -1,19 +1,45 @@
-<div class="campaignBox shadow">
+<div *ngIf="message.type === 'msg'" class="shadow" [ngClass]="!message.read?'msg-box-noread':'msg-box-read'">
   <div class="row">
     <div class="col-12">
       <div class="user">
         <div class="card-box">
-          <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + message.from.profileImage + ')'}">
+          <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + message.from.profileImage + ')'}" [routerLink]="['/influencer', message.from.username]">
           </a>
         </div>
-        <div>
+        <div class="info-user">
+          <div class="icons">
+            <i class='icon'[ngClass]="message.read?'icon-envelope-open':'icon-envelope'" (click)='msg.toggleReadMessage(message._id, message.read)'></i>
+            <i class="icon icon-trash" data-toggle="modal" data-target="#alertDeleteMsg" (click)='msg.selectMessage(message._id)'></i>
+            <app-msg-alert-delete class="modal fade" id="alertDeleteMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [idMessage]='message._id'></app-msg-alert-delete>
+          </div>
           <h3 class="capitalize">{{ message.from.name }}</h3>
           <p>
-            <span class="bodyTextBold">{{ message.created_at | date: 'dd/MM/yyyy' }}</span>
+            <span class="bodyTextBold">{{ message.created_at | date: 'dd/MM/yyyy - hh:mm' }}</span>
           </p>
         </div>
       </div>
         <p class="bodyTextBold w-50">{{ message.msg }}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="message.type === 'noti'" class="shadow" [ngClass]="!message.read?'msg-box-noread':'msg-box-read'">
+  <div class="row">
+    <div class="col-12">
+      <div class="user">
+        <div class="info-user">
+          <span class="bodyTextBold">{{ message.created_at | date: 'dd/MM/yyyy - hh:mm' }}</span>
+          <div class="icons-noti">
+            <i class='icon' [ngClass]="message.read?'icon-envelope-open':'icon-envelope'" (click)='msg.toggleReadMessage(message._id, message.read)'></i>
+            <i class="icon icon-trash" data-toggle="modal" data-target="#alertDeleteMsg"></i>
+            <app-msg-alert-delete class="modal fade" id="alertDeleteMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+              [idMessage]='message._id'></app-msg-alert-delete>
+          </div>
+        </div>
+      </div>
+      <div class='body-noti'>
+        <span class="bodyTextBold w-50 msg-noti">{{ message.msg }}</span>
+        <a class="card-container d-block pic-noti" data-parallax="true" [ngStyle]="{'background-image': 'url(' + message.from.profileImage + ')'}" [routerLink]="['/influencer', message.from.username]"></a>
+      </div>
     </div>
   </div>
 </div>

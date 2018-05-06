@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 import { AuthService } from './auth.service';
 import { ToasterService } from '../services/toaster.service';
+import { MsgService } from './msg.service';
 
 @Injectable()
 export class InfluencerService {
@@ -26,7 +27,8 @@ export class InfluencerService {
   constructor(
     private httpClient: HttpClient,
     private session: AuthService,
-    private toaster: ToasterService
+    private toaster: ToasterService,
+    private msg: MsgService,
   ) { }
 
   updateUser(userForm: any) {
@@ -101,16 +103,16 @@ export class InfluencerService {
   joinCampaign(idCampaign: any) {
     return this.httpClient.put(`${this.API_URL}/campaigns/join/${idCampaign}`, {}, this.options)
       .toPromise()
-      .then((res) => {
+      .then((res: any) => {
         if (window.location.pathname === '/campaigns') {
           this.listCampaigns();
         } else if (window.location.pathname === '/campaigns/me') {
           this.listMyCampaigns();
         } else if (window.location.pathname === `/company/${this.companyDetail.username}`) {
           this.getCompany(this.companyDetail.username);
-        } 
+        }
+        this.msg.sendNoti(res.company_id, `Cofluencer ${this.user.name} is interested in your campaign ${res.title}!`);
         this.toaster.success(`Registered correctly, good luck! 🤙🏻`);
-        console.log(res);
       })
       .catch((err) => {
         if (err.status === 404) {
@@ -131,7 +133,6 @@ export class InfluencerService {
           this.getCompany(this.companyDetail.username);
         } 
         this.toaster.success('Removed from this campaign 🤭');
-        console.log(res);
       })
       .catch((err) => {
         if (err.status === 404) {

@@ -1,6 +1,15 @@
-.campaignBox {
+.msg-box-noread {
   color: grey;
   background-color: white;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.msg-box-read {
+  color: rgb(107, 107, 107);
+  background-color: rgb(235, 235, 235);
   padding: 20px 30px;
   margin-bottom: 20px;
   border-radius: 5px;
@@ -49,3 +58,37 @@ h3 {
   width: 100% !important;
 }
 
+.info-user{
+  margin-top: -15px;
+  width: 100%;
+}
+
+.icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.icons-noti {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: -25px;
+}
+
+.icon {
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.pic-noti{
+ height: 60px !important;
+ margin-right: 10px;
+}
+
+.body-noti{
+  display: flex;
+  flex-direction: row;
+}

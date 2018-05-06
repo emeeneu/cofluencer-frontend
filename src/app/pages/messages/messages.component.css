@@ -282,3 +282,13 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+
+.campaignBox {
+  width: 100%;
+  color: grey;
+  background-color: white;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  margin: 25px;
+}

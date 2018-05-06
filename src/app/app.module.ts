@@ -55,6 +55,7 @@ import { MsgCardComponent } from './components/msg-card/msg-card.component';
 import { InfluencerProfileComponent } from './pages/influencer-profile/influencer-profile.component';
 import { InfluencerPublicComponent } from './components/influencer-public/influencer-public.component';
 import { InfluencerPrivateComponent } from './components/influencer-private/influencer-private.component';
+import { MsgAlertDeleteComponent } from './components/msg-alert-delete/msg-alert-delete.component';
 
 const routes: Routes = [
   {
@@ -162,6 +163,7 @@ const routes: Routes = [
     InfluencerProfileComponent,
     InfluencerPublicComponent,
     InfluencerPrivateComponent,
+    MsgAlertDeleteComponent,
   ],
   imports: [
     BrowserModule,
