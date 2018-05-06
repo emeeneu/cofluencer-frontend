@@ -27,7 +27,18 @@
     </div>
       <div>
         <h4 class="h4 capitalize mb-10">Interested Cofluencers | {{ campaign.influencer_id.length }}</h4>
+        <a *ngIf="rolControl">See all the influencers</a>
         <p *ngIf="!checkJoinCampaign(campaign.influencer_id)">are you interested in this collaboration!</p>
+      </div>
+      <div *ngIf="rolControl == true && dropdownControl == true">
+        <ul>
+          <li *ngFor="let influencer of campaign.influencer_id">
+            <div class="card-box">
+              <a [routerLink]="['/influencer', influencer.username]" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + influencer.profileImage + ')'}">
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
       <div *ngIf='!rolControl' class='buttons'>
         <button *ngIf="checkJoinCampaign(campaign.influencer_id)" (click)='influencer.joinCampaign(campaign._id)' class="btn btn-md btn-primary btn-round h4">Join in</button>

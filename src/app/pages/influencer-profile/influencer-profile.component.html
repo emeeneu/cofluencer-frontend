@@ -1,0 +1,4 @@
+<router-outlet></router-outlet>
+
+<app-influencer-public *ngIf="user.role === 'company'"></app-influencer-public>
+<app-influencer-private *ngIf="user.role === 'influencer'"></app-influencer-private>

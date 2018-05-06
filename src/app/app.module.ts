@@ -52,6 +52,9 @@ import { MsgSendComponent } from './components/msg-send/msg-send.component';
 import { MsgService } from './services/msg.service';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { MsgCardComponent } from './components/msg-card/msg-card.component';
+import { InfluencerProfileComponent } from './pages/influencer-profile/influencer-profile.component';
+import { InfluencerPublicComponent } from './components/influencer-public/influencer-public.component';
+import { InfluencerPrivateComponent } from './components/influencer-private/influencer-private.component';
 
 const routes: Routes = [
   {
@@ -72,12 +75,12 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'app/:id',
-    component: AppPageComponent,
+    path: 'influencer/:id',
+    component: InfluencerProfileComponent,
     canActivate: [RequireUserGuardService]
   },
   {
-    path: 'app/:id/edit-profile',
+    path: 'influencer/:id/edit-profile',
     component: EditInfluencerComponent,
     canActivate: [RequireUserGuardService],
   },
@@ -156,6 +159,9 @@ const routes: Routes = [
     MsgSendComponent,
     MessagesComponent,
     MsgCardComponent,
+    InfluencerProfileComponent,
+    InfluencerPublicComponent,
+    InfluencerPrivateComponent,
   ],
   imports: [
     BrowserModule,

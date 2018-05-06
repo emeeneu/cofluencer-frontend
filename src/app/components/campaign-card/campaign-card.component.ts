@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { InfluencerService } from '../../services/influencer.service';
+import { CompanyService } from '../../services/company.service';
 
 @Component({
   selector: 'app-campaign-card',
@@ -17,6 +18,7 @@ export class CampaignCardComponent implements OnInit {
   constructor(
     private session: AuthService,
     private influencer: InfluencerService,
+    private companyService: CompanyService,
   ) { }
 
   ngOnInit() {
@@ -34,5 +36,5 @@ export class CampaignCardComponent implements OnInit {
 
   ddControl() {
     this.dropdownControl = !this.dropdownControl;
-  } 
+  }
 }
