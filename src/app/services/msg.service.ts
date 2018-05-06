@@ -4,12 +4,14 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import { AuthService } from './auth.service';
 import { ToasterService } from '../services/toaster.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable()
 export class MsgService {
 
   msgNoRead: any = 0;
   messages: any;
+  numMessages: Number;
 
   options = {
     withCredentials: true,
@@ -64,7 +66,7 @@ export class MsgService {
       .toPromise()
       .then((messagesUser: any) => {
         this.messages = messagesUser;
-        console.log(this.messages);
+        this.numMessages = messagesUser.length;
       })
       .catch((err) => {
         if (err.status === 404) {
@@ -80,7 +82,7 @@ export class MsgService {
         console.log(updateUser);
         this.getMessagesUser();
         this.checkNotifications();
-        this.toaster.success('delete ok');
+        this.toaster.success('This message has been successfully deleted! 🤙🏻');
       })
       .catch((err) => {
         if (err.status === 404) {
@@ -88,4 +90,19 @@ export class MsgService {
         }
       })
   }
+
+  toggleReadMessage(idMessage, read) {
+    return this.httpClient.put(`${this.API_URL}/messages/read/${idMessage}`, {read}, this.options)
+      .toPromise()
+      .then(()=>{
+        this.getMessagesUser();
+        this.checkNotifications();
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      })
+  }
+
 }

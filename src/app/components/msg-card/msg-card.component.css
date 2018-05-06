@@ -1,6 +1,15 @@
-.campaignBox {
+.msg-box-noread {
   color: grey;
   background-color: white;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.msg-box-read {
+  color: rgb(107, 107, 107);
+  background-color: rgb(235, 235, 235);
   padding: 20px 30px;
   margin-bottom: 20px;
   border-radius: 5px;

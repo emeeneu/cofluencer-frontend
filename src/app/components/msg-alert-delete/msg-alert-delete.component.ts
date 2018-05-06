@@ -13,7 +13,6 @@ export class MsgAlertDeleteComponent implements OnInit {
   constructor(private msg: MsgService) { }
 
   ngOnInit() {
-    console.log(this.idMessage)
   }
 
 }
