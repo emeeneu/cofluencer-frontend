@@ -22,7 +22,7 @@ export class CampaignsComponent implements OnInit {
       display: 'tag',
     }
   ];
-  pattern: any;
+  search: any = [];
 
   constructor(
     private influencer: InfluencerService,

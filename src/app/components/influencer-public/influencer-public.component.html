@@ -119,8 +119,7 @@
         </div>
       </div>
       <p>
-        <tag-input class="tags" [ngModel]="companyService.influencer.tags" [ngModelOptions]="{standalone: true}" theme='minimal' [removable]='false' [disable]='false'
-          placeholder='' secondaryPlaceholder='No tags added'></tag-input>
+        <app-categories-tags [tags]="companyService.influencer.tags" [state]="'read'"></app-categories-tags>
       </p>
       <p class="bodyText">{{ companyService.influencer.bio }}</p>
     </div>

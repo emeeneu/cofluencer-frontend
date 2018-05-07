@@ -19,7 +19,11 @@ export class CompanyService {
     coverImage: String,
     followers: Array,
   };
-  user: any;
+  user: any = {
+    username: String,
+    coverImage: String,
+    followers: Array,
+  };
   campaignDetail: any;
   campaignSelected: any;
   followButtonState: boolean;

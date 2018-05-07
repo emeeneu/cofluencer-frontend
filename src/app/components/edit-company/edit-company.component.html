@@ -63,7 +63,7 @@
             </div>
             
             <div class="col-12">
-              <tag-input [(ngModel)]="editingUser.tags" [ngModelOptions]="{standalone: true}" theme='minimal' allowDupes='true'></tag-input>
+              <app-categories-tags [(tags)]='editingUser.tags' [state]="'edit'"></app-categories-tags>
             </div>
   
             <div class="row form-group">

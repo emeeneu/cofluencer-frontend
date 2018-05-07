@@ -1,23 +1,30 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filterTags'
+  name: 'filterTags',
+  pure: false,
 })
 export class FilterTagsPipe implements PipeTransform {
 
-  transform(items: any, field: any, value: any): any[] {
+  transform(items: any, value: any) {
     if (!items) {
       return [];
     }
 
-    if (!value || value === 'undefined') {
+    if (!value || value === 'undefined' || value.length === 0) {
       return items;
     }
 
-    console.log(value[0].value)
-    console.log(field, items, value)
-    const myPattern = new RegExp(value[0].value, 'i');
-    console.log(myPattern);
-    return items.filter(it => it.tags[0].value.match(myPattern));
+    const itmesRes = [];
+
+    items.forEach(item => {
+      value.forEach(val =>{
+        if(item.tags.includes(val)) {
+          itmesRes.push(item);
+        }
+      })
+    })
+
+    return itmesRes;
   }
 }

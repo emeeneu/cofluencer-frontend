@@ -53,10 +53,6 @@ export class EditInfluencerComponent implements OnInit {
     };
   }
 
-  ngOnChanges() {
-    console.log(this.editingUser)
-  }
-
   updateUser() {
     this.influencerService.updateUser(this.editingUser)
       .then((updatedUser) => {

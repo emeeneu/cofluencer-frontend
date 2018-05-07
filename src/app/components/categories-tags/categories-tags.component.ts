@@ -15,7 +15,6 @@ export class CategoriesTagsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.tags, this.state)
   }
 
   checkHaveTag(tag) {
@@ -27,7 +26,6 @@ export class CategoriesTagsComponent implements OnInit {
   }
 
   toggleTags(tag) {
-    console.log('click en', tag);
     if (this.tags.indexOf(tag) !== -1) {
       this.tags.splice(this.tags.indexOf(tag),1);
     } else {
