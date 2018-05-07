@@ -1,7 +1,7 @@
 .campaignBox {
   color: grey;
   background-color: white;
-  padding: 20px 30px;
+  padding: 5px 20px;
   margin-bottom: 20px;
   border-radius: 5px;
   margin: 10px;
@@ -14,13 +14,12 @@
 }
 
 .card-container {
-  display: block;
-  width: 80px;
-  height: 80px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
-  margin-right: 20px;
 }
 
 .card-img {
@@ -47,4 +46,68 @@ h3 {
 
 .bodyTextBold {
   width: 100% !important;
+}
+
+.editButton {
+  width: 120px;
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 0px;
+}
+
+#deleteButton {
+  position: relative;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+#deleteButton::after {
+  content: '';
+  width: 50%;
+  height: 2px;
+  border-radius: 2px;
+  background-image: linear-gradient(137deg, #EE5622, #ECA72C);
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+#deleteButton:hover::after {
+  width: 100%;
+}
+
+.containerButton {
+  display: inline-block;
+}
+
+.gradientButton {
+  background-image: linear-gradient(137deg, #28afb0, #44355b);
+  border-radius: 30px;
+  color: tomato;
+  display: inline-block;
+  padding: 1px;
+}
+
+.gradientButton span {
+  background-color: #fff;
+  display: block;
+  border-radius: 30px;
+}
+
+.gradientButton span:hover {
+  background-image: linear-gradient(137deg, #44355b, #28afb0);
+  color: #fff;
+}
+
+.moreInfo {
+  vertical-align: text-bottom;
+  margin-top: 20px;
+  position: absolute;
+  right: 20px;
+}
+
+.buttons {
+  position: relative;
 }

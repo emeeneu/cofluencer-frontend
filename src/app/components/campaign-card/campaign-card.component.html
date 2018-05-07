@@ -1,4 +1,4 @@
-  <div class="campaignBox shadow">
+  <!-- <div class="campaignBox shadow">
     <div class="row">
       <div class="col-12">
         <div class="card-head">
@@ -51,4 +51,50 @@
         <button class="btn btn-md btn-primary btn-round h4">Edit</button>
         <button class="btn btn-md btn-primary btn-round h4">Delete</button>
       </div>
+  </div> -->
+
+  <div class="campaignBox shadow">
+    <div class="row">
+      <div class="col-6 col-md-4 p-0 br-5" [ngStyle]="{'background-image': 'url(' + campaign.campaignImage + ')'}" style="background-position: center; background-size: cover;">
+        <div class="gradient-opacity br-5" style="width: 100%; height: 100%;"></div>
+      </div>
+      <div class="col-6 col-md-8">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="h4 capitalize p-0 m-0">{{ campaign.title }}</h3>
+          </div>
+          <div class="col-12">
+            <p class="flex flex-start flex-middle">
+              <span class="mr-10">{{ campaign.startDate | date: 'dd/MM/yyyy' }}</span> ¬
+              <span class="mr-10 ml-10">{{ campaign.endDate | date: 'dd/MM/yyyy' }}</span> |
+              <a [routerLink]="['/company', campaign.company_id.username]" class="card-container ml-10" data-parallax="true" [ngStyle]="{'background-image': 'url(' + campaign.company_id.profileImage + ')'}">
+              </a>
+              <span class="ml-10">{{ campaign.company_id.username }}</span>
+            </p>
+          </div>
+          <div class="col-12">
+            <h4 class="h4 capitalize mb-10">Interested Cofluencers | {{ campaign.influencer_id.length }}</h4>
+            <a *ngIf="rolControl">See all the influencers</a>
+            <p *ngIf="!checkJoinCampaign(campaign.influencer_id)">are you interested in this collaboration!</p>
+          </div>
+          <div class="col-12 mt-20">
+            <div *ngIf='!rolControl' class='buttons flex flex-middle wrap'>
+              <button *ngIf="checkJoinCampaign(campaign.influencer_id)" (click)='influencer.joinCampaign(campaign._id)' class="btn btn-md btn-primary btn-round">Join in</button>
+              <button *ngIf="!checkJoinCampaign(campaign.influencer_id)" (click)='influencer.outCampaign(campaign._id)' class="btn btn-md btn-primary btn-round">Remove me</button>
+              <i class="icon-arrow-down-circle"></i>
+            </div>
+            <div *ngIf='rolControl' class='buttons flex flex-middle wrap'>
+              <button class="btn btn-round btn-author editButton h4" id="editButton">Edit</button>
+              <a class="h4" id="deleteButton">Delete</a>
+              <!-- <div class="containerButton" id="deleteButton">
+                <a class="btn gradientButton">
+                  <span class="btn-round">Delete</span>
+                </a>
+              </div> -->
+              <i class="icon-arrow-down moreInfo" id="moreInfo"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>

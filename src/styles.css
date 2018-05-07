@@ -85,6 +85,10 @@ img {
 .align-end {
   align-items: flex-end;
 }
+
+.wrap {
+  flex-wrap: wrap;
+}
 /* --··--··--··--··--··----··--··--··--··--··----··--··--··--··--··----··--··--··--··--··----··--··--··--··--··-- */
 
 /* Width */
@@ -234,6 +238,14 @@ img {
 .mb-100 {
   margin-bottom: 100px;
 }
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
 /* --··--··--··--··--··----··--··--··--··--··----··--··--··--··--··----··--··--··--··--··----··--··--··--··--··-- */
 
 /* Opacity */
@@ -269,6 +281,10 @@ img {
 /* Border */
 .br {
   border-radius: 0.25rem;
+}
+
+.br-5 {
+  border-radius: 5px;
 }
 
 .b-top {
@@ -525,6 +541,26 @@ ul a:not([href]):not([tabindex]):hover {
   #homeH1 {
     font-size: 6.5rem;
     padding-right: 400px;
+  }
+
+}
+
+@media (max-width: 600px) {
+}
+
+@media (max-width: 768px) {
+  #editButton {
+    width: 100%;
+    margin-right: 0px;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #moreInfo {
+    bottom: 20px;
   }
 
 }
