@@ -14,9 +14,13 @@ export class CompanyService {
   campaigns: any = [];
   updatedCampaign: any;
   companyId: string;
-  influencer: any = '';
+  influencer: any = {
+    username: String,
+    coverImage: String,
+    followers: Array,
+  };
   user: any;
-  campaignDetail: any = '';
+  campaignDetail: any;
   campaignSelected: any;
   followButtonState: boolean;
 
@@ -188,6 +192,7 @@ export class CompanyService {
       .toPromise()
       .then(() => {
         this.checkFollowButton();
+        this.getInfluencer(this.influencer.username);
         this.msg.sendNoti(influencerId, `${this.user.brandName} has started to follow you!`)
       })
       .catch((err) => {
@@ -204,6 +209,7 @@ export class CompanyService {
     return this.httpClient.put(`${this.API_URL}/unfollow/${influencerId}`, {}, options)
       .toPromise()
       .then(() => {
+        this.getInfluencer(this.influencer.username);
         this.checkFollowButton();
       })
       .catch((err) => {

@@ -33,6 +33,7 @@ export class InfluencerPrivateComponent implements OnInit {
     this.checkYoutube();
     this.checkTwitter();
     this.influencer.listMyCampaigns();
+    this.influencer.checkFollowButton();
     this.msg.checkNotifications();
   }
 

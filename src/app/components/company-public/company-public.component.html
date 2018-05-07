@@ -79,7 +79,8 @@
     </div>
     <div class="container flex sp-between" id="buttons">
       <button class="btn btn-lg btn-primary btn-round h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
-      <button class="btn btn-lg btn-primary btn-round h4">FOLLOW</button>
+      <button *ngIf='!influencer.followButtonState' class="btn btn-lg btn-primary btn-round h4" (click)='influencer.followCompany(influencer.companyDetail._id)'>FOLLOW</button>
+      <button *ngIf='influencer.followButtonState' class="btn btn-lg btn-info btn-round h4" (click)='influencer.unfollowCompany(influencer.companyDetail._id)'>UNFOLLOW</button>
     </div>
   </div>
   <app-msg-send class="modal fade" id="sendMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [to]='influencer.companyDetail'></app-msg-send>
@@ -97,8 +98,8 @@
       <p class="quoteText textCenter">90%</p>
     </div>
     <div class="flex flex-column flex-center">
-      <h2 class="colorGrey introductionText textCenter">Total reach</h2>
-      <p class="quoteText textCenter">254</p>
+      <h2 class="colorGrey introductionText textCenter">Cofollowers</h2>
+      <p class="quoteText textCenter">{{ influencer.companyDetail.followers.length }}</p>
     </div>
   </section>
   <section id="info">
