@@ -8,6 +8,10 @@
           <a class="navbar-brand w-115" [routerLink]="['/company', user.username]" rel="tooltip" data-placement="bottom">
             <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
           </a>
+          <div class="noti" [routerLink]="['/messages']" [ngClass]="msg.msgNoRead !== 0 ?'new-msg':''">
+            <span *ngIf='msg.msgNoRead !== 0'>{{ msg.msgNoRead }}</span>
+            <i *ngIf='msg.msgNoRead === 0' class="icon-paper-plane"></i>
+          </div>
           <div class="iconMenu" (click)="menuControl()">
             <span class="bar1"></span>
             <span class="bar2"></span>
@@ -59,13 +63,10 @@
 
     <ul class="menu container flex flex-column flex-middle mt-100">
       <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a [routerLink]="['/campaigns/me']" class="bodyTextBold capitalize colorGrey">My campaigns</a>
+        <a (click)="newCampaign()" class="bodyTextBold capitalize colorGrey">Create campaign</a>
       </li>
       <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a [routerLink]="['/campaigns']" class="bodyTextBold capitalize colorGrey">Search campaings</a>
-      </li>
-      <li class="pb-20 mt-20 w-100 b-bottomThin">
-        <a [routerLink]="['/company', user.username, 'edit-profile']" class="bodyTextBold capitalize colorGrey">Edit profile</a>
+        <a class="bodyTextBold capitalize colorGrey" (click)="editProfile()">Edit profile</a>
       </li>
       <li class="pb-20 mt-20 w-100 b-bottomThin">
         <a class="bodyTextBold capitalize colorGrey" (click)="logout()">Logout</a>
@@ -80,17 +81,12 @@
       </div>
     </div>
     <div class="container flex sp-between" id="buttons">
-      <button [routerLink]="['/campaigns']" class="btn btn-lg btn-primary btn-round h4" id="searchButton">SEARCH CAMPAIGNS</button>
-      <button class="h4 flex sp-between w-100" id="moreButton" (click)="moreButtonControl()">
-        <i [hidden]="toggleMoreButton" class="icon-arrow-up"></i>
-        <i [hidden]=!toggleMoreButton class="icon-arrow-down"></i>
-      </button>
-    </div>
-    <div [hidden]="!toggleMoreButton" id="insideMoreButton" class="flex flex-column">
-      <button class="btn btn-primary btn-round" (click)="editProfile()">edit profile</button>
-      <button (click)="logout()" class="btn btn-primary btn-round">logout</button>
+      <button class="btn btn-lg btn-primary btn-round h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
+      <button class="btn btn-lg btn-primary btn-round h4">FOLLOW</button>
     </div>
   </div>
+  <app-msg-send class="modal fade" id="sendMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    [to]='companyService.influencer'></app-msg-send>
 
 </header>
 
