@@ -82,7 +82,8 @@
     </div>
     <div class="container flex sp-between" id="buttons">
       <button class="btn btn-lg btn-primary btn-round h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
-      <button class="btn btn-lg btn-primary btn-round h4">FOLLOW</button>
+      <button *ngIf='!companyService.followButtonState' class="btn btn-lg btn-primary btn-round h4" (click)='companyService.followInfluencer(companyService.influencer._id)'>FOLLOW</button>
+      <button *ngIf='companyService.followButtonState' class="btn btn-lg btn-info btn-round h4" (click)='companyService.unfollowInfluencer(companyService.influencer._id)'>UNFOLLOW</button>
     </div>
   </div>
   <app-msg-send class="modal fade" id="sendMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
@@ -94,7 +95,7 @@
   <section class="container flex sp-between" id="stats">
     <div class="flex flex-column flex-center">
       <h2 class="colorGrey introductionText textCenter">Campaigns</h2>
-      <p class="quoteText textCenter">{{ influencer.stats.registeredCampaigns }}</p>
+      <p class="quoteText textCenter">0</p>
     </div>
     <div class="flex flex-column flex-center">
       <h2 class="colorGrey introductionText textCenter">Cofluencity</h2>
@@ -109,19 +110,19 @@
     <div class="container">
       <div class="user">
         <div class="card-box">
-          <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
+          <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + companyService.influencer.profileImage + ')'}">
           </a>
         </div>
         <div>
-          <h3>{{ session.user.name }}</h3>
-          <h3 class="bodyText">{{ user.email }} | @{{ user.username }}</h3>
+          <h3>{{ companyService.influencer.name }}</h3>
+          <h3 class="bodyText">{{ companyService.influencer.email }} | @{{ companyService.influencer.username }}</h3>
         </div>
       </div>
       <p>
-        <tag-input class="tags" [ngModel]="user.tags" [ngModelOptions]="{standalone: true}" theme='minimal' [removable]='false' [disable]='false'
+        <tag-input class="tags" [ngModel]="companyService.influencer.tags" [ngModelOptions]="{standalone: true}" theme='minimal' [removable]='false' [disable]='false'
           placeholder='' secondaryPlaceholder='No tags added'></tag-input>
       </p>
-      <p class="bodyText">{{ user.bio }}</p>
+      <p class="bodyText">{{ companyService.influencer.bio }}</p>
     </div>
   </section>
 </main>

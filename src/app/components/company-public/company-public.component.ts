@@ -57,7 +57,7 @@ export class CompanyPublicComponent implements OnInit {
   }
 
   getCampaigns() {
-    this.companyService.campaignsList(this.user);
+    this.companyService.campaignsList();
   }
 
   newCampaign() {

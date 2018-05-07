@@ -46,7 +46,6 @@ export class MsgService {
   };
 
   sendNoti(to, message) {
-    console.log(to, message);
     const messageContent = {
       to: to,
       message: message,

@@ -30,7 +30,7 @@
           <span class="bodyTextBold">{{ message.created_at | date: 'dd/MM/yyyy - hh:mm' }}</span>
           <div class="icons-noti">
             <i class='icon' [ngClass]="message.read?'icon-envelope-open':'icon-envelope'" (click)='msg.toggleReadMessage(message._id, message.read)'></i>
-            <i class="icon icon-trash" data-toggle="modal" data-target="#alertDeleteMsg"></i>
+            <i class="icon icon-trash" data-toggle="modal" data-target="#alertDeleteMsg" (click)='msg.selectMessage(message._id)'></i>
             <app-msg-alert-delete class="modal fade" id="alertDeleteMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
               [idMessage]='message._id'></app-msg-alert-delete>
           </div>

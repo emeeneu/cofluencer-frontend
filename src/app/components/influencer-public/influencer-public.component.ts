@@ -38,6 +38,7 @@ export class InfluencerPublicComponent implements OnInit {
       this.influencerParams = params['id'];
     });
     this.companyService.getInfluencer(this.influencerParams);
+    this.companyService.checkFollowButton();
     this.checkYoutube();
     this.checkTwitter();
     this.influencer.listMyCampaigns();
@@ -81,5 +82,4 @@ export class InfluencerPublicComponent implements OnInit {
       this.twitterProfile = true;
     }
   }
-
 }
