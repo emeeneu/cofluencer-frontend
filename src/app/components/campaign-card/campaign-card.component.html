@@ -49,6 +49,7 @@
       </div>
       <div *ngIf='rolControl' class='buttons'>
         <button class="btn btn-md btn-primary btn-round h4">Edit</button>
-        <button class="btn btn-md btn-primary btn-round h4">Delete</button>
+        <button class="btn btn-md btn-primary btn-round h4" data-toggle="modal" data-target="#alertDeleteCampaign" (click)='companyService.selectCampaign(campaign._id)'>Delete</button>
+        <app-campaign-alert-delete class="modal fade" id="alertDeleteCampaign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></app-campaign-alert-delete>
       </div>
   </div>

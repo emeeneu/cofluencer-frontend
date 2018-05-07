@@ -3,8 +3,8 @@
     <div class="col-12">
       <div class="user">
         <div class="card-box">
-          <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + message.from.profileImage + ')'}" [routerLink]="['/influencer', message.from.username]">
-          </a>
+        <a *ngIf="user.role === 'influencer'" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + message.from.profileImage + ')'}" [routerLink]="['/company', message.from.username]"></a>
+        <a *ngIf="user.role === 'company'" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + message.from.profileImage + ')'}" [routerLink]="['/influencer', message.from.username]"></a>
         </div>
         <div class="info-user">
           <div class="icons">
@@ -38,7 +38,8 @@
       </div>
       <div class='body-noti'>
         <span class="bodyTextBold w-50 msg-noti">{{ message.msg }}</span>
-        <a class="card-container d-block pic-noti" data-parallax="true" [ngStyle]="{'background-image': 'url(' + message.from.profileImage + ')'}" [routerLink]="['/influencer', message.from.username]"></a>
+        <a *ngIf="user.role === 'influencer'" class="card-container d-block pic-noti" data-parallax="true" [ngStyle]="{'background-image': 'url(' + message.from.profileImage + ')'}" [routerLink]="['/company', message.from.username]"></a>
+        <a *ngIf="user.role === 'company'" class="card-container d-block pic-noti" data-parallax="true" [ngStyle]="{'background-image': 'url(' + message.from.profileImage + ')'}" [routerLink]="['/influencer', message.from.username]"></a>
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 import { AuthService } from './auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToasterService } from './toaster.service';
 
 @Injectable()
 export class CompanyService {
@@ -15,6 +16,7 @@ export class CompanyService {
   influencer: any = '';
   user: any;
   campaignDetail: any = '';
+  campaignSelected: any;
 
   private sub: any;
   private API_URL = 'http://localhost:3000/api';
@@ -24,15 +26,16 @@ export class CompanyService {
     private httpClient: HttpClient,
     private session: AuthService,
     private route: ActivatedRoute,
+    private toaster: ToasterService,
   ) { }
 
-  campaignsList(user: any): Promise<any> {
+  campaignsList(): Promise<any> {
     const options = {
       withCredentials: true
     };
     return this.httpClient.get(`${this.API_URL}/campaigns`, options)
       .toPromise()
-      .then((campaigns) => {
+      .then((campaigns: any) => {
         this.campaigns = campaigns;
       })
       .catch((err) => {
@@ -64,7 +67,7 @@ export class CompanyService {
     };
     return this.httpClient.get(`${this.API_URL}/campaigns/${companyName}`, options)
       .toPromise()
-      .then((campaigns) => {
+      .then((campaigns: any) => {
         this.campaigns = campaigns;
       })
       .catch((err) => {
@@ -121,14 +124,19 @@ export class CompanyService {
       });
   }
 
-  deleteCampaign(campaignId: any) {
+  selectCampaign(campaignId){
+    this.campaignSelected = campaignId;
+  }
+
+  deleteCampaign() {
     const options = {
       withCredentials: true,
     };
-    return this.httpClient.delete(`${this.API_URL}/${campaignId}/delete-campaign`, options)
+    return this.httpClient.delete(`${this.API_URL}/${this.campaignSelected}/delete-campaign`, options)
       .toPromise()
       .then((deletedCampaign) => {
-        console.log(deletedCampaign);
+        this.toaster.success('Campaign has been successfully deleted! 🤙🏻');
+        this.campaignsList();
       })
       .catch((err) => {
         if (err.status === 404) {
