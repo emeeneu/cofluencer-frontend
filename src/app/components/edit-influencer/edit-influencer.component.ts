@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { InfluencerService } from '../../services/influencer.service';
@@ -51,6 +51,10 @@ export class EditInfluencerComponent implements OnInit {
       this.uploadImage(item, this.options);
       this.editingUser = this.session.getUser();
     };
+  }
+
+  ngOnChanges() {
+    console.log(this.editingUser)
   }
 
   updateUser() {

@@ -126,8 +126,7 @@
         </div>
       </div>
       <p>
-        <tag-input class="tags" [ngModel]="user.tags" [ngModelOptions]="{standalone: true}" theme='minimal' [removable]='false'
-          [disable]='false' placeholder='' secondaryPlaceholder='No tags added'></tag-input>
+        <app-categories-tags [tags]='influencer.user.tags' [state]="'read'"></app-categories-tags>
       </p>
       <p class="bodyText">{{ user.bio }}</p>
     </div>
