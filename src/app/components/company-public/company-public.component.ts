@@ -37,10 +37,9 @@ export class CompanyPublicComponent implements OnInit {
       this.companyParams = params['id'];
     });
     this.influencer.getCompany(this.companyParams);
-    this.influencer.checkFollowButton();
     this.companyService.campaignByCompany(this.companyParams);
     this.msg.checkNotifications();
-
+    this.influencer.checkFollowButton();
   }
 
   logout() {
