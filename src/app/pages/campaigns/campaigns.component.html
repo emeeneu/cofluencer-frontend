@@ -8,6 +8,10 @@
           <a class="navbar-brand w-115" [routerLink]="['/influencer', user.username]" rel="tooltip" data-placement="bottom">
             <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
           </a>
+          <div class="noti" [routerLink]="['/messages']" [ngClass]="msg.msgNoRead !== 0 ?'new-msg':''">
+            <span *ngIf='msg.msgNoRead !== 0'>{{ msg.msgNoRead }}</span>
+            <i *ngIf='msg.msgNoRead === 0' class="icon-paper-plane"></i>
+          </div>
           <div class="iconMenu" (click)="menuControl()">
             <span class="bar1"></span>
             <span class="bar2"></span>
@@ -87,18 +91,14 @@
         <!--Section description-->
         <p *ngIf='myCampaigns' class="subtitle-p grey-text">Check the campaigns in which you are already registered and contact the company.</p>
         <p *ngIf='!myCampaigns' class="subtitle-p grey-text">Check the campaigns that match your interests and availability and contact the companies.</p>
+        <br>
+        <p>Select the categories that you find interesting!</p>
+        <app-categories-tags [(tags)]='search' [state]="'edit'"></app-categories-tags>
       </div>
     </div>
   </div>
 
-  <tag-input [onlyFromAutocomplete]="true" [(ngModel)]="pattern">
-    <tag-input-dropdown [showDropdownIfEmpty]="true" [autocompleteItems]="searchCat">
-    </tag-input-dropdown>
-  </tag-input>
-
-  <!-- <input id="things_name" placeholder="thing name" type="text" [(ngModel)]="pattern"> -->
-
-  <div *ngFor="let campaign of influencer.campaigns | filterTags:'value':pattern; let i = index">
+  <div *ngFor="let campaign of influencer.campaigns | filterTags:search ">
     <app-campaign-card [campaign]='campaign'></app-campaign-card>
   </div>
 </body>

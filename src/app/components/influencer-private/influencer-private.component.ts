@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 import { ToasterService } from '../../services/toaster.service';
 import { InfluencerService } from '../../services/influencer.service';
+import { MsgService } from '../../services/msg.service';
 
 @Component({
   selector: 'app-influencer-private',
@@ -23,7 +24,8 @@ export class InfluencerPrivateComponent implements OnInit {
     private router: Router,
     private companyService: CompanyService,
     private influencer: InfluencerService,
-    private toaster: ToasterService
+    private toaster: ToasterService,
+    private msg: MsgService,
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,8 @@ export class InfluencerPrivateComponent implements OnInit {
     this.checkYoutube();
     this.checkTwitter();
     this.influencer.listMyCampaigns();
+    this.influencer.checkFollowButton();
+    this.msg.checkNotifications();
   }
 
   ngOnChanges(changes: any) {

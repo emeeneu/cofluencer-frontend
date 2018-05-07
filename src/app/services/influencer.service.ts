@@ -10,15 +10,20 @@ import { MsgService } from './msg.service';
 @Injectable()
 export class InfluencerService {
 
-  influencerId: string;
+  companyId: string;
   user: any;
   stats: any = {
     registeredCampaigns: Number,
     cofluencity: Number,
   };
   campaigns: any;
-  companyDetail: any = '';
+  companyDetail: any = {
+    username: String,
+    coverImage: String,
+    followers: Array,
+  };
   companyCampaigns: any = '';
+  followButtonState: boolean;
   options = {
     withCredentials: true,
   };
@@ -133,6 +138,62 @@ export class InfluencerService {
           this.getCompany(this.companyDetail.username);
         } 
         this.toaster.success('Removed from this campaign 🤭');
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  followCompany(companyId: any) {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.put(`${this.API_URL}/follow/${companyId}`, {}, options)
+      .toPromise()
+      .then(() => {
+        this.checkFollowButton();
+        this.getCompany(this.companyDetail.username);
+        this.msg.sendNoti(companyId, `${this.user.name} has started to follow you!`)
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  unfollowCompany(companyId: any) {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.put(`${this.API_URL}/unfollow/${companyId}`, {}, options)
+      .toPromise()
+      .then(() => {
+        this.getCompany(this.companyDetail.username);
+        this.checkFollowButton();
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  checkFollowButton() {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.get(`${this.API_URL}/user/me`, options)
+      .toPromise()
+      .then((user: any) => {
+        this.user = user;
+        if (user.companiesFavs.indexOf(this.companyDetail._id) === -1) {
+          this.followButtonState = false;
+        } else {
+          this.followButtonState = true;
+        }
       })
       .catch((err) => {
         if (err.status === 404) {

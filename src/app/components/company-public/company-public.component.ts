@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 import { ToasterService } from '../../services/toaster.service';
 import { InfluencerService } from '../../services/influencer.service';
+import { MsgService } from '../../services/msg.service';
 
 @Component({
   selector: 'app-company-public',
@@ -26,6 +27,7 @@ export class CompanyPublicComponent implements OnInit {
     private route: ActivatedRoute,
     private toaster: ToasterService,
     private influencer: InfluencerService,
+    private msg: MsgService,
   ) {
   }
 
@@ -36,6 +38,8 @@ export class CompanyPublicComponent implements OnInit {
     });
     this.influencer.getCompany(this.companyParams);
     this.companyService.campaignByCompany(this.companyParams);
+    this.msg.checkNotifications();
+    this.influencer.checkFollowButton();
   }
 
   logout() {
@@ -53,7 +57,7 @@ export class CompanyPublicComponent implements OnInit {
   }
 
   getCampaigns() {
-    this.companyService.campaignsList(this.user);
+    this.companyService.campaignsList();
   }
 
   newCampaign() {

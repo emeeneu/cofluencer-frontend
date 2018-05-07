@@ -5,6 +5,8 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 import { AuthService } from './auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToasterService } from './toaster.service';
+import { MsgService } from './msg.service';
 
 @Injectable()
 export class CompanyService {
@@ -12,9 +14,19 @@ export class CompanyService {
   campaigns: any = [];
   updatedCampaign: any;
   companyId: string;
-  influencer: any = '';
-  user: any;
-  campaignDetail: any = '';
+  influencer: any = {
+    username: String,
+    coverImage: String,
+    followers: Array,
+  };
+  user: any = {
+    username: String,
+    coverImage: String,
+    followers: Array,
+  };
+  campaignDetail: any;
+  campaignSelected: any;
+  followButtonState: boolean;
 
   private sub: any;
   private API_URL = 'http://localhost:3000/api';
@@ -24,15 +36,17 @@ export class CompanyService {
     private httpClient: HttpClient,
     private session: AuthService,
     private route: ActivatedRoute,
+    private toaster: ToasterService,
+    private msg: MsgService,
   ) { }
 
-  campaignsList(user: any): Promise<any> {
+  campaignsList(): Promise<any> {
     const options = {
       withCredentials: true
     };
     return this.httpClient.get(`${this.API_URL}/campaigns`, options)
       .toPromise()
-      .then((campaigns) => {
+      .then((campaigns: any) => {
         this.campaigns = campaigns;
       })
       .catch((err) => {
@@ -64,7 +78,7 @@ export class CompanyService {
     };
     return this.httpClient.get(`${this.API_URL}/campaigns/${companyName}`, options)
       .toPromise()
-      .then((campaigns) => {
+      .then((campaigns: any) => {
         this.campaigns = campaigns;
       })
       .catch((err) => {
@@ -121,14 +135,19 @@ export class CompanyService {
       });
   }
 
-  deleteCampaign(campaignId: any) {
+  selectCampaign(campaignId){
+    this.campaignSelected = campaignId;
+  }
+
+  deleteCampaign() {
     const options = {
       withCredentials: true,
     };
-    return this.httpClient.delete(`${this.API_URL}/${campaignId}/delete-campaign`, options)
+    return this.httpClient.delete(`${this.API_URL}/${this.campaignSelected}/delete-campaign`, options)
       .toPromise()
       .then((deletedCampaign) => {
-        console.log(deletedCampaign);
+        this.toaster.success('Campaign has been successfully deleted! 🤙🏻');
+        this.campaignsList();
       })
       .catch((err) => {
         if (err.status === 404) {
@@ -161,6 +180,62 @@ export class CompanyService {
       .toPromise()
       .then((influencerDB) => {
         this.influencer = influencerDB;
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  followInfluencer(influencerId: any) {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.put(`${this.API_URL}/follow/${influencerId}`,{}, options)
+      .toPromise()
+      .then(() => {
+        this.checkFollowButton();
+        this.getInfluencer(this.influencer.username);
+        this.msg.sendNoti(influencerId, `${this.user.brandName} has started to follow you!`)
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  unfollowInfluencer(influencerId: any) {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.put(`${this.API_URL}/unfollow/${influencerId}`, {}, options)
+      .toPromise()
+      .then(() => {
+        this.getInfluencer(this.influencer.username);
+        this.checkFollowButton();
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  checkFollowButton() {
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.get(`${this.API_URL}/user/me`, options)
+      .toPromise()
+      .then((user: any)=>{
+        this.user = user;
+        if (user.influencersFavs.indexOf(this.influencer._id) === -1) {
+          this.followButtonState = false;
+        } else {
+          this.followButtonState = true;
+        }
       })
       .catch((err) => {
         if (err.status === 404) {

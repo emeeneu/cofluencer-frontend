@@ -37,7 +37,7 @@ export class CampaignDetailComponent implements OnInit {
   }
 
   deleteCampaign() {
-    this.companyService.deleteCampaign(this.campaignId);
+    // this.companyService.deleteCampaign(this.campaignId);
     this.router.navigate(['company', this.user.username]);
     this.toaster.success(`Your campaign ${this.companyService.campaignDetail.title} has been removed correctly.`);
   }

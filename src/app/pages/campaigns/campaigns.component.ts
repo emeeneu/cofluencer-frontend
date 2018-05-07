@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 import { ToasterService } from '../../services/toaster.service';
+import { MsgService } from '../../services/msg.service';
 
 @Component({
   selector: 'app-campaigns',
@@ -21,14 +22,15 @@ export class CampaignsComponent implements OnInit {
       display: 'tag',
     }
   ];
-  pattern: any;
+  search: any = [];
 
   constructor(
     private influencer: InfluencerService,
     private session: AuthService,
     private router: Router,
     private companyService: CompanyService,
-    private toaster: ToasterService
+    private toaster: ToasterService,
+    private msg: MsgService,
   ) { }
 
   ngOnInit() {
@@ -40,6 +42,8 @@ export class CampaignsComponent implements OnInit {
       this.influencer.listMyCampaigns();
       this.myCampaigns = true;
     }
+    this.msg.checkNotifications();
+
   }
 
   logout() {

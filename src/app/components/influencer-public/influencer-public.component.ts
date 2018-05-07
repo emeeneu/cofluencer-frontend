@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 import { ToasterService } from '../../services/toaster.service';
 import { InfluencerService } from '../../services/influencer.service';
+import { MsgService } from '../../services/msg.service';
 
 @Component({
   selector: 'app-influencer-public',
@@ -27,7 +28,8 @@ export class InfluencerPublicComponent implements OnInit {
     private route: ActivatedRoute,
     private companyService: CompanyService,
     private influencer: InfluencerService,
-    private toaster: ToasterService
+    private toaster: ToasterService,
+    private msg: MsgService,
   ) { }
 
   ngOnInit() {
@@ -36,9 +38,11 @@ export class InfluencerPublicComponent implements OnInit {
       this.influencerParams = params['id'];
     });
     this.companyService.getInfluencer(this.influencerParams);
+    this.companyService.checkFollowButton();
     this.checkYoutube();
     this.checkTwitter();
     this.influencer.listMyCampaigns();
+    this.msg.checkNotifications();
   }
 
   ngOnChanges(changes: any) {
@@ -78,5 +82,4 @@ export class InfluencerPublicComponent implements OnInit {
       this.twitterProfile = true;
     }
   }
-
 }

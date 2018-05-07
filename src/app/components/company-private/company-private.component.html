@@ -100,14 +100,14 @@
     </div>
     <div class="flex flex-column flex-center">
       <h2 class="colorGrey introductionText textCenter">Cofollowers</h2>
-      <p class="quoteText textCenter">254</p>
+      <p class="quoteText textCenter">{{ companyService.user.followers.length }}</p>
     </div>
   </section>
   <section id="info">
     <div class="container">
       <div class="user">
         <div class="card-box">
-          <a href="#" class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
+          <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + user.profileImage + ')'}">
           </a>
         </div>
         <div>
@@ -116,8 +116,7 @@
         </div>
       </div>
       <p>
-        <tag-input class="tags" [ngModel]="user.tags" [ngModelOptions]="{standalone: true}" theme='minimal' [removable]='false'
-          [disable]='false' placeholder='' secondaryPlaceholder='No tags added'></tag-input>
+        <app-categories-tags [tags]='user.tags' [state]="'read'"></app-categories-tags>
       </p>
       <p class="bodyText">{{ user.bio }}</p>
     </div>

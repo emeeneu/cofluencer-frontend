@@ -28,6 +28,7 @@ export class CompanyPrivateComponent implements OnInit {
   ngOnInit() {
     this.user = this.session.getUser();
     this.getCampaigns();
+    this.companyService.checkFollowButton();
     this.msg.checkNotifications();
   }
 
@@ -46,7 +47,7 @@ export class CompanyPrivateComponent implements OnInit {
   }
 
   getCampaigns() {
-    this.companyService.campaignsList(this.user);
+    this.companyService.campaignsList();
   }
 
   newCampaign() {

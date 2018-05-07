@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="col-12">
-            <tag-input [(ngModel)]="formCampaign.tags" [ngModelOptions]="{standalone: true}" theme='minimal' allowDupes='true'></tag-input>
+            <app-categories-tags [(tags)]='formCampaign.tags' [state]="'edit'"></app-categories-tags>
           </div>
           <div class="col-12">
             <div class="form-group">

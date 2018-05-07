@@ -82,7 +82,7 @@ export class CreateCampaignComponent implements OnInit {
 
     this.uploader.uploadAll();
     this.router.navigate(['company', this.username]);
-    this.toaster.success(`Campaign added`);
+    this.toaster.success(`Campaign added`, `${this.formCampaign.title} is public now`);
     console.log(this.newCampaign);
   }
 
