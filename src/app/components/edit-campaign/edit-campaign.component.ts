@@ -11,11 +11,12 @@ import { CompanyService } from '../../services/company.service';
 export class EditCampaignComponent implements OnInit {
 
   user: any;
-  campaignDetail: any = '';
   campaignId: any;
+  company: any;
   private sub: any;
-  editingCampaign: Object = {
+  formCampaign: any = {
     title: '',
+    tags: [],
     description: '',
   };
 
@@ -28,19 +29,28 @@ export class EditCampaignComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.session.getUser();
-    this.campaignDetail = this.companyService.campaignDetail;
     this.sub = this.route.params.subscribe(params => {
-      this.campaignId = params['campaignid'];
+      this.campaignId = params.campaignid;
+      this.company = params.id;
+      this.companyService.campaign(this.campaignId)
+        .then((campaign) => {
+          this.formCampaign = campaign;
+        })
+        .catch((err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
     });
   }
 
   close() {
-    this.router.navigate(['company', this.user.username, this.campaignId]);
+    this.router.navigate(['company', this.user.username]);
   }
 
   updateCampaign() {
-    this.companyService.updateCampaign(this.editingCampaign, this.campaignId);
-    this.router.navigate(['company', this.user.username, this.campaignId]);
+    this.companyService.updateCampaign(this.formCampaign, this.campaignId);
+    this.router.navigate(['company', this.user.username]);
   }
 
 }

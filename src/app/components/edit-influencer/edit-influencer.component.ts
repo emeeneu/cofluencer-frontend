@@ -30,7 +30,7 @@ export class EditInfluencerComponent implements OnInit {
     tags: [],
   };
   uploader: FileUploader = new FileUploader({
-    url: `${this.API_URL}/upload-image/:profileImage`,
+    url: `${this.API_URL}/upload-image/:profileImage/edit`,
   });
   feedback: string;
   options = {

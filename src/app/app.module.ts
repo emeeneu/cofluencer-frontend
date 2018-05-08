@@ -58,6 +58,7 @@ import { InfluencerPrivateComponent } from './components/influencer-private/infl
 import { MsgAlertDeleteComponent } from './components/msg-alert-delete/msg-alert-delete.component';
 import { CampaignAlertDeleteComponent } from './components/campaign-alert-delete/campaign-alert-delete.component';
 import { CategoriesTagsComponent } from './components/categories-tags/categories-tags.component';
+import { EditImageCampaignComponent } from './components/edit-image-campaign/edit-image-campaign.component';
 
 const routes: Routes = [
   {
@@ -102,11 +103,11 @@ const routes: Routes = [
     component: CreateCampaignComponent,
     canActivate: [RequireUserGuardService],
   },
-  {
-    path: 'company/:id/:campaignid',
-    component: CampaignDetailComponent,
-    canActivate: [RequireUserGuardService],
-  },
+  // {
+  //   path: 'company/:id/:campaignid',
+  //   component: CampaignDetailComponent,
+  //   canActivate: [RequireUserGuardService],
+  // },
   {
     path: 'company/:id/:campaignid/edit',
     component: EditCampaignComponent,
@@ -168,6 +169,7 @@ const routes: Routes = [
     MsgAlertDeleteComponent,
     CampaignAlertDeleteComponent,
     CategoriesTagsComponent,
+    EditImageCampaignComponent,
   ],
   imports: [
     BrowserModule,

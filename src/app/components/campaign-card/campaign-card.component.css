@@ -22,10 +22,54 @@
   background-position: center;
 }
 
+.brandImage {
+  position: absolute;
+  top: 8px;
+  left: 0px;
+}
+
+.campaignImage {
+  position: relative;
+}
+
 .card-img {
   background-size: cover;
   background-position: center;
   border-radius: 5px;
+}
+
+.campaignTitle {
+  line-height: 1;
+}
+
+.date {
+  font-size: 12px;
+}
+
+.cofluencersLink {
+  position: relative;
+  cursor: pointer;
+}
+
+.cofluencersLink::after {
+  content: '';
+  width: 50%;
+  height: 2px;
+  border-radius: 2px;
+  background-image: linear-gradient(137deg, rgba(40, 175, 176, .8), rgba(68, 53, 91, .8));
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.cofluencersLink:hover::after {
+  width: 100%;
+}
+
+.cofluencersPg {
+  cursor: pointer;
 }
 
 .user {
@@ -53,29 +97,23 @@ h3 {
   display: inline-block;
   margin-right: 20px;
   margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 30px;
+  padding: .5rem .75rem;
+  font-size: 1.6rem;
 }
 
 #deleteButton {
   position: relative;
   cursor: pointer;
   margin-top: 0;
+  font-size: 1.3rem;
+  color: #EE5622;
+  opacity: 0.6;
 }
 
-#deleteButton::after {
-  content: '';
-  width: 50%;
-  height: 2px;
-  border-radius: 2px;
-  background-image: linear-gradient(137deg, #EE5622, #ECA72C);
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  -webkit-transition: all .5s;
-  transition: all .5s;
-}
-
-#deleteButton:hover::after {
-  width: 100%;
+#deleteButton:hover {
+  opacity: 1;;
 }
 
 .containerButton {
@@ -110,4 +148,9 @@ h3 {
 
 .buttons {
   position: relative;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1;
 }

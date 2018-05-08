@@ -16,7 +16,7 @@ export class EditImageCoverComponent implements OnInit {
   private API_URL = 'http://localhost:3000/api';
 
   uploader: FileUploader = new FileUploader({
-    url: `${this.API_URL}/upload-image/:coverImage`,
+    url: `${this.API_URL}/upload-image/coverImage/image`,
   });
   // user: any;
   editingUser = {

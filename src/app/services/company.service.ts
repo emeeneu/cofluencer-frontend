@@ -60,10 +60,10 @@ export class CompanyService {
     const options = {
       withCredentials: true,
     };
-    return this.httpClient.get(`${this.API_URL}/campaigns/${campaignId}`, options)
+    return this.httpClient.get(`${this.API_URL}/campaigns/edit/${campaignId}`, options)
       .toPromise()
       .then((campaign) => {
-        return this.campaignDetail = campaign;
+        return campaign;
       })
       .catch((err) => {
         if (err.status === 404) {
@@ -135,7 +135,7 @@ export class CompanyService {
       });
   }
 
-  selectCampaign(campaignId){
+  selectCampaign(campaignId) {
     this.campaignSelected = campaignId;
   }
 
