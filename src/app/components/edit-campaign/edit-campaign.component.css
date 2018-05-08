@@ -41,3 +41,19 @@ nav {
   border-radius: 4px;
 }
 
+#deleteButton {
+  position: relative;
+  cursor: pointer;
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #EE5622;
+  opacity: 0.6;
+}
+
+#deleteButton:hover {
+  opacity: 1;
+  ;
+}
+
+
+

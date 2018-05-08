@@ -12,34 +12,6 @@
   </div>
 </nav>
 
-<!-- <div class="flex flex-center bg">
-  <div class="formProfile flex flex-center flex-middle flexModal modalBg">
-    <div class="loginForm mb-100">
-      <div class="container p-50">
-        <p class="h1">Edit Campaign</p>
-
-        <form class="row mt-40">
-          <div class="col-12">
-            <div class="form-group">
-              <input [(ngModel)]="editingCampaign.title" name="title" type="text" placeholder="{{ campaignDetail.title }}" class="form-control">
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              <textarea [(ngModel)]="editingCampaign.description" value="" name="description" rows="5" class="form-control" placeholder="{{ campaignDetail.description }}"></textarea>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              <button (click)="updateCampaign()" class="btn btn-round btn-primary updateButton h4">Update Campaign</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="flex flex-center bg">
   <div class="formProfile flex flex-center flex-middle flexModal modalBg">
     <div class="loginForm mb-100">
@@ -76,8 +48,14 @@
           </div>
           
           <div class="col-12">
-            <div class="form-group">
+            <div class="form-group textCenter">
               <button (click)="updateCampaign()" class="btn btn-round btn-primary updateButton h4">Update Campaign</button>
+              <a class="" id="deleteButton" data-toggle="modal" data-target="#alertDeleteCampaign" (click)='companyService.selectCampaign(campaignId)'>
+                <i class="icon icon-trash"></i>
+                Delete
+              </a>
+              <app-campaign-alert-delete class="modal fade" id="alertDeleteCampaign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true"></app-campaign-alert-delete>
             </div>
           </div>
         </form>

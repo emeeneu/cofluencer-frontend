@@ -552,7 +552,6 @@ ul a:not([href]):not([tabindex]):hover {
   #editButton {
     width: 100%;
     margin-right: 0px;
-    margin-bottom: 10px;
   }
   
   .buttons {

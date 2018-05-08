@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/toPromise';
 import { AuthService } from './auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToasterService } from './toaster.service';
 import { MsgService } from './msg.service';
 
@@ -38,6 +38,7 @@ export class CompanyService {
     private route: ActivatedRoute,
     private toaster: ToasterService,
     private msg: MsgService,
+    private router: Router,
   ) { }
 
   campaignsList(): Promise<any> {
@@ -148,6 +149,7 @@ export class CompanyService {
       .then((deletedCampaign) => {
         this.toaster.success('Campaign has been successfully deleted! 🤙🏻');
         this.campaignsList();
+        this.router.navigate(['company', this.user.username]);
       })
       .catch((err) => {
         if (err.status === 404) {

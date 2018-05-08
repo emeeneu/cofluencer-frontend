@@ -8,7 +8,7 @@ import { CompanyService } from '../../services/company.service';
 })
 export class CampaignAlertDeleteComponent implements OnInit {
 
-  constructor(private companyService: CompanyService,) { }
+  constructor(private companyService: CompanyService) { }
 
   ngOnInit() {
   }

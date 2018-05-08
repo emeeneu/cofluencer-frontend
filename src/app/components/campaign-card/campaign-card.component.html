@@ -91,12 +91,6 @@
             </div>
             <div *ngIf='rolControl' class='buttons flex flex-middle wrap'>
               <button class="btn btn-author editButton h4" id="editButton" (click)="editCampaign(campaign._id)">Edit</button>
-              <a class="" id="deleteButton" data-toggle="modal" data-target="#alertDeleteCampaign" (click)='companyService.selectCampaign(campaign._id)'>
-                <i class="icon icon-trash"></i>
-                Delete
-              </a>
-              <app-campaign-alert-delete class="modal fade" id="alertDeleteCampaign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                aria-hidden="true"></app-campaign-alert-delete>
             </div>
           </div>
         </div>
