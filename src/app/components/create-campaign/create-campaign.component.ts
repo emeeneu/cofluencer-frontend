@@ -75,7 +75,7 @@ export class CreateCampaignComponent implements OnInit {
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('title', this.formCampaign.title);
       form.append('description', this.formCampaign.description);
-      form.append('tags', this.formCampaign.tags);
+      form.append('tags', JSON.stringify(this.formCampaign.tags));
       form.append('startDate', this.formCampaign.startDate);
       form.append('endDate', this.formCampaign.endDate);
     };

@@ -1,0 +1,7 @@
+<div class="card-box">
+  <a [routerLink]="['/influencer', influencer.username]" class="card-container d-block shadow" data-parallax="true" [ngStyle]="{'background-image': 'url(' + influencer.profileImage + ')'}"></a>
+</div>
+<p class="bodyTextBold cofluencerName">{{ influencer.username }}</p>
+<p class="quoteText cofluencity">90%</p>
+<i *ngIf="clicked" class="icon-plus" (click)="addCofluencer(influencer)"></i>
+<i *ngIf="!clicked" class="icon-minus" (click)="removeCofluencer(influencer)"></i>

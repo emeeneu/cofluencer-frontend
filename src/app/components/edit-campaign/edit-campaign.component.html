@@ -16,7 +16,6 @@
   <div class="formProfile flex flex-center flex-middle flexModal modalBg">
     <div class="loginForm mb-100">
       <app-edit-image-campaign></app-edit-image-campaign>
-      <!-- <app-edit-image-cover></app-edit-image-cover> -->
       <div class="container p-20 box-form">
         <form class="row mt-40">
           <div class="col-12">
@@ -50,7 +49,7 @@
           <div class="col-12">
             <div class="form-group textCenter">
               <button (click)="updateCampaign()" class="btn btn-round btn-primary updateButton h4">Update Campaign</button>
-              <a class="" id="deleteButton" data-toggle="modal" data-target="#alertDeleteCampaign" (click)='companyService.selectCampaign(campaignId)'>
+              <a class="" id="deleteButton" data-toggle="modal" data-target="#alertDeleteCampaign" (click)='companyService.selectCampaign()'>
                 <i class="icon icon-trash"></i>
                 Delete
               </a>

@@ -76,9 +76,12 @@
           </div>
           <div class="col-12 mt-10">
             <p class="cofluencersPg">
-              <span class="quoteText">{{ campaign.influencer_id.length }}</span>
-              <span class="cofluencersLink">Cofluencers</span>
+              <a id="listButton" data-toggle="modal" data-target="#cofluencersList">
+                <span class="quoteText">{{ campaign.influencer_id.length }}</span>
+                <span class="cofluencersLink">Cofluencers</span>
+              </a>
             </p>
+            <app-list-influencers class="modal fade" id="cofluencersList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" [influencers]="campaign.influencer_id"></app-list-influencers>
           </div>
           <div class="col-12 mt-10">
             <p class="description">{{ campaign.description }}</p>

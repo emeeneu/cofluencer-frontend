@@ -27,6 +27,7 @@ export class CompanyService {
   campaignDetail: any;
   campaignSelected: any;
   followButtonState: boolean;
+  cofluencersSelected: any = [];
 
   private sub: any;
   private API_URL = 'http://localhost:3000/api';
@@ -194,12 +195,12 @@ export class CompanyService {
     const options = {
       withCredentials: true,
     };
-    return this.httpClient.put(`${this.API_URL}/follow/${influencerId}`,{}, options)
+    return this.httpClient.put(`${this.API_URL}/follow/${influencerId}`, {}, options)
       .toPromise()
       .then(() => {
         this.checkFollowButton();
         this.getInfluencer(this.influencer.username);
-        this.msg.sendNoti(influencerId, `${this.user.brandName} has started to follow you!`)
+        this.msg.sendNoti(influencerId, `${this.user.brandName} has started to follow you!`);
       })
       .catch((err) => {
         if (err.status === 404) {
@@ -231,13 +232,41 @@ export class CompanyService {
     };
     return this.httpClient.get(`${this.API_URL}/user/me`, options)
       .toPromise()
-      .then((user: any)=>{
+      .then((user: any) => {
         this.user = user;
         if (user.influencersFavs.indexOf(this.influencer._id) === -1) {
           this.followButtonState = false;
         } else {
           this.followButtonState = true;
         }
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          console.log(err);
+        }
+      });
+  }
+
+  addCofluencer(cofluencer) {
+    this.cofluencersSelected.push(cofluencer);
+  }
+
+  removeCofluencer(cofluencer) {
+    const cofluencerIndex = this.cofluencersSelected.indexOf(cofluencer);
+    if (cofluencerIndex > -1) {
+      this.cofluencersSelected.splice(cofluencerIndex, 1);
+    }
+  }
+
+  saveCofluencers(cofluencersSelected) {
+    console.log(this.cofluencersSelected);
+    const options = {
+      withCredentials: true,
+    };
+    return this.httpClient.post(`${this.API_URL}/campaigns/save-cofluencers`, this.cofluencersSelected, options)
+      .toPromise()
+      .then((cofluencers) => {
+        console.log(cofluencers);
       })
       .catch((err) => {
         if (err.status === 404) {

@@ -51,8 +51,8 @@
           </div>
           <div class="col-12">
             <div class="form-group">
-              <button [hidden]="toggleSignup" (click)="signupBrand()" class="btn btn-round btn-author loginButton h4">Sign up like brand</button>
-              <button [hidden]="!toggleSignup" (click)="signupInfluencer()" class="btn btn-round btn-author-reverse loginButton h4">Sign up like influencer</button>
+              <button [hidden]="!toggleSignup" (click)="signupBrand()" class="btn btn-round btn-author loginButton h4">Sign up like brand</button>
+              <button [hidden]="toggleSignup" (click)="signupInfluencer()" class="btn btn-round btn-author-reverse loginButton h4">Sign up like influencer</button>
             </div>
             <p class="bodyText">Already have an account?
               <a (click)="changeModal('login')">Log in</a>

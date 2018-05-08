@@ -1,0 +1,26 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title h4" id="myModalLabel">Cofluencers list</h4>
+      <div class="iconMenu" data-dismiss="modal" aria-hidden="true">
+        <span class="bar1"></span>
+        <span class="bar2"></span>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div class="row container">
+        <ul class="w-100">
+          <li *ngFor="let influencer of influencers" class="flex flex-middle sp-between">
+            <app-select-cofluencer [influencer]="influencer" class="flex flex-middle sp-around w-100" id="cofluencer"></app-select-cofluencer>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-lg btn-primary btn-round" data-dismiss="modal">Cancel</button>
+      <button type="button" class="btn btn-lg btn-primary btn-round" data-dismiss="modal" (click)='companyService.saveCofluencers()'>Save</button>
+    </div>
+  </div>
+</div>

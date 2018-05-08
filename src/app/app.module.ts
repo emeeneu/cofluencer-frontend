@@ -59,6 +59,8 @@ import { MsgAlertDeleteComponent } from './components/msg-alert-delete/msg-alert
 import { CampaignAlertDeleteComponent } from './components/campaign-alert-delete/campaign-alert-delete.component';
 import { CategoriesTagsComponent } from './components/categories-tags/categories-tags.component';
 import { EditImageCampaignComponent } from './components/edit-image-campaign/edit-image-campaign.component';
+import { ListInfluencersComponent } from './components/list-influencers/list-influencers.component';
+import { SelectCofluencerComponent } from './components/select-cofluencer/select-cofluencer.component';
 
 const routes: Routes = [
   {
@@ -170,6 +172,8 @@ const routes: Routes = [
     CampaignAlertDeleteComponent,
     CategoriesTagsComponent,
     EditImageCampaignComponent,
+    ListInfluencersComponent,
+    SelectCofluencerComponent,
   ],
   imports: [
     BrowserModule,
