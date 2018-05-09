@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { YoutubeDatauserService } from '../../services/youtube-datauser.service';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth.service';
+import { CompanyService } from '../../services/company.service';
 
 @Component({
   selector: 'app-youtube-info',
@@ -20,12 +21,17 @@ export class YoutubeInfoComponent implements OnInit {
     private userYoutubeInfo: YoutubeDatauserService,
     private sanitizer: DomSanitizer,
     private session: AuthService,
+    private companyService: CompanyService,
     ) { }
 
   ngOnInit() {
     this.user = this.session.getUser();
     this.user.role === 'influencer' ? this.rolControl = true : this.rolControl = false;
+    if (this.rolControl) {
     this.youtubeInfo = this.session.getUser().socialLinks.youtube;
+    } else if (!this.rolControl){
+    this.youtubeInfo = this.companyService.influencer.socialLinks.youtube;
+    }
     if (this.youtubeInfo) {
       this.userYoutubeInfo.getInfoYoutubeUser(this.youtubeInfo);
     }

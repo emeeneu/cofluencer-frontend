@@ -5,6 +5,7 @@ import { CompanyService } from '../../services/company.service';
 import { ToasterService } from '../../services/toaster.service';
 import { InfluencerService } from '../../services/influencer.service';
 import { MsgService } from '../../services/msg.service';
+import { YoutubeDatauserService } from '../../services/youtube-datauser.service';
 
 @Component({
   selector: 'app-influencer-public',
@@ -30,6 +31,7 @@ export class InfluencerPublicComponent implements OnInit {
     private influencer: InfluencerService,
     private toaster: ToasterService,
     private msg: MsgService,
+    private youtubeInfo: YoutubeDatauserService,
   ) { }
 
   ngOnInit() {
@@ -43,6 +45,8 @@ export class InfluencerPublicComponent implements OnInit {
     this.checkTwitter();
     this.influencer.listMyCampaigns();
     this.msg.checkNotifications();
+    // console.log(this.companyService.influencer.socialLinks.youtube)
+    // this.youtubeInfo.getInfoYoutubeUser(this.companyService.influencer.socialLinks.youtube);
   }
 
   ngOnChanges(changes: any) {
