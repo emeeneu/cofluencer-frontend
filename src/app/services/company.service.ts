@@ -190,9 +190,13 @@ export class CompanyService {
     return this.httpClient.get(`${this.API_URL}/company/${influencer}`, options)
       .toPromise()
       .then((influencerDB: any) => {
-        this.youtubeInfo.getInfoYoutubeUser(influencerDB.socialLinks.youtube);
-        this.twitterInfo.getInfoTwitterUser(influencerDB.socialLinks.twitter);
         this.influencer = influencerDB;
+        if (influencerDB.socialLinks.youtube === null || influencerDB.socialLinks.youtube === ''){
+          console.log('notiene')
+        } else {
+          this.youtubeInfo.getInfoYoutubeUser(influencerDB.socialLinks.youtube);
+        }
+        this.twitterInfo.getInfoTwitterUser(influencerDB.socialLinks.twitter);
       })
       .catch((err) => {
         if (err.status === 404) {
