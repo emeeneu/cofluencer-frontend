@@ -30,7 +30,9 @@ export class YoutubeInfoComponent implements OnInit {
     if (this.rolControl) {
     this.youtubeInfo = this.session.getUser().socialLinks.youtube;
     } else if (!this.rolControl){
-    this.youtubeInfo = this.companyService.influencer.socialLinks.youtube;
+      if (this.companyService.influencer.socialLinks.youtube !== ''){
+        this.youtubeInfo = this.companyService.influencer.socialLinks.youtube;
+      }
     }
     if (this.youtubeInfo) {
       this.userYoutubeInfo.getInfoYoutubeUser(this.youtubeInfo);

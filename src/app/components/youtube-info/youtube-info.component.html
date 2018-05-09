@@ -13,6 +13,9 @@
         <p>Or <span (click)="toggleAccount()"><b>cancel</b></span></p>
       </div>
     </div>
+    <div *ngIf='!rolControl'>
+      <p>nothing to see here.. ☹️</p>
+    </div>
   </div>
   <div *ngIf='youtubeInfo'>
     <div>
