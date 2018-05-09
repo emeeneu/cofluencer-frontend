@@ -10,7 +10,8 @@ export class CategoriesTagsComponent implements OnInit {
   @Input() tags: Array<String>;
   @Input() state: String;
 
-  categories = ['fashion', 'food', 'sport', 'brand', 'business', 'lifestyle', 'blog', 'art', 'technology', 'music', 'video', 'others']
+  categories = ['fashion', 'food', 'sport', 'brand', 'business', 'lifestyle', 'blog', 'art', 'technology', 'music', 'video', 'others'];
+  colors = ['red', 'tomato', 'yellow', 'orange', 'blue', 'grey', 'gold', 'black', 'white', 'purple', 'green', 'lightsalmon'];
 
   constructor() { }
 

@@ -263,16 +263,22 @@ export class CompanyService {
     const options = {
       withCredentials: true,
     };
-    return this.httpClient.post(`${this.API_URL}/campaigns/save-cofluencers`, this.cofluencersSelected, options)
-      .toPromise()
-      .then((cofluencers) => {
-        console.log(cofluencers);
-      })
-      .catch((err) => {
-        if (err.status === 404) {
-          console.log(err);
-        }
-      });
+    this.cofluencersSelected.forEach(cofluencer => {
+      return this.httpClient.put(`${this.API_URL}/campaigns/save-cofluencers`,
+      {
+        cofluencerId: cofluencer,
+        campaignId: this.campaignSelected,
+      }, options)
+        .toPromise()
+        .then((cofluencers) => {
+          console.log(cofluencers);
+        })
+        .catch((err) => {
+          if (err.status === 404) {
+            console.log(err);
+          }
+        });
+    });
   }
 
 }

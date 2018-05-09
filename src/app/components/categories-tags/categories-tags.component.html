@@ -1,11 +1,11 @@
 <div *ngIf="state === 'read'"  class="container-tags">
-  <div *ngFor='let tag of tags' class="tag-select">
+  <div *ngFor='let tag of tags' class="tag tag-select">
     {{ tag }}
   </div>
 </div>
 
 <div *ngIf="state === 'edit'" class="container-tags">
-  <div *ngFor='let tag of categories' [ngClass]="checkHaveTag(tag)?'tag-select':'tag-no-select'" (click)='toggleTags(tag)'>
+  <div *ngFor='let tag of categories' class="tag" [ngClass]="checkHaveTag(tag)?'tag-select':'tag-no-select'" (click)='toggleTags(tag)'>
     {{ tag }}
   </div>
 </div>

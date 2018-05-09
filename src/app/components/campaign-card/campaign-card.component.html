@@ -81,7 +81,7 @@
                 <span class="cofluencersLink">Cofluencers</span>
               </a>
             </p>
-            <app-list-influencers class="modal fade" id="cofluencersList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" [influencers]="campaign.influencer_id"></app-list-influencers>
+            <app-list-influencers class="modal fade" id="cofluencersList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" [influencers]="campaign.influencer_id" (click)="companyService.selectCampaign(campaign._id)"></app-list-influencers>
           </div>
           <div class="col-12 mt-10">
             <p class="description">{{ campaign.description }}</p>
