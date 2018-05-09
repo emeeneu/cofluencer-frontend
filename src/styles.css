@@ -508,6 +508,21 @@ ul a:not([href]):not([tabindex]):hover {
   background-attachment: fixed;
 }
 
+.btn-cofluencer {
+  border-radius: 30px;
+  font-size: 1.6rem;
+}
+
+.coButton {
+  width: 100% !important;
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 30px;
+  padding: .5rem .75rem;
+  font-size: 1.6rem;
+}
 
 @media (max-width: 980px) {
   .iconMenu {

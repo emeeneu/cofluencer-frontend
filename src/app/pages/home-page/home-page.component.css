@@ -55,6 +55,10 @@ transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   margin-bottom: 5px;
 }
 
+.navbar .nav-item {
+  cursor: pointer;
+}
+
 .navbar-nav .nav-item:not(:last-child) {
   margin-right: 40px;
 }
@@ -101,8 +105,8 @@ transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
 }
 
 #signupButton:hover {
-  background-color: #28afb0;
-  border-color: #28afb0;
+  background-image: linear-gradient(137deg, #28afb0, #44355b);
+  border-color: transparent;
 }
 
 #login {
@@ -146,6 +150,10 @@ transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
 #mobileMenu .iconMenu .bar2 {
   transform: rotate(-45deg);
   transform-origin: 40% 50%;
+}
+
+#mobileMenu .menu li {
+  cursor: pointer;
 }
 
 .underline {

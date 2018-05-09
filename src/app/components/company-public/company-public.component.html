@@ -80,9 +80,9 @@
       </div>
     </div>
     <div class="container flex sp-between" id="buttons">
-      <button class="btn btn-lg btn-primary btn-round h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
-      <button *ngIf='!influencer.followButtonState' class="btn btn-lg btn-primary btn-round h4" (click)='influencer.followCompany(influencer.companyDetail._id)'>FOLLOW</button>
-      <button *ngIf='influencer.followButtonState' class="btn btn-lg btn-info btn-round h4" (click)='influencer.unfollowCompany(influencer.companyDetail._id)'>UNFOLLOW</button>
+      <button class="btn btn-lg btn-primary btn-round btn-cofluencer h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
+      <button *ngIf='!influencer.followButtonState' class="btn btn-lg btn-primary btn-round btn-cofluencer h4" (click)='influencer.followCompany(influencer.companyDetail._id)' id="followButton">FOLLOW</button>
+      <button *ngIf='influencer.followButtonState' class="btn btn-lg btn-info btn-round btn-cofluencer h4" (click)='influencer.unfollowCompany(influencer.companyDetail._id)' id="followButton">UNFOLLOW</button>
     </div>
   </div>
   <app-msg-send class="modal fade" id="sendMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [to]='influencer.companyDetail'></app-msg-send>
@@ -93,7 +93,7 @@
   <section class="container flex sp-between" id="stats">
     <div class="flex flex-column flex-center">
       <h2 class="colorGrey introductionText textCenter">Campaigns</h2>
-      <p class="quoteText textCenter">13K</p>
+      <p class="quoteText textCenter">{{ companyService.campaigns.length }}</p>
     </div>
     <div class="flex flex-column flex-center">
       <h2 class="colorGrey introductionText textCenter">Cofluencity</h2>
@@ -111,7 +111,7 @@
           <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + influencer.companyDetail.profileImage + ')'}">
           </a>
         </div>
-        <div>
+        <div class="ml-10">
           <h3>{{ influencer.companyDetail.brandName }}</h3>
           <h3 class="bodyText">{{ influencer.companyDetail.email }} | @{{ influencer.companyDetail.username }}</h3>
         </div>
@@ -124,8 +124,8 @@
   </section>
 
   <section id="campaigns">
-    <div class="container">
-      <h2 class="h3">Campaigns</h2>
+    <div class="">
+      <h2 class="h3 container">Campaigns</h2>
       <div *ngFor="let campaign of influencer.companyCampaigns">
         <app-campaign-card [campaign]='campaign'></app-campaign-card>
       </div>

@@ -92,3 +92,13 @@ h3 {
   display: flex;
   flex-direction: row;
 }
+
+.icon-trash {
+  color: #EE5622;
+  cursor: pointer;
+}
+
+.icon-envelope {
+  color: #44355b;
+  cursor: pointer;
+}
