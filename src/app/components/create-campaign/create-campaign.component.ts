@@ -73,6 +73,7 @@ export class CreateCampaignComponent implements OnInit {
 
   createCampaign() {
     this.uploader.onBuildItemForm = (item, form) => {
+      console.log(this.formCampaign.startDate);
       form.append('title', this.formCampaign.title);
       form.append('description', this.formCampaign.description);
       form.append('tags', JSON.stringify(this.formCampaign.tags));
@@ -83,7 +84,6 @@ export class CreateCampaignComponent implements OnInit {
     this.uploader.uploadAll();
     this.router.navigate(['company', this.username]);
     this.toaster.success(`Campaign added`, `${this.formCampaign.title} is public now`);
-    console.log(this.newCampaign);
   }
 
 }

@@ -21,6 +21,7 @@ export class ListInfluencersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.influencers);
   }
 
 }

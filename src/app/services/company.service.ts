@@ -150,6 +150,7 @@ export class CompanyService {
   }
 
   deleteCampaign() {
+    console.log('deleteeeee: ', this.campaignSelected);
     const options = {
       withCredentials: true,
     };

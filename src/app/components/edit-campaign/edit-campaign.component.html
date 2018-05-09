@@ -49,12 +49,11 @@
           <div class="col-12">
             <div class="form-group textCenter">
               <button (click)="updateCampaign()" class="btn btn-round btn-primary updateButton h4">Update Campaign</button>
-              <a class="" id="deleteButton" data-toggle="modal" data-target="#alertDeleteCampaign" (click)='companyService.selectCampaign()'>
+              <a class="" id="deleteButton" data-toggle="modal" data-target="#alertDeleteCampaign" (click)='companyService.selectCampaign(campaignId)'>
                 <i class="icon icon-trash"></i>
                 Delete
               </a>
-              <app-campaign-alert-delete class="modal fade" id="alertDeleteCampaign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                aria-hidden="true"></app-campaign-alert-delete>
+              <app-campaign-alert-delete class="modal fade" id="alertDeleteCampaign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ></app-campaign-alert-delete>
             </div>
           </div>
         </form>

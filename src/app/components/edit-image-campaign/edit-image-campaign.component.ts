@@ -20,7 +20,9 @@ export class EditImageCampaignComponent implements OnInit {
 
   uploader: FileUploader;
 
-  formCampaign: any;
+  formCampaign: any = {
+    campaignImage: '',
+  };
   options = {
     withCredentials: true,
   };
