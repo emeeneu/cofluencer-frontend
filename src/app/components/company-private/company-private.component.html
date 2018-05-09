@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
           <ul class="navbar-nav flex flex-middle">
             <li class="nav-item">
-              <a class="nav-link" click)="editProfile()">
+              <a class="nav-link" (click)="editProfile()">
                 <p class="bodyTextBold capitalize colorGrey menuLink">Edit profile</p>
               </a>
             </li>
@@ -123,8 +123,8 @@
   </section>
 
   <section id="campaigns">
-    <div class="container">
-      <h2 class="h3">Campaigns</h2>
+    <div class="">
+      <h2 class="h3 container">Campaigns</h2>
       <div *ngFor="let campaign of companyService.campaigns">
         <app-campaign-card [campaign]='campaign'></app-campaign-card>
       </div>
