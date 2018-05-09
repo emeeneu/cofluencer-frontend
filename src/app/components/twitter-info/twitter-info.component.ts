@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TwtDatauserService } from '../../services/twt-datauser.service';
 import { AuthService } from '../../services/auth.service';
+import { CompanyService } from '../../services/company.service';
 
 @Component({
   selector: 'app-twitter-info',
@@ -18,12 +19,17 @@ export class TwitterInfoComponent implements OnInit {
   constructor(
     private userTwitterInfo: TwtDatauserService,
     private session: AuthService,
+    private companyService: CompanyService,
   ) { }
 
   ngOnInit() {
     this.user = this.session.getUser();
     this.user.role === 'influencer' ? this.rolControl = true : this.rolControl = false;
-    this.twitterInfo = this.session.getUser().socialLinks.twitter;
+    if (this.rolControl) {
+      this.twitterInfo = this.session.getUser().socialLinks.twitter;
+    } else if (!this.rolControl) {
+      this.twitterInfo = this.companyService.influencer.socialLinks.twitter;
+    }
     if (this.twitterInfo) {
       this.userTwitterInfo.getInfoTwitterUser(this.twitterInfo);
     }

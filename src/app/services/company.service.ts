@@ -7,6 +7,9 @@ import { AuthService } from './auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToasterService } from './toaster.service';
 import { MsgService } from './msg.service';
+import { YoutubeDatauserService } from './youtube-datauser.service';
+import { TwitterInfoComponent } from '../components/twitter-info/twitter-info.component';
+import { TwtDatauserService } from './twt-datauser.service';
 
 @Injectable()
 export class CompanyService {
@@ -18,6 +21,9 @@ export class CompanyService {
     username: String,
     coverImage: String,
     followers: Array,
+    socialLinks: {
+      youtube: String,
+    } 
   };
   user: any = {
     username: String,
@@ -40,6 +46,8 @@ export class CompanyService {
     private toaster: ToasterService,
     private msg: MsgService,
     private router: Router,
+    private youtubeInfo: YoutubeDatauserService,
+    private twitterInfo: TwtDatauserService,
   ) { }
 
   campaignsList(): Promise<any> {
@@ -181,7 +189,9 @@ export class CompanyService {
     };
     return this.httpClient.get(`${this.API_URL}/company/${influencer}`, options)
       .toPromise()
-      .then((influencerDB) => {
+      .then((influencerDB: any) => {
+        this.youtubeInfo.getInfoYoutubeUser(influencerDB.socialLinks.youtube);
+        this.twitterInfo.getInfoTwitterUser(influencerDB.socialLinks.twitter);
         this.influencer = influencerDB;
       })
       .catch((err) => {
