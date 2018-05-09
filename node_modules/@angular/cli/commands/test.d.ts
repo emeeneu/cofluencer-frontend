@@ -1,20 +1,17 @@
-export interface TestOptions {
-    watch?: boolean;
-    codeCoverage?: boolean;
-    singleRun?: boolean;
-    browsers?: string;
-    colors?: boolean;
-    log?: string;
-    port?: number;
-    reporters?: string;
-    sourcemaps?: boolean;
-    progress?: boolean;
-    config: string;
-    poll?: number;
-    environment?: string;
-    app?: string;
-    preserveSymlinks?: boolean;
-    forceTsCommonjs?: boolean;
+import { CommandScope, Option } from '../models/command';
+import { ArchitectCommand } from '../models/architect-command';
+export interface Options {
+    project?: string;
+    configuration?: string;
+    prod: boolean;
 }
-declare const TestCommand: any;
-export default TestCommand;
+export default class TestCommand extends ArchitectCommand {
+    readonly name: string;
+    readonly target: string;
+    readonly description: string;
+    static aliases: string[];
+    readonly scope: CommandScope;
+    readonly multiTarget: boolean;
+    readonly options: Option[];
+    run(options: Options): Promise<number>;
+}

@@ -1,9 +1,15 @@
-export interface Xi18nOptions {
-    outputPath?: string;
-    verbose?: boolean;
-    i18nFormat?: string;
-    locale?: string;
-    outFile?: string;
+import { CommandScope, Option } from '../models/command';
+import { ArchitectCommand } from '../models/architect-command';
+export interface Options {
+    project?: string;
+    configuration?: string;
 }
-declare const Xi18nCommand: any;
-export default Xi18nCommand;
+export default class Xi18nCommand extends ArchitectCommand {
+    readonly name: string;
+    readonly target: string;
+    readonly description: string;
+    readonly scope: CommandScope;
+    readonly multiTarget: true;
+    readonly options: Option[];
+    run(options: Options): Promise<number>;
+}
