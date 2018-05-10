@@ -20,13 +20,12 @@
           <app-categories-tags [tags]='campaign.tags' [state]="'read'"></app-categories-tags>
         </div>
         <div *ngIf="rolControl" class="col-12 mt-10">
-          <p class="cofluencersPg">
+          <p (click)="companyService.selectInfluencers(campaign.influencer_id); companyService.selectCampaign(campaign._id, campaign.title)" class="cofluencersPg">
             <a id="listButton" data-toggle="modal" data-target="#cofluencersList">
               <span class="quoteText">{{ campaign.influencer_id.length }}</span>
               <span class="cofluencersLink">Cofluencers</span>
             </a>
           </p>
-          <app-list-influencers class="modal fade" id="cofluencersList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" [influencers]="campaign.influencer_id" (click)="companyService.selectCampaign(campaign._id)"></app-list-influencers>
         </div>
         <div *ngIf="!rolControl" class="col-12 mt-10">
           <p class="cofluencersPg">

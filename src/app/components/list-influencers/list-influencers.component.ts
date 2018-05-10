@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 })
 export class ListInfluencersComponent implements OnInit {
 
-  @Input() influencers: any;
-
   constructor(
     private session: AuthService,
     private influencer: InfluencerService,
@@ -21,7 +19,6 @@ export class ListInfluencersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.influencers);
   }
 
 }

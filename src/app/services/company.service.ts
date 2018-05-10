@@ -23,7 +23,7 @@ export class CompanyService {
     followers: Array,
     socialLinks: {
       youtube: String,
-    } 
+    },
   };
   user: any = {
     username: String,
@@ -32,8 +32,10 @@ export class CompanyService {
   };
   campaignDetail: any;
   campaignSelected: any;
+  campaignTitle: any;
   followButtonState: boolean;
   cofluencersSelected: any = [];
+  confluencersList: any = [];
 
   private sub: any;
   private API_URL = 'http://localhost:3000/api';
@@ -145,8 +147,17 @@ export class CompanyService {
       });
   }
 
-  selectCampaign(campaignId) {
-    this.campaignSelected = campaignId;
+  selectCampaign(campaignId, campaignTitle) {
+    if (campaignTitle === undefined) {
+      this.campaignSelected = campaignId;
+    } else {
+      this.campaignSelected = campaignId;
+      this.campaignTitle = campaignTitle;
+    }
+  }
+
+  selectInfluencers(influencers) {
+    this.confluencersList = influencers;
   }
 
   deleteCampaign() {
@@ -274,7 +285,6 @@ export class CompanyService {
   }
 
   saveCofluencers(cofluencersSelected) {
-    console.log(this.cofluencersSelected);
     const options = {
       withCredentials: true,
     };
@@ -285,8 +295,8 @@ export class CompanyService {
         campaignId: this.campaignSelected,
       }, options)
         .toPromise()
-        .then((cofluencers) => {
-          console.log(cofluencers);
+        .then((cofluencers: any) => {
+            this.msg.sendNoti(cofluencer, `Congrat's, ${this.user.username} has selected you for the campaign ${this.campaignTitle} ✌️`);
         })
         .catch((err) => {
           if (err.status === 404) {

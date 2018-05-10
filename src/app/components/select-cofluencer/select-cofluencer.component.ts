@@ -23,13 +23,11 @@ export class SelectCofluencerComponent implements OnInit {
   addCofluencer(cofluencer) {
     this.clicked = !this.clicked;
     this.companyService.addCofluencer(cofluencer);
-    // this.toaster.success(`${cofluencer.username} selected to your campaign`);
   }
 
   removeCofluencer(cofluencer) {
     this.clicked = !this.clicked;
     this.companyService.removeCofluencer(cofluencer);
-    // this.toaster.success(`${cofluencer.username} removed from your campaign`);
   }
 
 }

@@ -11,7 +11,7 @@
     <div class="modal-body">
       <div class="row container">
         <ul class="w-100">
-          <li *ngFor="let influencer of influencers" class="flex flex-middle sp-between">
+          <li *ngFor="let influencer of companyService.confluencersList" class="flex flex-middle sp-between">
             <app-select-cofluencer [influencer]="influencer" class="flex flex-middle sp-around w-100" id="cofluencer"></app-select-cofluencer>
           </li>
         </ul>
