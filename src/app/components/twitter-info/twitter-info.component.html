@@ -23,8 +23,8 @@
   <div *ngIf='twitterInfo'>
     <div>
       <br>
-      <p>@{{ this.userTwitterInfo.twitterUser.screen_name }}
-        <b>{{ this.userTwitterInfo.twitterUser.followers_count }}</b> followers</p>
+      <p>@{{ this.userTwitterInfo.twitterUser?.screen_name }}
+        <b>{{ this.userTwitterInfo.twitterUser?.followers_count }}</b> followers</p>
     </div>
     <div class="twitter-timeline">
       <div *ngFor='let tweet of this.userTwitterInfo.userTweets'>
