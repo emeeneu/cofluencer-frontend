@@ -81,9 +81,9 @@
       </div>
     </div>
     <div class="container flex sp-between" id="buttons">
-      <button class="btn btn-lg btn-primary btn-round h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
-      <button *ngIf='!companyService.followButtonState' class="btn btn-lg btn-primary btn-round h4" (click)='companyService.followInfluencer(companyService.influencer._id)'>FOLLOW</button>
-      <button *ngIf='companyService.followButtonState' class="btn btn-lg btn-info btn-round h4" (click)='companyService.unfollowInfluencer(companyService.influencer._id)'>UNFOLLOW</button>
+      <button class="btn btn-lg btn-primary btn-round btn-cofluencer h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
+      <button *ngIf='!companyService.followButtonState' class="btn btn-lg btn-primary btn-round btn-cofluencer h4" (click)='companyService.followInfluencer(companyService.influencer._id)' id="followButton">FOLLOW</button>
+      <button *ngIf='companyService.followButtonState' class="btn btn-lg btn-info btn-round btn-cofluencer h4" id="followButton" (click)='companyService.unfollowInfluencer(companyService.influencer._id)'>UNFOLLOW</button>
     </div>
   </div>
   <app-msg-send class="modal fade" id="sendMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
