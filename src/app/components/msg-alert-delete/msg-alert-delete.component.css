@@ -19,3 +19,27 @@
   color: #EE5622;
   cursor: pointer;
 }
+
+.iconMenu {
+  width: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+  display: block;
+}
+
+.iconMenu [class^=bar] {
+  background-color: #000;
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.iconMenu .bar1 {
+  transform: rotate(45deg);
+  transform-origin: 45% 50%;
+}
+
+.iconMenu .bar2 {
+  transform: rotate(-45deg);
+  transform-origin: 40% 50%;
+}

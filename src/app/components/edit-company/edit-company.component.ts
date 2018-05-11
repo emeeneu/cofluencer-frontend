@@ -17,7 +17,7 @@ export class EditCompanyComponent implements OnInit {
   private API_URL = 'http://localhost:3000/api';
 
   uploader: FileUploader = new FileUploader({
-    url: `${this.API_URL}/upload-image/:profileImage/edit`,
+    url: `${this.API_URL}/upload-image/profileImage/edit`,
   });
   // user: any;
   editingUser = {
