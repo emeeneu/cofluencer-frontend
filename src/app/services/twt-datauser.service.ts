@@ -21,6 +21,8 @@ export class TwtDatauserService {
   ) { }
 
   getInfoTwitterUser(user): Promise<any> {
+    this.twitterUser = {};
+    this.userTweets = [];
     return this.httpClient.get(`${this.API_URL}/twt/${user}`)
       .toPromise()
       .then((data: any) => {
