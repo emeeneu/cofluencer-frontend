@@ -1,0 +1,91 @@
+.bg {
+  background-color: rgba(248, 250, 253, .95);
+}
+
+nav {
+  background-color: rgba(248, 250, 253, .95);
+}
+
+.iconMenu {
+  width: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+  display: block;
+}
+
+.iconMenu [class^=bar] {
+  background-color: #1f271b;
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.iconMenu .bar1 {
+  transform: rotate(45deg);
+  transform-origin: 45% 50%;
+}
+
+.iconMenu .bar2 {
+  transform: rotate(-45deg);
+  transform-origin: 40% 50%;
+}
+
+.updateButton {
+  width: 100%;
+}
+
+.formProfile {
+  width: 500px;
+  min-height: 650px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.6);
+}
+
+.profileImage label {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.profileImage .uploadInput {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: none;
+}
+
+.bigImage-bg {
+  background-size: cover;
+  background-position: center;
+}
+
+.bigImage>.uploadInput {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.bigImage>label {
+  width: 100%;
+  height: 190px;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.box-form {
+  position: relative;
+  top: -115px;
+}

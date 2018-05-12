@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'app-login',
@@ -12,32 +13,61 @@ export class LoginComponent implements OnInit {
   @Output() close = new EventEmitter<any>();
   @Output() change = new EventEmitter<any>();
 
+  toggleLogin: boolean;
+
   formInfo = {
-    username: '',
+    email: '',
     password: ''
   };
 
   user: any;
   error: string;
+  username: any;
 
   constructor(
     private session: AuthService,
     private router: Router,
+    private toaster: ToasterService,
   ) { }
 
   ngOnInit() {
   }
 
-  login() {
+  loginBrand() {
     this.session
-      .login(this.formInfo)
+      .loginCompany(this.formInfo)
       .then(user => {
         this.user = user;
-        this.router.navigate(['app']);
+        this.router.navigate(['company', this.user.username]);
+        this.toaster.success(`${this.user.username}`, `Welcome back! 🎉`);
       })
       .catch((error) => {
-        console.log('login error', error);
         this.error = error;
+        if (this.formInfo.email === '' || this.formInfo.password === '') {
+          this.toaster.error('Please, fill all the fields to login', 'Empty fields');
+        } else {
+          // tslint:disable-next-line:max-line-length
+          this.toaster.error('Make sure you are registered and login in your role and check if the email and password are correct', 'User not found');
+        }
+      });
+  }
+
+  loginInfluencer() {
+    this.session
+      .loginInfluencer(this.formInfo)
+      .then(user => {
+        this.user = user;
+        this.router.navigate(['influencer', this.user.username]);
+        this.toaster.success(`${this.user.username}`, `Welcome back! 🎉`);
+      })
+      .catch((error) => {
+        this.error = error;
+        if (this.formInfo.email === '' || this.formInfo.password === '') {
+          this.toaster.error('Please, fill all the fields to login', 'Empty fields');
+        } else {
+          // tslint:disable-next-line:max-line-length
+          this.toaster.error('Make sure you are registered and login in your role and check if the email and password are correct', 'User not found');
+        }
       });
   }
 
@@ -47,6 +77,10 @@ export class LoginComponent implements OnInit {
 
   changeModal(event) {
     this.change.emit(event);
+  }
+
+  controlUser() {
+    this.toggleLogin = !this.toggleLogin;
   }
 
 }

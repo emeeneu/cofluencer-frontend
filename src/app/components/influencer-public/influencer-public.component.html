@@ -1,0 +1,145 @@
+<router-outlet></router-outlet>
+
+<header>
+  <nav [hidden]="toggleMenu" class="navbar navbar-expand-lg fixed-top navbar-transparent bigNav dinamicBg" id="nav">
+    <div class="container-fluid fixed-top h-50 smooth" id="gradient">
+      <div class="container">
+        <div class="navbar-translate" id="navLogo">
+          <a class="navbar-brand w-115" [routerLink]="['/company', user.username]" rel="tooltip" data-placement="bottom">
+            <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
+          </a>
+          <div class="noti" [routerLink]="['/messages']" [ngClass]="msg.msgNoRead !== 0 ?'new-msg':''">
+            <span *ngIf='msg.msgNoRead !== 0'>{{ msg.msgNoRead }}</span>
+            <i *ngIf='msg.msgNoRead === 0' class="icon-paper-plane"></i>
+          </div>
+          <div class="iconMenu" (click)="menuControl()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
+          <ul class="navbar-nav flex flex-middle">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/campaigns/me']">
+                <p class="bodyTextBold capitalize colorGrey">My campaigns</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/campaigns']">
+                <p class="bodyTextBold capitalize colorGrey">Search campaign</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/company', user.username, 'edit-profile']">
+                <p class="bodyTextBold capitalize colorGrey">My profile</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="logout()">
+                <p class="bodyTextBold capitalize colorGrey">Logout</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div [hidden]="!toggleMenu" id="mobileMenu">
+    <nav class="navbar navbar-expand-lg bg-info fixed-top navbar-transparent">
+      <div class="container">
+        <div class="navbar-translate flex sp-between w-100 flex-middle">
+          <a class="navbar-brand w-115" rel="tooltip" data-placement="bottom">
+            <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
+          </a>
+          <div class="iconMenu" (click)="menuControl()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <ul class="menu container flex flex-column flex-middle mt-100">
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a (click)="newCampaign()" class="bodyTextBold capitalize colorGrey">Create campaign</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a class="bodyTextBold capitalize colorGrey" (click)="editProfile()">Edit profile</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a class="bodyTextBold capitalize colorGrey" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <!-- End Mobile Menu -->
+
+  <div class="wrapper">
+    <div class="page-header gradient">
+      <div class="page-header-image" id="bgWrapper" data-parallax="true" [ngStyle]="{'background-image': 'url(' + companyService.influencer.coverImage + ')'}">
+      </div>
+    </div>
+    <div class="container flex sp-between" id="buttons">
+      <button class="btn btn-lg btn-primary btn-round btn-cofluencer h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
+      <button *ngIf='!companyService.followButtonState' class="btn btn-lg btn-primary btn-round btn-cofluencer h4" (click)='companyService.followInfluencer(companyService.influencer._id)' id="followButton">FOLLOW</button>
+      <button *ngIf='companyService.followButtonState' class="btn btn-lg btn-info btn-round btn-cofluencer h4" id="followButton" (click)='companyService.unfollowInfluencer(companyService.influencer._id)'>UNFOLLOW</button>
+    </div>
+  </div>
+  <app-msg-send class="modal fade" id="sendMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    [to]='companyService.influencer'></app-msg-send>
+
+</header>
+
+<main>
+  <section class="container flex sp-between" id="stats">
+    <div class="flex flex-column flex-center">
+      <h2 class="colorGrey introductionText textCenter">Campaigns</h2>
+      <p class="quoteText textCenter">0</p>
+    </div>
+    <div class="flex flex-column flex-center">
+      <h2 class="colorGrey introductionText textCenter">Cofluencity</h2>
+      <p class="quoteText textCenter">90%</p>
+    </div>
+    <div class="flex flex-column flex-center">
+      <h2 class="colorGrey introductionText textCenter">Cofollowers</h2>
+      <p class="quoteText textCenter">{{ companyService.influencer.followers.length }}</p>
+    </div>
+  </section>
+  <section id="info">
+    <div class="container">
+      <div class="user">
+        <div class="card-box">
+          <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + companyService.influencer.profileImage + ')'}">
+          </a>
+        </div>
+        <div>
+          <h3>{{ companyService.influencer.name }}</h3>
+          <h3 class="bodyText">{{ companyService.influencer.email }} | @{{ companyService.influencer.username }}</h3>
+        </div>
+      </div>
+      <p>
+        <app-categories-tags [tags]="companyService.influencer.tags" [state]="'read'"></app-categories-tags>
+      </p>
+      <p class="bodyText">{{ companyService.influencer.bio }}</p>
+    </div>
+  </section>
+</main>
+
+<app-instagram-info></app-instagram-info>
+<app-youtube-info></app-youtube-info>
+<app-twitter-info></app-twitter-info>
+
+<footer class="bg-darkJungleGreen">
+  <div class="container">
+    <div class="flex flex-center socialFooter pt-50">
+      <span class="icon-social-facebook colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-twitter colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-instagram colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-youtube colorGrey pr-10 pl-10"></span>
+    </div>
+  </div>
+  <div class="bg-darkJungleGreen pt-50 pb-10 flex flex-center flex-middle">
+    <p class="bodyText colorGrey textCenter">©2018 cofluencer</p>
+  </div>
+</footer>

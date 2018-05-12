@@ -1,0 +1,14 @@
+<div *ngIf='!disable'>
+  <div *ngFor='let tag of data'>
+    <span>{{ tag.value }}</span>
+  </div>
+</div>
+
+<div *ngIf='disable'>
+  <div *ngIf='data.length === 0'>
+    No tags added
+  </div>
+  <div *ngFor='let tag of data' class='container-tags'>
+    <div class='tag'>{{ tag.value }}</div>
+  </div>
+</div>

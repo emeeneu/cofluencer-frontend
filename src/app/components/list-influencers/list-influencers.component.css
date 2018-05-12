@@ -1,0 +1,52 @@
+.campaignBox {
+  color: grey;
+  background-color: white;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.modal-dialog {
+  width: 100%;
+}
+
+#cofluencer {
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#cofluencer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-image: linear-gradient(137deg, #28afb0, #44355b);
+}
+
+.iconMenu {
+  width: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+  display: block;
+}
+
+.iconMenu [class^=bar] {
+  background-color: #000;
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.iconMenu .bar1 {
+  transform: rotate(45deg);
+  transform-origin: 45% 50%;
+}
+
+.iconMenu .bar2 {
+  transform: rotate(-45deg);
+  transform-origin: 40% 50%;
+}

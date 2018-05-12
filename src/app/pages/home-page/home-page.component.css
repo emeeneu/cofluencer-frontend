@@ -55,6 +55,10 @@ transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   margin-bottom: 5px;
 }
 
+.navbar .nav-item {
+  cursor: pointer;
+}
+
 .navbar-nav .nav-item:not(:last-child) {
   margin-right: 40px;
 }
@@ -101,8 +105,8 @@ transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
 }
 
 #signupButton:hover {
-  background-color: #28afb0;
-  border-color: #28afb0;
+  background-image: linear-gradient(137deg, #28afb0, #44355b);
+  border-color: transparent;
 }
 
 #login {
@@ -112,6 +116,103 @@ transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
 #navLogo {
   cursor: pointer;
 }
+
+/* Mobile Menu */
+
+#mobileMenu {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 9999;
+  background-color: rgba(18, 22, 15, .85);
+}
+
+#mobileMenu .iconMenu {
+  width: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+  display: block;
+}
+
+#mobileMenu .iconMenu [class^=bar] {
+  background-color: #fff;
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+}
+
+#mobileMenu .iconMenu .bar1 {
+  width: 100%;
+  transform: rotate(45deg);
+  transform-origin: 45% 50%;
+}
+
+#mobileMenu .iconMenu .bar2 {
+  transform: rotate(-45deg);
+  transform-origin: 40% 50%;
+}
+
+#mobileMenu .menu li {
+  cursor: pointer;
+}
+
+.underline {
+  position: relative;
+}
+
+.underline:after {
+  content: '';
+  background-image: linear-gradient(137deg, #28afb0, #44355b);
+  width: 25%;
+  height: 5px;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  animation-name: widthGrow;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes widthGrow {
+  0% {
+    width: 75%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 75%;
+  }
+}
+
+#loginButton {
+  position: relative;
+  cursor: pointer;
+}
+
+#loginButton:after {
+  content: '';
+  width: 50%;
+  height: 2px;
+  border-radius: 2px;
+  background-image: linear-gradient(137deg, #28afb0, #44355b);
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: all .5s;
+}
+
+#loginButton:hover {
+  color: #fafafa;
+}
+
+#loginButton:hover::after {
+  width: 100%;
+  transition: all .5s;
+}
+
 
 @media (max-width: 980px) {
 

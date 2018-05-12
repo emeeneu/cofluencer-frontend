@@ -1,3 +1,4 @@
-<p>
-  company-profile works!
-</p>
+<router-outlet></router-outlet>
+
+<app-company-public *ngIf="user.role === 'influencer'"></app-company-public>
+<app-company-private *ngIf="user.role === 'company'"></app-company-private>

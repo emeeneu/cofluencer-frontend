@@ -1,11 +1,14 @@
-<div class="signupModal">
-
-  <div class="flex flex-center flex-middle flexModal modalBg">
-    <div class="signUpForm mb-100">
+<div class="signupModal h-92vh">
+  
+  <div class="flex flex-center flex-middle flexModal modalBg h-100x centerVertical mt-60">
+    <div class="signUpForm">
       <div class="container p-50">
         <div class="title flex sp-between flex-baseline">
           <p class="h1">Sign up</p>
-          <p class="bodyText">Are you a brand? <a href="">Sign up here</a></p>
+          <div class="flex sp-around w-100 selectLogin">
+            <span (click)="controlUser()" class="bodyText" [ngClass]="{'selected': toggleSignup}">Brand</span>
+            <span (click)="controlUser()" class="bodyText" [ngClass]="{'selected': !toggleSignup}">Influencer</span>
+          </div>
         </div>
         <div class="row mt-40">
           <div class="col-12 flex flex-middle sp-between socialLogin">
@@ -29,30 +32,35 @@
         <form class="row mt-40">
           <div class="col-12">
             <div class="form-group">
-              <input type="text" [(ngModel)]="formInfo.username" name="username" value="" placeholder="Your name" class="form-control">
+              <input type="text" [(ngModel)]="formInfo.username" #username="ngModel" name="username" value="" placeholder="Your name" class="form-control" required minlength="6">
             </div>
           </div>
-          <!-- <div class="col-12">
-            <div class="form-group">
-              <input type="email" value="" placeholder="Your email" class="form-control">
-            </div>
-          </div> -->
+
           <div class="col-12">
             <div class="form-group">
-              <input [(ngModel)]="formInfo.password" name="password" type="password" value="" placeholder="Your password" class="form-control">
+              <input type="email" [(ngModel)]="formInfo.email" #email="ngModel" name="email" value="" placeholder="Your email" class="form-control" required>
             </div>
           </div>
-          <!-- <div class="col-12">
-            <div class="form-group">
-              <input type="password" value="" placeholder="Confirm your password" class="form-control">
-            </div>
-          </div> -->
+          
           <div class="col-12">
             <div class="form-group">
-              <button (click)="signup()" class="btn btn-round btn-primary loginButton h4">Sign up</button>
+              <input [(ngModel)]="formInfo.password" name="password" type="password" value="" placeholder="Your password" class="form-control" required minlength="5" maxlength="50">
+            </div>
+            <ng2-password-strength-bar class="textCenter m-0" [passwordToCheck]="formInfo.password" [barLabel]="barLabel" [barColors]="myColors">
+            </ng2-password-strength-bar>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <button [hidden]="!toggleSignup" (click)="signupBrand()" class="btn btn-round btn-author loginButton h4">Sign up like brand</button>
+              <button [hidden]="toggleSignup" (click)="signupInfluencer()" class="btn btn-round btn-author-reverse loginButton h4">Sign up like influencer</button>
             </div>
             <p class="bodyText">Already have an account?
               <a (click)="changeModal('login')">Log in</a>
+            </p>
+          </div>
+          <div class="col-12">
+            <p class="alert alert-danger" role="alert" *ngIf="username.errors && (username.dirty || username.touched)" [hidden]="!username.errors.minlength">
+              The username must be at least 6 characters long.
             </p>
           </div>
         </form>

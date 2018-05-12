@@ -1,0 +1,53 @@
+<div class="campaignBox shadow">
+  <div class="row">
+    <div class="col-6 col-md-4 p-0 br-5 campaingImage" [ngStyle]="{'background-image': 'url(' + campaign.campaignImage + ')'}" style="background-position: center; background-size: cover;">
+      <a [routerLink]="['/company', campaign.company_id.username]" class="card-container ml-10 brandImage shadow" data-parallax="true" [ngStyle]="{'background-image': 'url(' + campaign.company_id.profileImage + ')'}">
+      </a>
+    </div>
+    <div class="col-6 col-md-8">
+      <div class="row mt-10">
+        <div class="col-12">
+          <h3 class="h4 capitalize p-0 m-0 campaignTitle">{{ campaign.title }}</h3>
+        </div>
+        <div class="col-12">
+          <p>
+            <span class="date">{{ campaign.startDate | date: 'dd/MM/yyyy' }}
+                | {{ campaign.startDate | date: 'dd/MM/yyyy' }}
+            </span>
+          </p>
+        </div>
+        <div class="col-12">
+          <app-categories-tags [tags]='campaign.tags' [state]="'read'"></app-categories-tags>
+        </div>
+        <div *ngIf="rolControl" class="col-12 mt-10">
+          <p (click)="companyService.selectInfluencers(campaign.influencer_id); companyService.selectCampaign(campaign._id, campaign.title)" class="cofluencersPg">
+            <a id="listButton" data-toggle="modal" data-target="#cofluencersList">
+              <span class="quoteText">{{ campaign.influencer_id.length }}</span>
+              <span class="cofluencersLink">Cofluencers</span>
+            </a>
+          </p>
+        </div>
+        <div *ngIf="!rolControl" class="col-12 mt-10">
+          <p class="cofluencersPg">
+            <a id="listButton" data-toggle="modal" data-target="#cofluencersList">
+              <span class="quoteText">{{ campaign.influencer_id.length }}</span>
+              <span class="cofluencersLink">Cofluencers</span>
+            </a>
+          </p>
+        </div>
+        <div class="col-12 mt-10">
+          <p class="description">{{ campaign.description }}</p>
+        </div>
+        <div class="col-12 mt-10">
+          <div *ngIf='!rolControl' class='buttons flex flex-middle wrap'>
+            <button *ngIf="checkJoinCampaign(campaign.influencer_id)" (click)='influencer.joinCampaign(campaign._id)' class="btn btn-author editButton h4">Join in</button>
+            <button *ngIf="!checkJoinCampaign(campaign.influencer_id)" (click)='influencer.outCampaign(campaign._id)' class="btn btn-author editButton h4">Remove me</button>
+          </div>
+          <div *ngIf='rolControl' class='buttons flex flex-middle wrap'>
+            <button class="btn btn-author editButton h4" id="editButton" (click)="editCampaign(campaign._id)">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

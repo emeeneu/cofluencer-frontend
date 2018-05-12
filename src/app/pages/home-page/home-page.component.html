@@ -1,8 +1,7 @@
 <app-modal [hidden]="!toggleModal" [optionLoginSignup]="optionLoginSignup" (closeModal)="onCloseModal()"></app-modal>
-<app-mobile-menu [hidden]="!isMenuHide"></app-mobile-menu>
 
 <header [hidden]="toggleModal">
-  <nav [hidden]="isMenuHide" class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent" color-on-scroll="400">
+  <nav [hidden]="toggleMenu" class="navbar navbar-expand-lg fixed-top navbar-transparent smooth smallNav" id="home-nav">
     <div class="container">
       <div class="navbar-translate" id="navLogo">
         <a class="navbar-brand w-115" href="/" rel="tooltip" data-placement="bottom">
@@ -17,17 +16,17 @@
         <ul class="navbar-nav flex flex-middle">
           <li class="nav-item">
             <a class="nav-link" href="" onclick="scrollToDownload()">
-              <p class="bodyTextBold capitalize colorGrey">Influencers</p>
+              <p class="bodyTextBold capitalize colorGrey menuLink">Influencers</p>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="">
-              <p class="bodyTextBold capitalize colorGrey">Brands</p>
+              <p class="bodyTextBold capitalize colorGrey menuLink">Brands</p>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="">
-              <p class="bodyTextBold capitalize colorGrey">About us</p>
+              <p class="bodyTextBold capitalize colorGrey menuLink">About us</p>
             </a>
           </li>
           <li class="nav-item">
@@ -35,19 +34,53 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" (click)="modalControl('login')">
-              <p class="bodyTextBold capitalize colorGrey">Login</p>
+              <p class="bodyTextBold capitalize colorGrey menuLink">Login</p>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link btn btn-primary btn-simple btn-round" id="signupButton" rel="tooltip" (click)="modalControl('signup')">
-            <p class="bodyTextBold capitalize">Signup</p>
+            <p class="bodyTextBold capitalize menuLink">Signup</p>
             </a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  <!-- Mobile Menu -->
+  <div [hidden]="!toggleMenu" id="mobileMenu">
+    <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent">
+      <div class="container">
+        <div class="navbar-translate flex sp-between w-100 flex-middle">
+          <a class="navbar-brand w-115" href="/" rel="tooltip" data-placement="bottom">
+            <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
+          </a>
+          <div class="iconMenu" (click)="menuControl()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+          </div>
+        </div>
+      </div>
+    </nav>
 
+    <ul class="menu container flex flex-column flex-middle mt-100">
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a (click)="menuControl()" href="#influencers" class="bodyTextBold capitalize colorGrey">Influencers</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a (click)="menuControl()" href="#brands" class="bodyTextBold capitalize colorGrey">Brands</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a (click)="menuControl()" href="#aboutus" class="bodyTextBold capitalize colorGrey">About us</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a class="bodyTextBold capitalize colorGrey" (click)="modalControl('login')">Login</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a class="bodyTextBold capitalize colorGrey">Sign up</a>
+      </li>
+    </ul>
+  </div>
+  <!-- End Mobile Menu -->
   <div class="wrapper">
     <div class="page-header bg-darkJungleGreen op-8">
       <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/header.png');">
@@ -55,9 +88,10 @@
       <div class="container">
         <div class="content-center brand">
           <img class="n-logo" src="./assets/img/now-logo.png" alt="">
-          <h1 class="h1-seo h1">Let your influence work.</h1>
-          <h3>Connect with thousands of brands and find your perfect campaign.</h3>
-          <button class="btn btn-lg btn-primary btn-round h4" (click)="modalControl('signup')">Sign up</button>
+          <h1 id="homeH1" class="h1-seo huge text-left">Let your <span class="underline">influence </span><span id="changingWord">work.</span></h1>
+          <h2 class="introductionText text-left lineHeight-15">Connect with thousands of brands and find your perfect campaign.</h2>
+          <button class="btn btn-lg btn-round btn-author h4 mt-40" (click)="modalControl('signup')" id="signupHome">Sign up</button>
+          <a (click)="modalControl('login')" class="h4" id="loginButton">Login</a>
         </div>
       </div>
     </div>

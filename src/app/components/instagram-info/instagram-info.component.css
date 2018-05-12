@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+img {
+  width: 180px;
+}
+
+.no-account {
+  margin: 2vh auto;
+  border: 1px solid #eee;
+  padding: 25px 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  background: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+
+.no-account div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-account p {
+  color: gray;
+  text-align: center;
+}
+
+input {
+  background-color: white;
+  text-align: center;
+}
+
+.input:focus {
+  border: 1px solid red !important;
+}
+
+.btn {
+  border-radius: 10px;
+  font-weight: 900;
+}

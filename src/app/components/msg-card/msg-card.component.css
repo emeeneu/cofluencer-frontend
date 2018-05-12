@@ -1,0 +1,104 @@
+.msg-box-noread {
+  color: grey;
+  background-color: white;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.msg-box-read {
+  color: rgb(107, 107, 107);
+  background-color: rgb(235, 235, 235);
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.card-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-container {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  margin-right: 20px;
+}
+
+.card-img {
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+h3 {
+  margin-bottom: 5px !important;
+}
+
+.bodyTextBold {
+  width: 100% !important;
+}
+
+.info-user{
+  margin-top: -15px;
+  width: 100%;
+}
+
+.icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.icons-noti {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: -25px;
+}
+
+.icon {
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.pic-noti{
+ height: 60px !important;
+ margin-right: 10px;
+}
+
+.body-noti{
+  display: flex;
+  flex-direction: row;
+}
+
+.icon-trash {
+  color: #EE5622;
+  cursor: pointer;
+}
+
+.icon-envelope {
+  color: #44355b;
+  cursor: pointer;
+}

@@ -1,7 +1,6 @@
 .loginModal {
   width: 100%;
   z-index: 9999;
-  background-color: rgba(248, 250, 253, .95);
 }
 
 .loginForm {
@@ -113,6 +112,27 @@
 
 #navigation {
   z-index: -10;
+}
+
+.selectLogin span {
+  cursor: pointer;
+}
+
+.selected {
+  color: #28afb0;
+  font-weight: 700;
+  position: relative;
+}
+
+.selected:after {
+  content: '';
+  width: 50%;
+  height: 2px;
+  border-radius: 2px;
+  background-image: linear-gradient(137deg, #28afb0, #44355b);
+  position: absolute;
+  left: 0;
+  bottom: -5px;
 }
 
 @media (max-width: 980px) {

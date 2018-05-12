@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
-  isMenuHide: boolean;
+  toggleMenu: boolean;
   toggleModal: boolean;
   optionLoginSignup: string;
 
@@ -20,7 +20,7 @@ export class HomePageComponent implements OnInit {
   }
 
   menuControl() {
-    this.isMenuHide = !this.isMenuHide;
+    this.toggleMenu = !this.toggleMenu;
   }
 
   modalControl(option) {

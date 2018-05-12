@@ -1,8 +1,15 @@
-<div class="loginModal">
-  <div class="flex flex-center flex-middle flexModal modalBg">
-    <div class="loginForm mb-100">
+<div class="loginModal h-92vh">
+
+  <div class="flex flex-center flex-middle flexModal modalBg h-100x centerVertical">
+    <div class="loginForm">
       <div class="container p-50">
-          <p class="h1">Log in</p>
+        <div class="title flex sp-between flex-baseline flex-column">
+          <p class="h1 w-100 textCenter">Log in</p>
+          <div class="flex sp-around w-100 selectLogin">
+            <span (click)="controlUser()" class="bodyText" [ngClass]="{'selected': toggleLogin}">Brand</span>
+            <span (click)="controlUser()" class="bodyText" [ngClass]="{'selected': !toggleLogin}">Influencer</span>
+          </div>
+        </div>
         <div class="row mt-40">
           <div class="col-12 flex flex-middle sp-between socialLogin">
             <p class="bodyText colorGrey">Use your social account:</p>
@@ -25,7 +32,7 @@
         <form class="row mt-40">
           <div class="col-12">
             <div class="form-group">
-              <input [(ngModel)]="formInfo.username" name="username" type="text" value="" placeholder="Your name" class="form-control">
+              <input [(ngModel)]="formInfo.email" name="email" type="email" value="" placeholder="Your email" class="form-control">
             </div>
           </div>
           <div class="col-12">
@@ -34,8 +41,11 @@
             </div>
           </div>
           <div class="col-12">
-            <div class="form-group">
-              <button (click)="login()" class="btn btn-round btn-primary loginButton h4">Log in</button>
+            <div *ngIf="toggleLogin" class="form-group">
+              <button (click)="loginBrand()" class="btn btn-round btn-author loginButton h4">Log in like brand</button>
+            </div>
+            <div *ngIf="!toggleLogin" class="form-group">
+              <button (click)="loginInfluencer()" class="btn btn-round btn-author-reverse loginButton h4">Log in like influencer</button>
             </div>
             <p class="bodyText">No account?
               <a (click)="changeModal('signup')">Sign up</a>

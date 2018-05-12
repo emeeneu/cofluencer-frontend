@@ -7,9 +7,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class MobileMenuComponent implements OnInit {
 
-  @Input() isNavHide: boolean;
-  @Input() isMenuHide: boolean;
   @Output() close = new EventEmitter<any>();
+  @Output() modal = new EventEmitter<any>();
+
+  toggleNav: boolean;
 
   constructor() { }
 
@@ -18,6 +19,11 @@ export class MobileMenuComponent implements OnInit {
 
   closeMenu() {
     this.close.emit();
+  }
+
+  modalControl(option) {
+    this.toggleNav = !this.toggleNav;
+    this.modal.emit(option);
   }
 
 }

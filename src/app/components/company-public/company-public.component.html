@@ -1,0 +1,148 @@
+<header>
+  <nav [hidden]="toggleMenu" class="navbar navbar-expand-lg fixed-top navbar-transparent bigNav dinamicBg" id="nav" color-on-scroll="400">
+    <div class="container-fluid fixed-top h-50 smooth" id="gradient">
+      <div class="container flex">
+        <div class="navbar-translate" id="navLogo">
+          <a class="navbar-brand w-115" [routerLink]="['/influencer', user.username]" rel="tooltip" data-placement="bottom">
+            <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
+          </a>
+          <div class="noti" [routerLink]="['/messages']" [ngClass]="msg.msgNoRead !== 0 ?'new-msg':''">
+            <span *ngIf='msg.msgNoRead !== 0'>{{ msg.msgNoRead }}</span>
+            <i *ngIf='msg.msgNoRead === 0' class="icon-paper-plane"></i>
+          </div>
+          <div class="iconMenu" (click)="menuControl()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
+          <ul class="navbar-nav flex flex-middle">
+            <li class="nav-item">
+              <a class="nav-link" href="" onclick="scrollToDownload()">
+                <p class="bodyTextBold capitalize colorGrey menuLink">My campaigns</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                <p class="bodyTextBold capitalize colorGrey menuLink">My stats</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                <p class="bodyTextBold capitalize colorGrey menuLink">Create Campaign</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div [hidden]="!toggleMenu" id="mobileMenu">
+    <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent">
+      <div class="container">
+        <div class="navbar-translate flex sp-between w-100 flex-middle">
+          <a class="navbar-brand w-115" rel="tooltip" data-placement="bottom">
+            <img src="../../../assets/img/brand/logo-light.png" alt="logo-cofluencer">
+          </a>
+          <div class="iconMenu" (click)="menuControl()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <ul class="menu container flex flex-column flex-middle mt-100">
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a [routerLink]="['/campaigns/me']" class="bodyTextBold capitalize colorGrey">My campaigns</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a [routerLink]="['/campaigns']" class="bodyTextBold capitalize colorGrey">Search campaings</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a [routerLink]="['/app', user.username]" class="bodyTextBold capitalize colorGrey">My profile</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a [routerLink]="['/app', user.username, 'edit-profile']" class="bodyTextBold capitalize colorGrey">Edit profile</a>
+      </li>
+      <li class="pb-20 mt-20 w-100 b-bottomThin">
+        <a class="bodyTextBold capitalize colorGrey" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <!-- End Mobile Menu -->
+
+  <div class="wrapper">
+    <div class="page-header gradient">
+      <div class="page-header-image" data-parallax="true" [ngStyle]="{'background-image': 'url(' + influencer.companyDetail.coverImage + ')'}" id="bgWrapper">
+      </div>
+    </div>
+    <div class="container flex sp-between" id="buttons">
+      <button class="btn btn-lg btn-primary btn-round btn-cofluencer h4" id="searchButton" data-toggle="modal" data-target="#sendMsg">CONTACT</button>
+      <button *ngIf='!influencer.followButtonState' class="btn btn-lg btn-primary btn-round btn-cofluencer h4" (click)='influencer.followCompany(influencer.companyDetail._id)' id="followButton">FOLLOW</button>
+      <button *ngIf='influencer.followButtonState' class="btn btn-lg btn-info btn-round btn-cofluencer h4" (click)='influencer.unfollowCompany(influencer.companyDetail._id)' id="followButton">UNFOLLOW</button>
+    </div>
+  </div>
+  <app-msg-send class="modal fade" id="sendMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [to]='influencer.companyDetail'></app-msg-send>
+
+</header>
+
+<main>
+  <section class="container flex sp-between" id="stats">
+    <div class="flex flex-column flex-center">
+      <h2 class="colorGrey introductionText textCenter">Campaigns</h2>
+      <p class="quoteText textCenter">{{ companyService.campaigns.length }}</p>
+    </div>
+    <div class="flex flex-column flex-center">
+      <h2 class="colorGrey introductionText textCenter">Cofluencity</h2>
+      <p class="quoteText textCenter">90%</p>
+    </div>
+    <div class="flex flex-column flex-center">
+      <h2 class="colorGrey introductionText textCenter">Cofollowers</h2>
+      <p class="quoteText textCenter">{{ influencer.companyDetail.followers.length }}</p>
+    </div>
+  </section>
+  <section id="info">
+    <div class="container">
+      <div class="user">
+        <div class="card-box">
+          <a class="card-container d-block" data-parallax="true" [ngStyle]="{'background-image': 'url(' + influencer.companyDetail.profileImage + ')'}">
+          </a>
+        </div>
+        <div class="ml-10">
+          <h3>{{ influencer.companyDetail.brandName }}</h3>
+          <h3 class="bodyText">{{ influencer.companyDetail.email }} | @{{ influencer.companyDetail.username }}</h3>
+        </div>
+      </div>
+      <p>
+        <app-categories-tags [tags]='influencer.companyDetail.tags' [state]="'read'"></app-categories-tags>
+      </p>
+      <p class="bodyText">{{ influencer.companyDetail.bio }}</p>
+    </div>
+  </section>
+
+  <section id="campaigns">
+    <div class="">
+      <h2 class="h3 container">Campaigns</h2>
+      <div *ngFor="let campaign of influencer.companyCampaigns">
+        <app-campaign-card [campaign]='campaign'></app-campaign-card>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-darkJungleGreen">
+  <div class="container">
+    <div class="flex flex-center socialFooter pt-50">
+      <span class="icon-social-facebook colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-twitter colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-instagram colorGrey pr-10 pl-10"></span>
+      <span class="icon-social-youtube colorGrey pr-10 pl-10"></span>
+    </div>
+  </div>
+  <div class="bg-darkJungleGreen pt-50 pb-10 flex flex-center flex-middle">
+    <p class="bodyText colorGrey textCenter">©2018 cofluencer</p>
+  </div>
+</footer>
