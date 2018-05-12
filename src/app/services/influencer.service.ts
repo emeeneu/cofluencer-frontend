@@ -57,8 +57,8 @@ export class InfluencerService {
     this.user = this.session.getUser();
     return this.httpClient.get(`${this.API_URL}/list-campaigns`, this.options)
       .toPromise()
-      .then((listCampaigns) => {
-        this.campaigns = listCampaigns;
+      .then((listCampaigns: any) => {
+        this.campaigns = listCampaigns.reverse();
       })
       .catch((err) => {
         if (err.status === 404) {
