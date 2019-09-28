@@ -38,7 +38,7 @@ export class CompanyService {
   confluencersList: any = [];
 
   private sub: any;
-  private API_URL = 'http://localhost:3000/api';
+  private API_URL = 'https://api-cofluencer.herokuapp.com/api';
   private newCampaign: any;
 
   constructor(

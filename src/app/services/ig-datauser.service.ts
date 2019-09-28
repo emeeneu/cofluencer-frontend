@@ -10,7 +10,7 @@ export class IgDatauserService {
   constructor(private http: Http) { }
 
   getInfoInstaUser(){
-    return this.http.get('http://localhost:3000/api/ig/emeeneu')
+    return this.http.get('https://api-cofluencer.herokuapp.com/api/ig/emeeneu')
       .map((res: Response) => res.json());
   }
 }

@@ -14,7 +14,7 @@ export class TwtDatauserService {
     withCredentials: true,
   };
 
-  private API_URL = 'http://localhost:3000/api';
+  private API_URL = 'https://api-cofluencer.herokuapp.com/api';
   constructor(
     private httpClient: HttpClient,
     private toaster: ToasterService,

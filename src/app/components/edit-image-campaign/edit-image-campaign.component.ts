@@ -13,7 +13,7 @@ import { ToasterService } from '../../services/toaster.service';
 })
 export class EditImageCampaignComponent implements OnInit {
 
-  private API_URL = 'http://localhost:3000/api';
+  private API_URL = 'https://api-cofluencer.herokuapp.com/api';
   private sub: any;
   campaignId: any;
   companyId: any;

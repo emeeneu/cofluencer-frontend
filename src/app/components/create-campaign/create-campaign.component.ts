@@ -14,7 +14,7 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class CreateCampaignComponent implements OnInit {
 
-  private API_URL = 'http://localhost:3000/api';
+  private API_URL = 'https://api-cofluencer.herokuapp.com/api';
 
   uploader: FileUploader = new FileUploader({
     url: `${this.API_URL}/newCampaign`,

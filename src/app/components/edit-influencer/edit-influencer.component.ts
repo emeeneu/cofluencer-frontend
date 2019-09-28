@@ -13,7 +13,7 @@ import { TagInputModule } from 'ngx-chips';
 })
 export class EditInfluencerComponent implements OnInit {
 
-  private API_URL = 'http://localhost:3000/api';
+  private API_URL = 'https://api-cofluencer.herokuapp.com/api';
 
   user: any;
   editingUser: any = {
